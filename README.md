@@ -11,23 +11,22 @@
 |firstname|string||
 |f_last|string||
 |f_first|string||
-|prefectere|string||
+|prefecture|string||
 |address1|string||
 |address2|string||
 |address3|string||
-|tel|integer|null: false, index: true,unique: true|
+|tel|integer|null: false, index: true|
 |birthday|integer||
 |facebook|string||
-|twitter|string||
 |google|string||
 |cardnum|integer||
 |expdate|integer||
 |profit|integer||
-|point|v||
+|point|integer||
 ### Association
-- has_many :items
-- has_many :comments
-- has_one :news
+- has_many :b_items, class_name: "Item"
+- has_many :s_items, class_name: "Item"
+
 
 
 ## newsテーブル
@@ -42,13 +41,12 @@
 ## noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|title|text|null: false|
-|date|datetime|null: false|
-|link_url|references|foreign_key: true|
+|title|string|null: false|
+|link_url|string||
 ### Association
 
 
-## todo
+## todos
 |Column|Type|Options|
 |------|----|-------|
 |title|text|null: false|
@@ -63,12 +61,12 @@
 |name|string|null: false|
 |text|text|null: false|
 |condition|integer||
-|price|inrteger|null: false|
+|price|integer|null: false|
 |size|string||
-|cost|integer|null: false|
+|defrayer|integer|null: false|
 |area|integer|null: false|
 |span|integer|null: false|
-|selled_now|boolean||
+|selled_now|boolean|default: null|
 |fav|integer||
 |image1|string|null: false|
 |image2|string||
@@ -80,9 +78,12 @@
 |image8|string||
 |image9|string||
 |image10|string||
+|buyer_id|reference|foreign_key: true|
+|seller_id|reference|foreign_key: true|
 ### Association
-- belongs_to :users
-- belongs_to :categorys
+- belongs_to :seller, class_name: "User"
+- belongs_to :buyer, class_name: "User"
+- belongs_to :categories
 - belongs_to :brands
 
 ## brands
@@ -91,33 +92,15 @@
 |name|string|null: false|
 ### Association
 - has_many :items
-- belongs_to :categorys
+- belongs_to :categories
 
-## categorysテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|genre_size|integer|null: false|
 ### Association
 - has_many :items
-- belongs_to :subgenres
-
-
-### subgenres
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :sategorys
-- belongs_to :genres
-
-
-### genres
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :subgenres
-
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -128,7 +111,7 @@
 - belongs_to :users
 
 
-## likeテーブル
+## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |fine|integer||
