@@ -7,27 +7,33 @@
 |password|string|null: false|
 |tel_auth|integer|unique: true|
 |profile|text||
-|lastname|string||
-|firstname|string||
-|f_last|string||
-|f_first|string||
+|last_name|string||
+|first_name|string||
+|kana_last_name|string||
+|kana_first_name|string||
 |prefecture|string||
-|address1|string||
-|address2|string||
-|address3|string||
 |tel|integer|null: false, index: true|
 |birthday|integer||
 |facebook|string||
 |google|string||
-|cardnum|integer||
-|expdate|integer||
+|card_num|integer||
+|exp_date|integer||
 |profit|integer||
 |point|integer||
 ### Association
-- has_many :b_items, class_name: "Item"
-- has_many :s_items, class_name: "Item"
+- has_many :buyed_items, class_name: "Item"
+- has_many :selled_items, class_name: "Item"
+- has_one :address
 
 
+## addressテーブル
+|Column|Type|Options|
+|------|----|-------|
+|city|string|null: false|
+|block|string|null: false|
+|building|string||
+### Association
+belongs_to :user
 
 ## newsテーブル
 |Column|Type|Options|
@@ -68,16 +74,6 @@
 |span|integer|null: false|
 |selled_now|boolean|default: null|
 |fav|integer||
-|image1|string|null: false|
-|image2|string||
-|image3|string||
-|image4|string||
-|image5|string||
-|image6|string||
-|image7|string||
-|image8|string||
-|image9|string||
-|image10|string||
 |buyer_id|reference|foreign_key: true|
 |seller_id|reference|foreign_key: true|
 ### Association
@@ -85,6 +81,24 @@
 - belongs_to :buyer, class_name: "User"
 - belongs_to :categories
 - belongs_to :brands
+- has_one :images
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|one|string|null: false|
+|two|string||
+|three|string||
+|four|string||
+|five|string||
+|six|string||
+|seven|string||
+|eight|string||
+|nine|string||
+|ten|string||
+### Association
+belongs_to :items
 
 ## brands
 |Column|Type|Options|
