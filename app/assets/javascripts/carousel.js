@@ -1,5 +1,6 @@
 $(function() {
   $('.slick').slick({
+    accessibility: true,
     dots:true,
     accessibility: true,
     autoplay:true,

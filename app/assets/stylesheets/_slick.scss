@@ -103,10 +103,17 @@
 }
 
 .slick{
-    height: 290px;
+    height: 390px;
     width: 100%;
-    z-index: 100;
     background-size: 30px;
     background-repeat: no-repeat;
     background-position: center;
+    &__one {
+        height: 390px;
+        width: 100%;
+    }
+    &__left {
+        height: 390px;
+        width: 100%;
+    }
   }
