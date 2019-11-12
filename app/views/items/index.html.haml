@@ -1,4 +1,30 @@
-=render partial: 'shared/header'
-=render partial: 'shared/popular'
-=render partial: 'shared/pictures'
-=render partial: 'shared/sell_icon'
+.items-index
+  =render partial: 'shared/header'
+  =render partial: 'shared/sell_icon'
+  =render partial: 'carousel'
+  =render partial: 'popular'
+
+  -4.times do 
+    .item-text
+      .item-text--title
+        レディース新着アイテム
+      .item-text--link
+        =link_to 'もっと見る >', '#', class: 'item-text--link'
+    =render partial: 'pictures'
+
+  =render partial: 'popular'
+
+  -4.times do 
+    .item-text
+      .item-text--title
+        レディース新着アイテム
+      .item-text--link
+        =link_to 'もっと見る >', '#', class: 'item-text--link'
+    =render partial: 'pictures'
+
+  -# ここにフッター
+
+
+
+
+
