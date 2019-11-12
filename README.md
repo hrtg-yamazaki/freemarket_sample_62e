@@ -11,7 +11,6 @@
 |first_name|string||
 |kana_last_name|string||
 |kana_first_name|string||
-|prefecture|string||
 |tel|integer|null: false, index: true|
 |birthday|integer||
 |facebook|string||
@@ -26,12 +25,14 @@
 - has_one :address
 
 
-## addressテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|prefecture|string||
 |city|string|null: false|
 |block|string|null: false|
 |building|string||
+|user_id|references|foreign_key: true|
 ### Association
 belongs_to :user
 
@@ -44,7 +45,7 @@ belongs_to :user
 ### Association
 
 
-## noticeテーブル
+## noticesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |title|string|null: false|
@@ -79,26 +80,18 @@ belongs_to :user
 ### Association
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
-- belongs_to :categories
-- belongs_to :brands
-- has_one :images
+- belongs_to :category
+- belongs_to :brand
+- has_many :images
 
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|one|string|null: false|
-|two|string||
-|three|string||
-|four|string||
-|five|string||
-|six|string||
-|seven|string||
-|eight|string||
-|nine|string||
-|ten|string||
+|image_url|string|null: false|
+|item_id|references|foreign_key:true|
 ### Association
-belongs_to :items
+belongs_to :item
 
 ## brands
 |Column|Type|Options|
@@ -106,7 +99,7 @@ belongs_to :items
 |name|string|null: false|
 ### Association
 - has_many :items
-- belongs_to :categories
+- belongs_to :category
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -120,9 +113,11 @@ belongs_to :items
 |Column|Type|Options|
 |------|----|-------|
 |text|string|null: false|
+|user_id|references|foreign_key:true|
+|item_id||references|foreign_key:true|
 ### Association
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
 
 ## likesテーブル
