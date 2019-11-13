@@ -1,0 +1,61 @@
+%h2 会員情報入力
+
+= form_for @user do |f|
+  -# エラーメッセージはあとで実装
+  -# = render "/devise/shared/error_messages" 
+
+
+  %h3 ニックネーム
+  = f.text_field :nickname, autofocus: true, placeholder: "例) サンプル太郎"
+
+
+  %h3 メールアドレス
+  = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+
+
+  %h3 パスワード
+  - if @minimum_password_length
+    %em
+      (#{@minimum_password_length} characters minimum)
+  = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上"
+  %br/
+  = f.check_box :password
+  %span パスワードを表示する
+
+  %h3 本人確認
+  %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+
+  %h3 お名前(全角)
+  = f.text_field :first_name, autofocus: true, placeholder: "例) 山田"
+  = f.text_field :last_name, autofocus: true, placeholder: "例) 彩"
+
+  %h3 お名前カナ(全角)
+  = f.text_field :kana_first_name, autofocus: true, placeholder: "例) ヤマダ"
+  = f.text_field :kana_last_name, autofocus: true, placeholder: "例) アヤ"
+
+
+  %h3 生年月日
+  != sprintf(f.date_select(:birthday, prompt:"--",end_year: 1900, date_separator:"%s"),"年","月") + "日"
+  
+
+  %p ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+  %br/
+
+
+  %p 
+    「次へ進む」のボタンを押すことにより、
+    %a(href="")>利用規約
+    に同意したものとみなします
+
+  .actions
+    = f.submit "次へ進む"
+
+
+= link_to "本人情報の登録について", ""
+
+-# 仮のリンク
+%br/
+%br/
+=link_to "現状はボタンの代わりにこっちで遷移してください！", signup_confirm_path
+  

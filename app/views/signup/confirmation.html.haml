@@ -1,0 +1,25 @@
+%h2 電話番号の確認
+
+%br/
+= form_for @user do |f|
+
+
+  %h3 携帯電話の番号
+  = f.phone_field :tel_auth, autofocus: true, placeholder: "携帯電話の番号を入力"
+
+  %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+  %br/
+
+  = f.submit "SMSを送信する"
+  %br/
+  %p 電話番号は本人確認や不正利用防止のために利用します。他のユーザに公開されることはありません。
+
+  %br/
+  = link_to "電話番号の確認が必要な理由", ""
+
+
+%br/
+
+
+
+= link_to "現状はボタンの代わりにこっちで遷移してください！", signup_confirm_sms_path
