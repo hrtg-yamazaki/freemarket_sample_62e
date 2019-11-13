@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :items, only: :index
 
   
-  #ユーザー登録関連
+  #ユーザー登録関連(addresses要修正、多分ネストする)
   resources :users, only: :create
+
+  resources :addresses, only: :create
 
   scope "signup" do
     root                         "signup#signup",           as: "signup"
