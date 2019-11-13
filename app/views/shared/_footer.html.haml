@@ -1,0 +1,95 @@
+.aside
+  .aside__app
+    .aside__app__banner
+      .aside-left
+        .aside-left__top
+          スマホでかんたんフリマアプリ
+        .aside-left__middle
+          今すぐ無料ダウンロード！
+        .aside-left__bottom
+          = embedded_svg("logo_red.svg",class: "good-svg")
+          = embedded_svg("app-store.svg",class: "apple-svg")
+          = embedded_svg("google-play.svg",class: "google-svg")
+      .aside-right
+        = image_tag "download_app_pc.png",width:300,height:260, alt: "mercari"
+
+.footer
+  .footer__top
+    .mercari-about
+      %h2.mercari-about__title
+        fmarketについて
+      %ul.mercari-about__list
+        %li
+          %a 会社概要（運営会社）
+        %li 
+          %a 採用情報
+        %li
+          %a プレリリース
+        %li
+          %a 公式ブログ
+        %li
+          %a fmarketロゴ利用ガイドライン
+        %i
+          = fa_icon "twitter 2x"
+        %i
+          = fa_icon "facebook-square 2x"
+
+    .mercari-help
+      %h2.mercari-help__title
+        ヘルプ＆ガイド
+      %ul.mercari-help__list
+        %li
+          %a fmarketガイド
+        %li
+          %a らくらくfmarket便
+        %li
+          %a ゆうゆうfmarket便
+        %li
+          %a 大型fmarket便
+        %li
+          %a 車体取引ガイド
+        %li
+          %a fmarketあんしん、あんぜん宣言！
+        %li
+          %a 偽ブランド品撲滅への取り組み
+        %li
+          %a fmarketボックス
+
+    .mercari-privacy
+      %h2.mercari-privacy__title
+        プライバシーと利用規約
+      .mercari-privacy__box
+        %ul.mercari-privacy__box__list
+          %li
+            %a プライバシーポリシー
+          %li
+            %a fmarket利用規約
+          %li
+            %a あんしんスマホサポート制度に関する利用特約
+          %li
+            %a コンプライアンスポリシー
+
+        %ul.mercari-privacy__box__list2
+          %li
+            %a 個人データの安全管理に係る基本方針
+          %li
+            %a 特定商取引に関する表記
+          %li
+            %a 資金決済法に基づく表示
+          %li
+            %a 法令遵守と犯罪抑止のために
+
+    .mercari-country
+      %h2.mercari-country__title 
+        国
+      %ul.mercari-country__list
+        %li 
+          %a 日本
+        %li
+          %a UnitedStates
+
+  .footer__bottom
+    = embedded_svg("fmarket_logo_white.svg",class: "good-svg")
+    .footer__bottom__center
+      %samll © 2019 fmarket
+
