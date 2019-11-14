@@ -1,0 +1,152 @@
+// Place all the styles related to the signup controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sing-header {
+  background-color: rgb(246, 246, 252);
+  height: 128px;
+  width: 100%;
+  position: relative;
+  &__main {
+    height: 49px;
+    width: 193px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  &__logo {
+    height: 49px;
+    width: 185px;
+  }
+}
+
+.sing-main {
+  background-color: rgb(246, 246, 252);
+  height: 384px;
+  width: 100%;
+  &__contents {
+    background-color: white;
+    height: 100%;
+    width: 700px;
+    margin: 0 auto;
+    &__top {
+      height: 79px;
+      width: 700px;
+      color: black;
+      font-size: 22px;
+      font-weight: bolder; 
+      text-align: center;
+      line-height: 79px;
+      border-bottom: solid 2px rgb(246, 246, 252);
+    }
+    &__form {
+      height: 305px;
+      width: 100%;
+      position: relative;
+      &__box {
+        background-color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto; 
+        width: 343px; 
+        height: 182px;
+        &__mail {
+          background-color: red;
+          height: 50px;
+          width: 100%;
+          border-radius: 5px;
+          color: white;
+          font-size: 14px;
+          text-align: center;
+          line-height: 50px;
+          text-decoration: none;
+        }
+        &__facebook {
+          background-color: rgb(69, 69, 148);
+          height: 50px;
+          width: 100%;
+          border-radius: 5px;
+          margin-top: 16px;
+          color: white;
+          font-size: 14px;
+          text-align: center;
+          line-height: 50px;
+          text-decoration: none;
+        }
+        &__google {
+          background-color: white;
+          height: 50px;
+          width: 100%;
+          border-radius: 5px;
+          margin-top: 16px;
+          font-size: 14px;
+          text-align: center;
+          line-height: 50px;
+          border: solid 1px black;
+          &__text {
+            color: black;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sing-footer {
+  background-color: rgb(246, 246, 252);
+  height: 220px;
+  width: 100%;
+  position: relative;
+  &__main {
+    height: 220px;
+    width: 456px;
+    margin: 0 auto;
+    position: relative;
+    &__nav {
+      height: 12px;
+      width: 456px;
+      position: absolute;
+      margin-top: 40px;
+      font-size: 13px;
+      &__title {
+        text-decoration: none;
+        height: 12px;
+        width: 145px;
+        color: black;
+        display: inline-block;
+        padding-bottom:1px;
+        text-align: center;
+      }
+    }
+    &__log {
+      height: 80px;
+      width: 65px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &__small {
+      height: 17px;
+      width: 81px;
+      font-size: 10px;
+      position: absolute;
+      left: 188px;
+      bottom: 40px;
+    }
+  }
+}
+
+.btn {
+  height: 26px;
+  width: 26px;
+}

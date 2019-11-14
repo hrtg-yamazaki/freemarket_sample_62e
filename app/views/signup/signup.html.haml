@@ -1,8 +1,35 @@
-%h2 新規会員登録
+.sing-header
+  .sing-header__main
+    =link_to signup_registration_path, class: "sing-header__logo" do
+      = embedded_svg("fmarket_logo_red.svg", class: "sing-header__logo")
 
-=link_to "メールアドレスで登録する", signup_registration_path
-%br/
-=link_to "FaceBookで登録する", ""
-%br/
-=link_to "Googleで登録する", ""
-  
+.sing-main
+  .sing-main__contents
+    .sing-main__contents__top
+      新規会員登録
+    .sing-main__contents__form
+      .sing-main__contents__form__box
+        .sing-main__contents__form__box__mail
+          =fa_icon "envelope" , class: 'btn'
+          = link_to 'メールアドレスで登録する', '#', class: 'sing-main__contents__form__box__mail'
+        .sing-main__contents__form__box__facebook
+          =fa_icon "facebook-square" , class: 'btn'
+          = link_to 'Facebookで登録する', '#', class: 'sing-main__contents__form__box__facebook'
+        .sing-main__contents__form__box__google
+          =fa_icon "google" , class: 'btn'
+          = link_to 'Googleで登録する', '#', class: 'sing-main__contents__form__box__google__text'
+
+.sing-footer
+  .sing-footer__main
+    .sing-footer__main__nav
+      %ul
+        = link_to "#", class: 'sing-footer__main__nav__title' do
+          %li.sing-footer__main__nav__title プライバシーポリシー
+        = link_to "#", class: 'sing-footer__main__nav__title' do
+          %li.sing-footer__main__nav__title メルカリ利用規約
+        = link_to "#", class: 'sing-footer__main__nav__title' do
+          %li.sing-footer__main__nav__title 特定商取引に関する表記
+    .sing-footer__main__log
+      =link_to "#", class: "sing-footer__main__log" do
+        = embedded_svg("logo_gray.svg", class: "sing-footer__main__log")
+    %p.sing-footer__main__small © 2019 Mercari

@@ -74,4 +74,5 @@ group :production do
 end
 
 gem "devise"
+gem 'font-awesome-rails'
 
