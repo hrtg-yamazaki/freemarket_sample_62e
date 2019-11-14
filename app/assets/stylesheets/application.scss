@@ -1,17 +1,24 @@
 @import "./reset";
 @import "font-awesome";
+
+
+// shared
 @import "./header";
+@import "./sell_icon";
+@import "./footer";
+@import "./nav-bar";
+
+
+// items#index
+@import "./items";
 @import "./carousel";
 @import "./slick-theme";
 @import "./slick";
 @import "./carousel";
-@import "./sell_icon";
 @import "./pictures";
 @import "./popular";
-@import "./items";
-@import "./slick-theme"; 
-@import "./slick";
-@import "./carousel";
-@import "./footer";
-@import "./nav-bar";
+
+
+// mypage
 @import "./mypage-layout";
+@import "./sign_out";

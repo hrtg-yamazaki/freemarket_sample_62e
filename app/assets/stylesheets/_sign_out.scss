@@ -1,0 +1,25 @@
+*{
+  box-sizing: border-box;
+}
+
+.sign-out{
+  background-color: white;
+  height: 179px;
+  padding-top: 65px;
+  &--link{
+    text-decoration: none;
+  }
+
+  &__btn{
+    margin: 0 auto;
+    width: 320px;
+    height: 50px; 
+    background-color: rgb(234, 53, 45);
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    line-height: 50px;
+    cursor: pointer;
+  }
+}
+
