@@ -1,0 +1,24 @@
+.sell_icon {
+  background-color: rgb(234, 53, 45);
+  margin: 32px;
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  text-align: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  cursor: pointer;
+
+  &__contents{
+    color: white;
+    padding-top: 25px;
+    &--text{
+      font-size: 22px;
+    }
+    &--image {
+      font-size: 55px;
+    }
+  }
+}

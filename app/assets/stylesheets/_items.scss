@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.test {
-  color: red;
+
+.items-index{
+  background-color: rgb(245, 245, 245);
+}
+
+.item-text {
+  padding: 30px 15% 5px;
+  display: flex;
+  justify-content: space-between;
+  &--title{
+    font-size: 22px;
+    font-weight: bold;  
+  }
+  &--link{
+    text-decoration: none;
+    padding-top: 8px;
+    color: rgb(0, 149, 238);
+    font-weight: bold;
+  }
 }
