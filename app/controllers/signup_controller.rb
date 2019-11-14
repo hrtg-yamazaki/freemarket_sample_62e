@@ -15,7 +15,8 @@ class SignupController < ApplicationController
   end
 
   def address
-    @address = Address.new
+    @user = User.new
+    @user.address = Address.new if @user.address.blank?
   end
 
   def card
