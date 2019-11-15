@@ -1,7 +1,7 @@
 %h2 電話番号の確認
 
 %br/
-= form_for @user do |f|
+= form_for @user, url: signup_confirm_post_path, method: :post do |f|
 
 
   %h3 携帯電話の番号

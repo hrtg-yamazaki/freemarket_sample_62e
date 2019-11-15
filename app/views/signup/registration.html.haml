@@ -1,6 +1,6 @@
 %h2 会員情報入力
 
-= form_for @user do |f|
+= form_for @user, url: signup_registration_post_path, method: :post do |f|
   -# エラーメッセージはあとで実装
   -# = render "/devise/shared/error_messages" 
 
@@ -27,12 +27,12 @@
 
 
   %h3 お名前(全角)
-  = f.text_field :first_name, autofocus: true, placeholder: "例) 山田"
-  = f.text_field :last_name, autofocus: true, placeholder: "例) 彩"
+  = f.text_field :last_name, autofocus: true, placeholder: "例) 山田"
+  = f.text_field :first_name, autofocus: true, placeholder: "例) 彩"
 
   %h3 お名前カナ(全角)
-  = f.text_field :kana_first_name, autofocus: true, placeholder: "例) ヤマダ"
-  = f.text_field :kana_last_name, autofocus: true, placeholder: "例) アヤ"
+  = f.text_field :kana_last_name, autofocus: true, placeholder: "例) ヤマダ"
+  = f.text_field :kana_first_name, autofocus: true, placeholder: "例) アヤ"
 
 
   %h3 生年月日

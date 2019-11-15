@@ -5,21 +5,24 @@ Rails.application.routes.draw do
   resources :items, only: :index
 
   
-  #ユーザー登録関連(addresses要修正、多分ネストする)
-  resources :users, only: :create
-
-  resources :addresses, only: :create
+  #ユーザー登録関連
+  resources :users, only: :create do
+    resources :addresses, only: :create
+  end
 
   scope "signup" do
-    root                         "signup#signup",           as: "signup"
-    get   "registration",    to: "signup#registration",     as: "signup_registration"
+    root                         "signup#signup",                 as: "signup"
+    get   "registration",    to: "signup#registration",           as: "signup_registration"
+    post  "registration",    to: "signup#registration_post",      as: "signup_registration_post"
     scope "sms_confirmation" do
-      root                       "signup#confirmation",     as: "signup_confirm"
-      get "sms",             to: "signup#confirmation_sms", as: "signup_confirm_sms"
+      root                       "signup#confirmation",           as: "signup_confirm"
+      post "",               to: "signup#confirmation_post",      as: "signup_confirm_post"
+      get "sms",             to: "signup#confirmation_sms",       as: "signup_confirm_sms"
     end
-    get   "deliver_address", to: "signup#address",          as: "signup_address"
-    get   "card",            to: "signup#card",             as: "signup_card"
-    get   "complete",        to: "signup#complete",         as: "signup_complete"
+    get   "address",         to: "signup#address",                as: "signup_address"
+    post   "address",        to: "signup#address_post",           as: "signup_address_post"
+    get   "credit_card",     to: "signup#card",                   as: "signup_card"
+    get   "complete",        to: "signup#complete",               as: "signup_complete" 
   end
   #ここまで
   
@@ -34,3 +37,16 @@ Rails.application.routes.draw do
 end
 
 
+
+# resourcesでなければNGだった場合の記述(hamlのprefix指定の修正も必須)
+
+# resources :signup, only: [:new, :create] do
+#   collection do
+#     get "registration"
+#     get "sms_comfirmation"
+#     get "sms_comfirmation/sms"
+#     get "address"
+#     get "credit_card"
+#     get "complete"
+#   end
+# end
