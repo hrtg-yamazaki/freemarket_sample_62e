@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   
   #ユーザー登録関連
-  resources :users, only: :create do
-    resources :addresses, only: :create
-  end
+  # resources :users, only: :create do
+  #   resources :addresses, only: :create
+  # end
 
+  devise_for :user
   scope "signup" do
     root                         "signup#signup",                 as: "signup"
     get   "registration",    to: "signup#registration",           as: "signup_registration"
@@ -19,8 +20,9 @@ Rails.application.routes.draw do
       post "",               to: "signup#confirmation_post",      as: "signup_confirm_post"
       get "sms",             to: "signup#confirmation_sms",       as: "signup_confirm_sms"
     end
+    post  "user_create",     to: "signup#user_create",            as: "signup_user_create"
     get   "address",         to: "signup#address",                as: "signup_address"
-    post   "address",        to: "signup#address_post",           as: "signup_address_post"
+    post  "address",         to: "signup#address_create",         as: "signup_address_create"
     get   "credit_card",     to: "signup#card",                   as: "signup_card"
     get   "complete",        to: "signup#complete",               as: "signup_complete" 
   end
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
 
   #マイページ関連
   scope "mypage" do
-    root "users#mypage", as: "mypage"
+    root                         "users#mypage",                  as: "mypage"
   end
   #ここまで
 
