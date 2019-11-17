@@ -1,3 +1,25 @@
-%h2 登録が完了しました
+.signup-header
+  .signup-header__box
+    .signup-header__box__logo
+      =link_to '#', class: "signup-header__box__logo" do
+        = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
+  .signup-header__box__progress
+    .signup_complete
+      = render partial: 'progress'
 
-=link_to "現状はボタンの代わりにこっちで遷移してください！", mypage_path
+.signup-main
+  .signup-main__contents
+    .signup-main__contents__top
+      会員登録完了
+    .signup-confirmation
+      .signup-confirmation__top-box
+        .signup-main__contents__form__one__group
+          .signup-main__contents__form__one__group__complete-text
+            ありがとうございます。
+            %br/
+            会員登録が完了しました。
+        .signup-main__contents__form__two__btn
+          = link_to 'メルカリを始める', mypage_path, class: 'signup-main__contents__form__two__btn'
+
+
+

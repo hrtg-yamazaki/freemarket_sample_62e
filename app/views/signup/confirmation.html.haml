@@ -1,25 +1,31 @@
-%h2 電話番号の確認
+.signup-header
+  .signup-header__box
+    .signup-header__box__logo
+      =link_to '#', class: "signup-header__box__logo" do
+        = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
+  .signup-header__box__progress
+    .signup_phonenumber
+      = render partial: 'progress'
 
-%br/
-= form_for @user do |f|
+.signup-phonemain
+  .signup-main__contents
+    .signup-main__contents__top
+      %h2 電話番号の確認
+    .signup-phonemain__phoneform
+      .signup-phonemain__phoneform__one
+        = form_for @user do |f|
+          .signup-main__contents__form__one__group
+            .signup-main__contents__form__one__group__label
+              携帯電話の番号
+            .signup-main__contents__form__one__group__input
+              = f.phone_field :tel_auth, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "携帯電話の番号を入力"
+            .signup-main__contents__form__one__group__message
+              本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+            .signup-main__contents__form__two__btn
+              = link_to 'SMSを送信する', signup_confirm_sms_path, class: 'signup-main__contents__form__two__btn'
+            .signup-main__contents__form__one__group__message
+              ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+            .signup-main__contents__form__two__bottom
+              = link_to "電話番号の確認が必要な理由>", "#", class: '.signup-main__contents__form__two__bottom'
 
-
-  %h3 携帯電話の番号
-  = f.phone_field :tel_auth, autofocus: true, placeholder: "携帯電話の番号を入力"
-
-  %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-  %br/
-
-  = f.submit "SMSを送信する"
-  %br/
-  %p 電話番号は本人確認や不正利用防止のために利用します。他のユーザに公開されることはありません。
-
-  %br/
-  = link_to "電話番号の確認が必要な理由", ""
-
-
-%br/
-
-
-
-= link_to "現状はボタンの代わりにこっちで遷移してください！", signup_confirm_sms_path
+= render partial: 'signup-footer'

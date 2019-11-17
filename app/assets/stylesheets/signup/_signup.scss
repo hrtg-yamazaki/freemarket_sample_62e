@@ -1,9 +1,6 @@
-// Place all the styles related to the signup controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+$maincolor: #f5f5f5;
 .sing-header {
-  background-color: rgb(246, 246, 252);
+  background-color: $maincolor;
   height: 128px;
   width: 100%;
   position: relative;
@@ -24,7 +21,7 @@
 }
 
 .sing-main {
-  background-color: rgb(246, 246, 252);
+  background-color: $maincolor;
   height: 384px;
   width: 100%;
   &__contents {
@@ -65,7 +62,6 @@
           font-size: 14px;
           text-align: center;
           line-height: 50px;
-          text-decoration: none;
         }
         &__facebook {
           background-color: rgb(69, 69, 148);
@@ -77,7 +73,6 @@
           font-size: 14px;
           text-align: center;
           line-height: 50px;
-          text-decoration: none;
         }
         &__google {
           background-color: white;
@@ -91,7 +86,6 @@
           border: solid 1px black;
           &__text {
             color: black;
-            text-decoration: none;
           }
         }
       }
@@ -100,7 +94,7 @@
 }
 
 .sing-footer {
-  background-color: rgb(246, 246, 252);
+  background-color: $maincolor;
   height: 220px;
   width: 100%;
   position: relative;
@@ -116,7 +110,7 @@
       margin-top: 40px;
       font-size: 13px;
       &__title {
-        text-decoration: none;
+        font-size: 12px;
         height: 12px;
         width: 145px;
         color: black;
@@ -144,9 +138,4 @@
       bottom: 40px;
     }
   }
-}
-
-.btn {
-  height: 26px;
-  width: 26px;
 }
