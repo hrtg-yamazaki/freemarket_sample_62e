@@ -1,5 +1,5 @@
 $maincolor: #f5f5f5;
-.sing-header {
+.single-header {
   background-color: $maincolor;
   height: 128px;
   width: 100%;
@@ -20,7 +20,7 @@ $maincolor: #f5f5f5;
   }
 }
 
-.sing-main {
+.single-main {
   background-color: $maincolor;
   height: 384px;
   width: 100%;
@@ -62,9 +62,19 @@ $maincolor: #f5f5f5;
           font-size: 14px;
           text-align: center;
           line-height: 50px;
+          display: block;
+          position: relative;
+          i{
+            position: absolute;
+            left: 16px;
+            top: 33%;
+          }
+          &__text {
+            display: inline-block;
+          }
         }
         &__facebook {
-          background-color: rgb(69, 69, 148);
+          background-color: #385185;
           height: 50px;
           width: 100%;
           border-radius: 5px;
@@ -73,6 +83,16 @@ $maincolor: #f5f5f5;
           font-size: 14px;
           text-align: center;
           line-height: 50px;
+          display: block;
+          position: relative;
+          i{
+            position: absolute;
+            left: 16px;
+            top: 33%;
+          }
+          &__text {
+            display: inline-block;
+          }
         }
         &__google {
           background-color: white;
@@ -84,7 +104,15 @@ $maincolor: #f5f5f5;
           text-align: center;
           line-height: 50px;
           border: solid 1px black;
+          display: block;
+          position: relative;
+          i{
+            position: absolute;
+            left: 16px;
+            top: 33%;
+          }
           &__text {
+            display: inline-block;
             color: black;
           }
         }
@@ -93,7 +121,7 @@ $maincolor: #f5f5f5;
   }
 }
 
-.sing-footer {
+.single-footer {
   background-color: $maincolor;
   height: 220px;
   width: 100%;

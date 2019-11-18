@@ -67,7 +67,7 @@ width: 100px;
     }
   }
 
-
+// 電話番号入力画面のバー
 .signup_phonenumber{
   #through{
     color: gray;
@@ -92,6 +92,7 @@ width: 100px;
   } 
 }
 
+// お届け先住所入力欄のバー
 .signup_address{
   #through{
     color: gray;
@@ -116,6 +117,42 @@ width: 100px;
   } 
 }
 
+// カード情報入力欄のバー
+.signup_card{
+  #through{
+    color: gray;
+    .progress-status_bar{
+      background: #ea352d;
+    }
+  }
+  #active{
+    color: gray;
+    .progress-status {
+      background: #ea352d;
+    }
+    .progress-status_bar{
+      background: #ea352d;
+    }
+  }
+  #address{
+    color: gray;
+    .progress-status {
+      background: #ea352d;
+    }
+    .progress-status_bar{
+      background: #ea352d;
+    }
+  } 
+  #payment{
+    color: #ea352d;
+    .progress-status {
+      background: #ea352d;
+    }
+
+  }
+}
+
+// 登録完了画面のバー
 .signup_complete{
   #through{
     color: gray;

@@ -20,6 +20,19 @@
             会員登録が完了しました。
         .signup-main__contents__form__two__btn
           = link_to 'メルカリを始める', mypage_path, class: 'signup-main__contents__form__two__btn'
+      .singup-aside
+        .singup-aside__app
+          .singup-aside__app__banner
+            .singup-aside-left
+              .singup-aside-left__top
+                スマホでかんたんフリマアプリ
+              .singup-aside-left__middle
+                今すぐ無料ダウンロード！
+              .singup-aside-left__bottom
+                = embedded_svg("logo_red.svg",class: "good-svg")
+                = embedded_svg("app-store.svg",class: "apple-svg")
+                = embedded_svg("google-play.svg",class: "google-svg")
+            .singup-aside-right
+              = image_tag "download_app_pc.png",width:300,height:260, alt: "fmarket"
 
-
-
+= render partial: 'signup-footer'

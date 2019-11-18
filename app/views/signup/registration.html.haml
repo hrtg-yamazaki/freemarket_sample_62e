@@ -41,7 +41,7 @@
               .signup-main__contents__form__one__group__label        
                 本人確認
               .signup-main__contents__form__one__group__text
-                安心、安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客様に後悔されることはありません。
+                安心、安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客様に公開されることはありません。
               .signup-main__contents__form__one__group
                 .signup-main__contents__form__one__group__label
                   お名前（全角）
@@ -61,6 +61,7 @@
                 .signup-main__contents__form__one__group__select
                   != sprintf(f.date_select(:birthday, with_css_classes:'birthday-select', prompt:"--",end_year: 1900, date_separator:"%s"),"年","月") + "日"
                   %p{"class" => "confirmation"}※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+                
 
       .signup-main__contents__form__two
         .signup-main__contents__form__two__top

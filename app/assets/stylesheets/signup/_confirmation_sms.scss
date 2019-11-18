@@ -1,0 +1,25 @@
+$maincolor: #f5f5f5;
+.signup-confirmation {
+  height: 100%;
+  width: 100%;
+  border-bottom: solid 1px $maincolor;
+  &__top-box {
+    height: 286px;
+    width: 343px;
+    margin: 0 auto;
+  }
+  &__center-box {
+    height: 232px;
+    width: 343px;
+    margin: 0 auto;
+  }
+  &__bottom-box {
+    height: 200px;
+    width: 343px;
+    margin: 0 auto;
+  }
+  &__image-box {
+    height: 286px;
+    width: 700px;
+  }
+}

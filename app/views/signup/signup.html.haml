@@ -1,22 +1,22 @@
-.sing-header
-  .sing-header__main
-    =link_to '#', class: "sing-header__logo" do
-      = embedded_svg("fmarket_logo_red.svg", class: "sing-header__logo")
+.single-header
+  .single-header__main
+    =link_to '#', class: "single-header__logo" do
+      = embedded_svg("fmarket_logo_red.svg", class: "single-header__logo")
 
-.sing-main
-  .sing-main__contents
-    .sing-main__contents__top
+.single-main
+  .single-main__contents
+    .single-main__contents__top
       新規会員登録
-    .sing-main__contents__form
-      .sing-main__contents__form__box
-        .sing-main__contents__form__box__mail
+    .single-main__contents__form
+      .single-main__contents__form__box
+        = link_to signup_registration_path, class: 'single-main__contents__form__box__mail' do
           =fa_icon "envelope" , class: 'btn'
-          = link_to 'メールアドレスで登録する', signup_registration_path, class: 'sing-main__contents__form__box__mail'
-        .sing-main__contents__form__box__facebook
+          %p.single-main__contents__form__box__mail__text メールアドレスで登録する
+        = link_to '#', class: 'single-main__contents__form__box__facebook' do
           =fa_icon "facebook-square" , class: 'btn'
-          = link_to 'Facebookで登録する', '#', class: 'sing-main__contents__form__box__facebook'
-        .sing-main__contents__form__box__google
+          %p.single-main__contents__form__box__facebook__text Facebookで登録する
+        = link_to '#', class: 'single-main__contents__form__box__google' do
           =fa_icon "google" , class: 'btn'
-          = link_to 'Googleで登録する', '#', class: 'sing-main__contents__form__box__google__text'
+          %p.single-main__contents__form__box__google__text Googleで登録する
 
 = render partial: 'signup-footer'

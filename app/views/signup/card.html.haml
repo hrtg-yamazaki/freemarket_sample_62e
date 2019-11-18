@@ -1,5 +1,13 @@
+.signup-header
+  .signup-header__box
+    .signup-header__box__logo
+      =link_to '#', class: "signup-header__box__logo" do
+        = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
+  .signup-header__box__progress
+    .signup_card
+      = render partial: 'progress'
+
 %h2 クレジットカード登録画面
-
-
-
 =link_to "現状はボタンの代わりにこっちで遷移してください！", signup_complete_path
+
+= render partial: 'signup-footer'
