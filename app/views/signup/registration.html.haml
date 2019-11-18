@@ -36,7 +36,7 @@
 
 
   %h3 生年月日
-  != sprintf(f.date_select(:birthday, prefix: "birthday", prompt:"--", end_year: 1900, use_month_numbers: true, date_separator:"%s"),"年","月") + "日"
+  != sprintf(f.date_select(:birthday, prefix: "birthday", prompt:"--", start_year: Time.now.year, end_year: 1900, use_month_numbers: true, date_separator:"%s"),"年","月") + "日"
   
 
   %p ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

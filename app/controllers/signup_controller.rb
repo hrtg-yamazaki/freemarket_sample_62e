@@ -11,6 +11,7 @@ class SignupController < ApplicationController
   end
 
   def registration_post
+
     session[:nickname]                 = user_params[:nickname]
     session[:email]                    = user_params[:email]
     session[:password]                 = user_params[:password]
@@ -19,17 +20,37 @@ class SignupController < ApplicationController
     session[:kana_last_name]           = user_params[:kana_last_name]
     session[:kana_first_name]          = user_params[:kana_first_name]
     session[:birthday]                 = convert_params_into_date
-    redirect_to signup_confirm_path
+    
+    @user = User.new(
+      nickname: session[:nickname], email: session[:email], password: session[:password],
+      last_name: session[:last_name], first_name: session[:first_name],
+      kana_last_name: session[:kana_last_name], kana_first_name: session[:kana_first_name],
+      birthday: session[:birthday]
+    )
+
+    if @user.valid?
+      redirect_to signup_confirm_path
+    else
+      render :registration
+    end
+
   end
 
 
   def confirmation
+    binding.pry
     @user = User.new
   end
 
   def confirmation_post
     session[:tel_auth]                 = user_params[:tel_auth]
-    redirect_to signup_confirm_sms_path
+    @user = User.new(email: session[:email], password: session[:password], tel_auth: session[:tel_auth])
+    if @user.valid?
+      redirect_to signup_confirm_sms_path
+    else
+      render :confirmation
+    end
+    
   end
   
   def confirmation_sms
@@ -57,7 +78,6 @@ class SignupController < ApplicationController
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
-      binding.pry
       redirect_to signup_address_path
     else
       reset_session
@@ -72,7 +92,6 @@ class SignupController < ApplicationController
   end
 
   def address_create
-    binding.pry
     @address = Address.new(address_params)
     if @address.save
       redirect_to signup_card_path
@@ -119,9 +138,13 @@ class SignupController < ApplicationController
   end
 
   def convert_params_into_date
-    return Date.new(params[:birthday]['birthday(1i)'].to_i,
-                    params[:birthday]['birthday(2i)'].to_i, 
-                    params[:birthday]['birthday(3i)'].to_i)
+    year  = params[:birthday]["birthday(1i)"].to_i
+    month = params[:birthday]["birthday(2i)"].to_i
+    day   = params[:birthday]["birthday(3i)"].to_i
+    
+    if year != 0 || month != 0 || day != 0
+      return Date.new(year, month, day)
+    end
   end
   
 
@@ -148,6 +171,10 @@ end
 #     session[:tel]                     = address_params[:tel]
     
 
-
-
 # params[:user][:birthday].values,join(",")
+
+# @user = User.new(
+#   nickname: session[:nickname], email: session[:email], password: session[:password],
+#   last_name: session[:last_name], first_name: session[:first_name],
+#   kana_last_name: session[:kana_last_name], kana_first_name: session[:kana_first_name]
+# )
