@@ -57,10 +57,12 @@
 .header-bottom {
   display: flex;
   justify-content: space-between;
+  height: 50px;
   &__left{
     display: flex;
     padding-top: 15px;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: bold;
     &__category{
       cursor: pointer;
     }
@@ -74,7 +76,6 @@
     padding-top: 10px;
     font-size: 13px;
     &__sign-up{
-  
       text-decoration: none;
       cursor: pointer;
       background-color: rgb(234, 53, 45);
@@ -94,20 +95,57 @@
       padding: 5px 10px;
       color: rgb(0, 149, 238);
       height: 30px;
+
+      &:hover{
+        color: white;
+        background-color: rgb(0, 149, 238);
+      }
     }
-  
+
+    &__content{
+      width: 130px;
+      vertical-align: middle;
+      text-align: center;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+.header-link {
+  text-decoration: none;
+  color: black;
+  &:hover{
+    color: rgb(0, 149, 238);
+  }
+  &:hover > .menu-icon--right {
+    color: rgb(0, 149, 238);
   }
 
 }
 
 .menu-icon {
-  color: rgb(234, 53, 45);
+  &--left{
+    color: rgb(234, 53, 45);
+  }
+  &--right{
+    color: #C0C0C0;
+    font-size: 22px;
+    margin-right: 3px;
+  }
 }
 
-.header-bottom__right__sign-in:hover{
-  color: white;
-  background-color: rgb(0, 149, 238);
+.user-image {
+  &--small{
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
 }
+
+
+// ******リスト表示・非表示******
 
 .category_list {
   display: none;
@@ -117,15 +155,27 @@
   display: none;
 }
 
+.info-list {
+  &--notice{
+    display: none;
+  }
+  &--todo{
+    display: none;
+  }
+  &--mypage{
+    display: none;
+  }
+}
 
 
-// ****部分テンプレートlist CSS****
+// ****list部分のCSS（カテゴリから探す・ブランドから探す）****
 
 
 .list{
   margin-top: 12px;
   font-size: 13px;
   text-decoration: none;
+  font-weight: normal;
   &__item{
     background-color: white;
     color: black;
@@ -136,8 +186,94 @@
 
   li:hover{
     background-color: rgb(234, 53, 45);
-    color: white;
+    color: rgba(255, 255, 255, 0.116);
   }
 }
 
 
+// ****info部分のCSS（いいね・お知らせ・やることリスト・マイページ）****
+
+.info-list {
+  background-color: rgb(245, 245, 245);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  margin-top: 13px;
+  font-size: 13px;
+  width: 280px;
+  &--logo{
+    width: 44px;
+    height: 44px;
+    margin-top: 20px;
+  }
+}
+
+.notice-wrapper {
+  display: flex;
+  &__text{
+    margin-left: 10px;
+    width: 175px;
+    text-align: left;
+    overflow: hidden;
+    font-size: 14px;
+    &--time{
+      font-size: 13px;
+      display: flex;
+      color: #C0C0C0;
+      margin-top: 2px;
+    }
+  }
+}  
+
+.todo-wrapper {
+  background-color: white;
+  min-height: 250px;
+  &__text{
+    color: #C0C0C0;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+}
+
+.todo-logo{
+    width: 80px;
+    height: 80px;
+    margin-top: 50px;
+  }
+
+.mypage-wrapper{
+  &__top{
+    background-image: image-url(image-path("profile-background.jpg"));
+    height: 80px;
+    position: relative;
+    &--image{
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+  }
+  &__middle{
+    background-color: white;
+    padding: 35px 0 15px;
+    margin-bottom: 1px;
+    word-spacing: 10em;
+    &--name{
+      font-size: 15px;
+    }
+    &--info{
+      margin-top: 5px;
+    }
+    &--nav{
+      background-color: rgb(245, 245, 245)0;
+      width: 260px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+  }
+  &__bottom{
+    background-color: rgb(245, 245, 245);
+  }
+}
