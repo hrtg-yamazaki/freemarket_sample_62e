@@ -22,14 +22,15 @@ $maincolor: #f5f5f5;
 
 .single-main {
   background-color: $maincolor;
-  height: 384px;
+  height: calc(100vh - 348px);
   width: 100%;
   &__contents {
-    background-color: white;
+    background-color: $maincolor;
     height: 100%;
     width: 700px;
     margin: 0 auto;
     &__top {
+      background-color: white;
       height: 79px;
       width: 700px;
       color: black;
@@ -40,6 +41,7 @@ $maincolor: #f5f5f5;
       border-bottom: solid 2px rgb(246, 246, 252);
     }
     &__form {
+      background-color: white;
       height: 305px;
       width: 100%;
       position: relative;
