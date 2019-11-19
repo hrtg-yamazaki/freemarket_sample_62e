@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   VALID_KATAKANA_REGIX = /\A([ァ-ン]|ー)+\z/
   VALID_PASSWORD_REGIX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i
-  VALID_SMS_REGIX = /\A\d{11}\z/
+  VALID_SMS_REGIX      = /\A\d{11}\z/
 
   validates :nickname,       presence: true, on: :registration_post, length: { maximum: 20 }
   validates :email,          presence: true, on: :registration_post

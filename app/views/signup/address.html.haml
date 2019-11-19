@@ -17,7 +17,7 @@
   = f.telephone_field :postal_code, autofocus: true, placeholder: "例) 123-4567"
 
   %h3 都道府県
-  = f.select :prefecture, [["茨城県","茨城県"],["東京都","東京都"],["千葉県","千葉県"],["神奈川県","神奈川県"]]
+  = f.select :prefecture, Address.select_prefecture
 
   %h3 市区町村
   = f.text_field :city, autofocus: true, placeholder: "例) 横浜市緑区"

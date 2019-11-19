@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
   
   #ユーザー登録関連
-  # resources :users, only: :create do
-  #   resources :addresses, only: :create
-  # end
 
   devise_for :user
   scope "signup" do
@@ -26,6 +23,7 @@ Rails.application.routes.draw do
     get   "credit_card",     to: "signup#card",                   as: "signup_card"
     get   "complete",        to: "signup#complete",               as: "signup_complete" 
   end
+  
   #ここまで
   
 
@@ -37,18 +35,3 @@ Rails.application.routes.draw do
 
 
 end
-
-
-
-# resourcesでなければNGだった場合の記述(hamlのprefix指定の修正も必須)
-
-# resources :signup, only: [:new, :create] do
-#   collection do
-#     get "registration"
-#     get "sms_comfirmation"
-#     get "sms_comfirmation/sms"
-#     get "address"
-#     get "credit_card"
-#     get "complete"
-#   end
-# end

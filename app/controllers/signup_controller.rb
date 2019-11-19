@@ -1,11 +1,12 @@
 class SignupController < ApplicationController
-  
+  before_action :redirect_to_signup, only: [:confirmation, :confirmation_sms, :address, :card, :complete]
 
+  ## 新規会員登録 ##
   def signup
-    
+
   end
 
-
+  ## 本人情報入力 ##
   def registration
     @user = User.new
   end
@@ -36,9 +37,8 @@ class SignupController < ApplicationController
 
   end
 
-
+  ## SMS認証(実装は電話番号の登録のみ) ##
   def confirmation
-    binding.pry
     @user = User.new
   end
 
@@ -57,7 +57,7 @@ class SignupController < ApplicationController
     
   end
 
-
+  ## Userテーブルの生成 ##
   def user_create
 
     @user = User.new(
@@ -86,21 +86,28 @@ class SignupController < ApplicationController
 
   end
 
-
+  ## 発/配送元 住所入力 ##
   def address
     @address = Address.new
   end
-
+  
+  ## 住所テーブルの生成 ##
   def address_create
+
     @address = Address.new(address_params)
-    if @address.save
-      redirect_to signup_card_path
+    if @address.valid?
+      if @address.save
+        redirect_to signup_card_path
+      else
+        render :address
+      end
     else
       render :address
     end
+    
   end
 
-
+  ## 支払い方法(後ほど別ブランチにてpayjpで実装) ##
   def card
     @card = Card.new
   end
@@ -146,35 +153,10 @@ class SignupController < ApplicationController
       return Date.new(year, month, day)
     end
   end
-  
+
+  def redirect_to_signup
+    redirect_to signup_path if session[:nickname].nil?
+  end
 
 end
 
-
-# fields_forを使う場合はこちらでparamsを記述
-# address_attributes: [
-#   :last_name,   :first_name, :kana_last_name, :kana_first_name,
-#   :postal_code, :prefecture, :city,           :block,
-#   :building,    :tel
-# ]
-
-
-# session[:address_last_name]       = address_params[:last_name]
-#     session[:address_first_name]      = address_params[:first_name]
-#     session[:address_kana_last_name]  = address_params[:kana_last_name]
-#     session[:address_kana_first_name] = address_params[:kana_first_name]
-#     session[:postal_code]             = address_params[:postal_code]
-#     session[:prefecture]              = address_params[:prefecture]
-#     session[:city]                    = address_params[:city]
-#     session[:block]                   = address_params[:block]
-#     session[:building]                = address_params[:building]
-#     session[:tel]                     = address_params[:tel]
-    
-
-# params[:user][:birthday].values,join(",")
-
-# @user = User.new(
-#   nickname: session[:nickname], email: session[:email], password: session[:password],
-#   last_name: session[:last_name], first_name: session[:first_name],
-#   kana_last_name: session[:kana_last_name], kana_first_name: session[:kana_first_name]
-# )
