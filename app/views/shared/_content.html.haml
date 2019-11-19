@@ -1,8 +1,8 @@
 .mypage-main_right-content
   %section.user_info
     = link_to "#", class: 'user-info-link' do
-      %figure
-        = image_tag "member_photo_noimage.png", class: 'avator_img', size: '60x60', alt: ""
+      %figure.user_info__png
+        = image_tag "member_photo_noimage_thumb.png", class: 'avator-image',size: '60x60'
       %h2.user_info__link__nickname.bold 
         ロップ
       .user_info__link__number
@@ -17,14 +17,12 @@
 
   %section.user_notification_todo
     %ul.user_notification_todo__tabs
-      %a.mypage-news-btn
-        %li.top-active
-          %h3.news-color
-            お知らせ
-      %a.mypage-todo-btn
-        %li
-          %h3.todo-color
-            やることリスト
+      %li.top-active
+        %a.mypage-news-btn
+          %h3.news-color お知らせ
+      %li
+        %a.mypage-todo-btn
+          %h3.todo-color やることリスト
 
     .tab-content
       %ul#mypage-notification.mypage-item-list.tab-pane.active

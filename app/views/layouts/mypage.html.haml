@@ -17,10 +17,11 @@
       =link_to "#{ yield :current_page }", yield(:current_path), class: 'guide-link guide-link--now'
 
     .mypage-index
-      .mypage-nav
-        =render partial: 'shared/nav-bar'
-      .mypage-contents
-        =render partial: 'shared/content'
+      .mypage-index__box
+        .mypage-nav
+          =render partial: 'shared/nav-bar'
+        .mypage-contents
+          =render partial: 'shared/content'
 
 
     =render partial: 'shared/footer'

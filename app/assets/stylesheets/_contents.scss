@@ -14,15 +14,23 @@
     text-align: center;
     .user-info-link {
       text-decoration: none;
+      color: #333;
+      .user_info__png {
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+        .avator-image {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        }
+      }
     }
     &__link {
       text-decoration: none;
       color: #333;
-      figure {
-        .avator_img {
-          border-radius: 50%;
-        }
-      }
       &__nickname {
         margin-top: 8px 0 0;
         font-size: 14px;
@@ -44,28 +52,35 @@
     box-sizing: border-box;
     background: #fff;
     margin: 0;
-    ul {
-      display: block;
-      margin: 0;
-    }
     &__tabs {
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
       border: 0;
       background: #eee;
       cursor: pointer;
+      height: 74px;
+      width: 700px;
       .top-active {
         background: #fff;
         border-top: 2px solid #ea352d;
       }
       li {
         list-style: none;
-        width: 49%;
+        width: 49.62%;
         display: inline-block;
         text-align: center;
         vertical-align: middle;
         height: 74px;
         margin: 0;
         padding: 0;
-        h3 {
+        font-size: 0;
+        a{
+          display: block;
+          height: 100%;
+          width: 100%;
+          h3 {
             text-decoration: none;
             text-align: center;
             vertical-align: middle;
@@ -73,6 +88,8 @@
             font-size: 16px;
             line-height: 72px;
           }
+        }
+        
         }
       }
     }
@@ -83,7 +100,7 @@
       .mypage-item-list {
         list-style: none;
         li {
-          border-bottom: 1px solid #eee;
+          border-bottom: 2px solid #eee;
           .mypage-item-link{
             display: block;
             box-sizing: border-box;
