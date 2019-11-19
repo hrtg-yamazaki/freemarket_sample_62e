@@ -1,7 +1,7 @@
 .aside {
   height: 260px;
   color: rgb(255, 255, 255);
-  background-image: url(背景.jpg);
+  background-image: url(back.s.jpg);
   
   &__app {
     background-position: center center;
@@ -104,7 +104,7 @@
       cursor: pointer;
     }
 
-    .mercari-about {
+    .fmarket-about {
       margin-top: 18px;
       padding: 0 20px 0 0;
       width: 20%;
@@ -116,7 +116,7 @@
       }
     }
 
-    .mercari-help {
+    .fmarket-help {
       margin-top: 18px;
       width: 23%;
       padding: 0 40px 0 0;
@@ -134,7 +134,7 @@
       }
     }
 
-    .mercari-privacy {
+    .fmarket-privacy {
       margin-top: 18px;
       padding-right: 40px;
       width: 43%;
@@ -163,7 +163,7 @@
       }
     }
 
-    .mercari-country {
+    .fmarket-country {
       width: auto;
       margin-top: 18px;
       padding: 0;
