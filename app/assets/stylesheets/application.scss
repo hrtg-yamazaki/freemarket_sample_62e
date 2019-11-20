@@ -1,7 +1,7 @@
-@import "./reset";
+@import "reset";
 @import "font-awesome";
-@import "./variables";
-@import "./items";
+@import "variables";
+@import "items";
 @import "signup/signup";
 @import "signup/registration";
 @import "signup/progress";
@@ -9,4 +9,4 @@
 @import "signup/complete";
 @import "signup/address";
 @import "signup/confirmation_sms";
-@import "./login";
+@import "login";
