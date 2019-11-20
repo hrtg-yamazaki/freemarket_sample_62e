@@ -36,7 +36,7 @@
                     都道府県名
                     %span{class: "note"}必須
                     .signup-main__contents__form__one__group__input
-                      = a.select :prefecture, [["茨城県","茨城県"],["東京都","東京都"],["千葉県","千葉県"],["神奈川県","神奈川県"]]
+                      = a.collection_select :prefecture_id, Prefecture.all, :id, :name
                 .signup-main__contents__form__one__group
                   .signup-main__contents__form__one__group__label
                     市区町村
