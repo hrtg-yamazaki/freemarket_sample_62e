@@ -28,8 +28,9 @@ class SignupController < ApplicationController
       kana_last_name: session[:kana_last_name], kana_first_name: session[:kana_first_name],
       birthday: session[:birthday]
     )
-
+    binding.pry
     if @user.valid?
+      binding.pry
       redirect_to signup_confirm_path
     else
       render :registration
