@@ -1,8 +1,7 @@
 %h2 会員情報入力
 
 = form_for @user, url: signup_registration_post_path, method: :post do |f|
-  -# エラーメッセージはあとで実装
-  -# = render "/devise/shared/error_messages" 
+  = render partial: 'layouts/error_messages', locals: { model: @user }
 
 
   %h3 ニックネーム

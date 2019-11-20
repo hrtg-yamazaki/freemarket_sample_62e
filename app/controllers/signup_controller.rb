@@ -3,7 +3,7 @@ class SignupController < ApplicationController
 
   ## 新規会員登録 ##
   def signup
-
+    reset_session
   end
 
   ## 本人情報入力 ##
@@ -80,7 +80,6 @@ class SignupController < ApplicationController
       sign_in User.find(session[:id]) unless user_signed_in?
       redirect_to signup_address_path
     else
-      reset_session
       redirect_to signup_path
     end
 
@@ -155,7 +154,7 @@ class SignupController < ApplicationController
   end
 
   def redirect_to_signup
-    redirect_to signup_path if session[:nickname].nil?
+    redirect_to signup_path if session[:email].nil?
   end
 
 end
