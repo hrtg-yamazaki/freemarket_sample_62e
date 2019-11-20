@@ -1,0 +1,334 @@
+*{
+  box-sizing: border-box;
+}
+
+.items-show{
+  background-color: rgb(245, 245, 245);
+  padding: 40px 0;
+}
+
+// *****メイン*****
+.show-main{
+  background-color: white;
+  margin: 0 auto;
+  width: 700px;
+  padding: 24px 40px 40px 40px;
+  &__title{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.7em;
+    margin-bottom: 16px;
+  }
+  &__pictures{
+    background-color: #f5f5f5;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 375px;
+    float: left;
+    position: relative;
+  }
+  &__info{
+    margin: 0 auto;
+    width: 39%;
+    min-width: 300px;
+    height: 420px;
+    float: right;
+
+  }
+  &__price{
+    clear: both;
+    text-align: center;
+    padding-top: 24px;
+    &--bold{
+      font-size: 38px;
+      font-weight: 600;
+      margin-right: 16px;
+    }
+    &--tax{
+      font-size: 10px;
+    }
+    &--shipping{
+      font-size: 16px;
+
+    }
+  }
+  &__purchase-btn{
+    display: block;
+    text-decoration: none;
+    background-color: rgb(234, 53, 45);
+    margin-top: 16px;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+  }
+  &__text{
+    padding-top: 32px;
+    white-space: pre-wrap;
+  }
+  &__footer{
+    margin-top: 16px;
+    height: 33px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.picture{
+  &--main{
+    width: 300px;
+    height: 300px;
+    display: block;
+  }
+  &--sub{
+    display:flex;
+    flex-wrap: wrap;
+    li{
+      width: 60px;
+      height: 60px;  
+    }
+  }
+}
+
+.pic-size{
+  width: 60px;
+  height: 60px;  
+}
+
+
+.info-table{
+  width: 100%;
+  height: 100%; 
+  table, th, td{
+    border:1px solid #fafafa;
+    border-collapse: collapse;
+  }
+  th, td{
+    font-size: 13px;
+    padding: 8px;
+  }
+  th{
+    background-color: rgb(245, 245, 245);
+  }
+}
+
+.item-show-link{
+  text-decoration: none;
+  color: rgb(0, 149, 238);
+  &--hover:hover{
+    border-bottom: 1px solid rgb(0, 149, 238);
+  }
+
+}
+
+.user-rate {
+  margin-top: 5px;
+  font-size: 14px;
+  &--good{
+    color: #FF0066;
+    font-size: 16px;
+  }
+  &--normal{
+    color: #FF9900;
+    font-size: 16px;
+    margin-left: 16px;
+  }
+  &--bad{
+    color: #0099CC;
+    font-size: 16px;
+    margin-left: 16px;
+  }
+}
+
+.show-main-footer{
+  &__left{
+    &--like{
+      background-color: #f5f5f5;
+      height: 33px;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 13px;
+      span{
+        margin-left: 2px;
+      }
+    }
+    &--report{
+      text-decoration: none;
+      color: black;
+      margin-left: 8px;
+
+      background-color: #f5f5f5;
+      height: 33px;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 40px;
+      font-size: 13px;
+      span{
+        margin-left: 2px;
+      }
+
+    }
+  }
+  &__right{
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+
+.like-icon{
+  color: #ccc;
+  font-size: 15px;
+}
+
+
+// *****コメント*****
+.show-comment{
+  background-color: white;
+  width: 700px;
+  padding: 24px 40px 40px 40px;
+  margin: 0 auto;
+  margin-top: 8px;
+  &__message{
+    background-color: #fff6de;
+    height: 60px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  &__form{
+    &--textarea{
+      width: 100%;
+      height: 102px;
+      margin-top: 8px;
+      border: 1px solid #aaa;
+    }
+    &--btn{
+      display: block;
+      width: 100%;
+      height: 50px;
+      margin-top: 8px;
+      background-color: #aaa;
+      border: none;
+      color: white;
+      font-size: 14px;
+    }
+  }
+}
+
+// *****リンク*****
+.show-link{
+  &__inside{
+    display: flex;
+    width: 700px;
+    margin: 0 auto;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 24px;
+    span{
+      margin: 0 5px;
+    }
+  }
+}
+
+// *****SNS*****
+.show-sns{
+  background-color: white;
+  width: 700px;
+  margin: 24px auto;
+  height: 140px;
+  padding-top: 16px;
+  font-size: 44px;
+  line-height: 140px;
+  text-align: center;
+  &--facebook{
+    color: #3B5998;
+  }
+  &--twitter{
+    color: #1DA1F2;
+  }
+  &--pinterest{
+    color: #BD081C;
+  }
+}
+
+// *****写真ゾーンのタイトル*****
+.show-title{
+  width: 700px;
+  margin: 24px auto 8px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+// *****写真*****
+.show-pictures{
+  display: flex;
+  flex-wrap: wrap;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.show-picture{
+  width: 220px;
+  height: 330px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+  &__top{
+
+  }
+  &__bottom{
+    background-color: white;
+    width: 220px;
+    height: 110px;
+    padding: 16px;
+    font-size: 15px;
+    &--text{
+      height: calc( 1.3em * 2 );
+      line-height: 1.3;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    &--price{
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+    &--like{
+      display: inline-block;
+      float: right;
+      margin-top: 8px;
+    }
+
+  }
+}
+
+.show-image{
+  display: block;
+  width: 220px;
+  height: 220px;
+}
+
+.showpage-guide{
+  height: 48px;
+  background-color: rgb(245, 245, 245);
+  padding: 0 15%;
+  border-top: 1px solid #aaa;
+  line-height: 48px;
+  &__text{
+    font-size: 13px;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+    &--now{
+      font-weight: 600;
+    }
+  }
+  &__arrow{
+    color: #aaa;
+    font-size: 13px;
+  }
+}
