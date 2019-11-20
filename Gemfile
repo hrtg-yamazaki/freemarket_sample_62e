@@ -76,4 +76,7 @@ end
 
 gem "devise"
 
+gem 'font-awesome-rails'
+gem "recaptcha", require: "recaptcha/rails"
+gem "active_hash"
 

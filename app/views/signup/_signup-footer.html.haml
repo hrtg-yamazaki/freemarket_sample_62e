@@ -1,0 +1,14 @@
+.single-footer
+  .single-footer__main
+    .single-footer__main__nav
+      %ul
+        = link_to "#", class: 'single-footer__main__nav__title' do
+          %li.single-footer__main__nav__title プライバシーポリシー
+        = link_to "#", class: 'single-footer__main__nav__title' do
+          %li.single-footer__main__nav__title Fmarket利用規約
+        = link_to "#", class: 'single-footer__main__nav__title' do
+          %li.single-footer__main__nav__title 特定商取引に関する表記
+    .single-footer__main__log
+      =link_to "#", class: "single-footer__main__log" do
+        = embedded_svg("logo_gray.svg", class: "single-footer__main__log")
+    %p.single-footer__main__small © 2019 Fmarket

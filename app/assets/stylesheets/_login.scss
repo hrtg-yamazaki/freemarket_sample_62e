@@ -1,0 +1,46 @@
+$maincolor: #f5f5f5;
+.login-main {
+  height: 750px;
+  width: 100%;
+  background-color: $maincolor;
+  &__contents {
+    height: 100%;
+    width: 456px;
+    background-color: white;
+    margin: 0 auto;
+    &__no-account {
+      height: 144px;
+      padding: 40px 64px;
+      box-sizing: border-box;
+      text-align: center;
+      font-size: 14px;
+      border-bottom: solid 1.5px $maincolor;
+      a {
+        display: block;
+        margin: 8px 0 0;
+        color: white;
+        border: 1px solid #0099e8;
+        background-color: #0099e8;
+        line-height: 40px;
+      }
+    }
+    &__sns-form {
+      height: 181px;
+      padding: 32px 64px;
+      box-sizing: border-box;
+    }
+    &__inner-form {
+      height: 406px;
+      padding: 24px 64px 32px;
+      box-sizing: border-box;
+      &__recaptcha {
+        height: 78px;
+        background-color: $maincolor;
+      }
+      a {
+        display: block;
+        margin: 40px 0 0;
+      }
+    }
+  }
+}

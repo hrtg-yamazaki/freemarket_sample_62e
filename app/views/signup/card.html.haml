@@ -1,3 +1,14 @@
-%h2 クレジットカード登録画面
 
+.signup-header
+  .signup-header__box
+    .signup-header__box__logo
+      =link_to '#', class: "signup-header__box__logo" do
+        = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
+  .signup-header__box__progress
+    .signup_card
+      = render partial: 'progress'
+
+%h2 クレジットカード登録画面
 = button_to "次へ進む", signup_complete_path, method: :get
+
+= render partial: 'signup-footer'
