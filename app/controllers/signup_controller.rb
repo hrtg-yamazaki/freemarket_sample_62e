@@ -12,7 +12,7 @@ class SignupController < ApplicationController
   end
 
   def registration_post
-
+    
     session[:nickname]                 = user_params[:nickname]
     session[:email]                    = user_params[:email]
     session[:password]                 = user_params[:password]
@@ -28,12 +28,11 @@ class SignupController < ApplicationController
       kana_last_name: session[:kana_last_name], kana_first_name: session[:kana_first_name],
       birthday: session[:birthday]
     )
-    binding.pry
-    if @user.valid?
-      binding.pry
+    
+    if @user.valid?(:registration_post)
       redirect_to signup_confirm_path
     else
-      render :registration
+      render "signup/registration"
     end
 
   end
@@ -46,7 +45,7 @@ class SignupController < ApplicationController
   def confirmation_post
     session[:tel_auth]                 = user_params[:tel_auth]
     @user = User.new(email: session[:email], password: session[:password], tel_auth: session[:tel_auth])
-    if @user.valid?
+    if @user.valid?(:confirmation_post)
       redirect_to signup_confirm_sms_path
     else
       render :confirmation
@@ -95,7 +94,7 @@ class SignupController < ApplicationController
   def address_create
 
     @address = Address.new(address_params)
-    if @address.valid?
+    if @address.valid?(:address_create)
       if @address.save
         redirect_to signup_card_path
       else
@@ -138,8 +137,8 @@ class SignupController < ApplicationController
 
   def address_params
     params.require(:address).permit(
-      :last_name,   :first_name, :kana_last_name, :kana_first_name,
-      :postal_code, :prefecture, :city,           :block,
+      :last_name,   :first_name,    :kana_last_name, :kana_first_name,
+      :postal_code, :prefecture_id, :city,           :block,
       :building,    :tel
     ).merge(user_id: current_user.id)
   end

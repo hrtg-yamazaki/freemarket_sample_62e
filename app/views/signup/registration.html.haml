@@ -13,6 +13,7 @@
       会員情報入力
     .signup-main__contents__form
       = form_for @user, url: signup_registration_post_path, method: :post do |f|
+        = render partial:"error_messages", locals: { model: @user }
         .signup-main__contents__form__one
           .signup-main__contents__form__one__group
             .signup-main__contents__form__one__group__label
@@ -36,7 +37,7 @@
                   (#{@minimum_password_length} characters minimum)
               = f.password_field :password, autocomplete: "new-password",class: 'signup-main__contents__form__one__group__input', placeholder: "7文字以上"
             .signup-main__contents__form__one__password--checkbox
-              -# = f.check_box :password 後ほどサーバーサイドで実装
+              -# = f.check_box :password 後ほどrechaptchaパートで実装
               パスワードを表示する
             .signup-main__contents__form__one__group 
               .signup-main__contents__form__one__group__label        
@@ -67,7 +68,7 @@
         .signup-main__contents__form__two
           .signup-main__contents__form__two__top
             .signup-main__contents__form__two__top__left
-              =check_box_tag :check1
+              -# =check_box_tag :check1
             .signup-main__contents__form__two__top__block
               %p 私はロボットではありません
           %p{class: "consent"}

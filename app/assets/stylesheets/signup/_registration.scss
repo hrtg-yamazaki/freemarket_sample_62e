@@ -74,6 +74,7 @@ a{
     background-color: white;
     height: 100%;
     width: 700px;
+    padding-bottom: 40px;
     margin: 0 auto;
     &__top {
       height: 79px;
@@ -86,7 +87,7 @@ a{
       border-bottom: solid 2px $maincolor;
     }
     &__form {
-      height: 1211px;
+      height: 100%;
       width: 100%;
       &__one {
         background-color: white;
@@ -95,7 +96,7 @@ a{
         margin: 0 auto;
         &__group {
           margin-top: 32px;
-          height: 70px;
+          // height: 70px;
           width: 100%;
           &__label {
             color: black;
