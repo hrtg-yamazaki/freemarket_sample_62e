@@ -13,7 +13,7 @@
       %h2 電話番号の確認
     .signup-phonemain__phoneform
       .signup-phonemain__phoneform__one
-        = form_for @user do |f|
+        = form_for @user, url: signup_confirm_post_path, method: :post do |f|
           .signup-main__contents__form__one__group
             .signup-main__contents__form__one__group__label
               携帯電話の番号
@@ -22,10 +22,11 @@
             .signup-main__contents__form__one__group__message
               本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
             .signup-main__contents__form__two__btn
-              = link_to 'SMSを送信する', signup_confirm_sms_path, class: 'signup-main__contents__form__two__btn'
+              = f.submit 'SMSを送信する', signup_confirm_sms_path, class: 'signup-main__contents__form__two__btn'
             .signup-main__contents__form__one__group__message
               ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
             .signup-main__contents__form__two__bottom
-              = link_to "電話番号の確認が必要な理由>", "#", class: '.signup-main__contents__form__two__bottom'
+              = link_to "電話番号の確認が必要な理由", "#", class: '.signup-main__contents__form__two__bottom'
 
 = render partial: 'signup-footer'
+

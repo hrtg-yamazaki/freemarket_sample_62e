@@ -107,7 +107,8 @@ ja:
       month: 月
       year: 年
   errors:
-    format: "%{attribute}%{message}"
+    format: "%{message}"
+    # format: "%{attribute}%{message}"
     messages:
       accepted: を受諾してください
       blank: を入力してください

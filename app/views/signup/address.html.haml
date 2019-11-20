@@ -12,53 +12,51 @@
     .signup-main__contents__top
       発送元・お届け先住所入力
     .address-form
-      = form_for @user do |f|
-        = fields_for :address, @user.address || Address.new do |a|
+      = form_for @address, url: signup_address_create_path, method: :post do |f|
+        .signup-main__contents__form__one__group
+          .signup-main__contents__form__one__group__label
+            お名前
+            %span{class: "note"}必須
+          = f.text_field :last_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 山田"
+          = f.text_field :first_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 山田"
           .signup-main__contents__form__one__group
             .signup-main__contents__form__one__group__label
-              お名前
+              お名前カナ
               %span{class: "note"}必須
-            = a.text_field :first_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 山田"
-            = a.text_field :last_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 山田"
+            = f.text_field :kana_last_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) ヤマダ"
+            = f.text_field :kana_first_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) アヤ"
             .signup-main__contents__form__one__group
               .signup-main__contents__form__one__group__label
-                お名前カナ
+                郵便番号
                 %span{class: "note"}必須
-              = a.text_field :kana_first_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) ヤマダ"
-              = a.text_field :kana_last_name, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) アヤ"
+              = f.telephone_field :postal_code, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 123-4567"
               .signup-main__contents__form__one__group
                 .signup-main__contents__form__one__group__label
-                  郵便番号
+                  都道府県名
                   %span{class: "note"}必須
-                = a.telephone_field :postal_code, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 123-4567"
-                .signup-main__contents__form__one__group
-                  .signup-main__contents__form__one__group__label
-                    都道府県名
-                    %span{class: "note"}必須
-                    .signup-main__contents__form__one__group__input
-                      = a.collection_select :prefecture_id, Prefecture.all, :id, :name
-                .signup-main__contents__form__one__group
-                  .signup-main__contents__form__one__group__label
-                    市区町村
-                    %span{class: "note"}必須
-                  = a.text_field :city, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 横浜市緑区"
-                .signup-main__contents__form__one__group
-                  .signup-main__contents__form__one__group__label
-                    番地
-                    %span{class: "note"}必須
-                  = a.text_field :block, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 青山1-1-1"
-                .signup-main__contents__form__one__group
-                  .signup-main__contents__form__one__group__label
-                    建物名
-                    %span{class: "notice"}任意
-                  = a.text_field :building, class: 'signup-main__contents__form__one__group__input', autofocus: true, placeholder: "例) 柳ビル103"
-                .signup-main__contents__form__one__group
-                  .signup-main__contents__form__one__group__label
-                    電話番号
-                    %span{class: "notice"}任意
-                  = a.phone_field :tel, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 09012345678"
-                .signup-main__contents__form__two__btn
-                  = link_to '次へ進む', signup_card_path, class: 'signup-main__contents__form__two__btn'
+                  .signup-main__contents__form__one__group__input
+                    = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+              .signup-main__contents__form__one__group
+                .signup-main__contents__form__one__group__label
+                  市区町村
+                  %span{class: "note"}必須
+                = f.text_field :city, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 横浜市緑区"
+              .signup-main__contents__form__one__group
+                .signup-main__contents__form__one__group__label
+                  番地
+                  %span{class: "note"}必須
+                = f.text_field :block, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 青山1-1-1"
+              .signup-main__contents__form__one__group
+                .signup-main__contents__form__one__group__label
+                  建物名
+                  %span{class: "notice"}任意
+                = f.text_field :building, class: 'signup-main__contents__form__one__group__input', autofocus: true, placeholder: "例) 柳ビル103"
+              .signup-main__contents__form__one__group
+                .signup-main__contents__form__one__group__label
+                  電話番号
+                  %span{class: "notice"}任意
+                = f.phone_field :tel, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) 09012345678"
+              .signup-main__contents__form__two__btn
+                = f.submit '次へ進む', class: 'signup-main__contents__form__two__btn'
 
 = render partial: 'signup-footer'
-
