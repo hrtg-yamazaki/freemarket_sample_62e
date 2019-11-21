@@ -74,9 +74,13 @@ group :production do
   gem "unicorn", "5.4.1"
 end
 
+
 gem "devise"
 
 gem 'font-awesome-rails'
 gem "recaptcha", require: "recaptcha/rails"
 gem "active_hash"
 
+
+gem 'font-awesome-rails'
+gem 'jquery-rails'

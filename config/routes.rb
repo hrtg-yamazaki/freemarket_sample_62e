@@ -34,5 +34,4 @@ Rails.application.routes.draw do
   end
   #ここまで
 
-
 end

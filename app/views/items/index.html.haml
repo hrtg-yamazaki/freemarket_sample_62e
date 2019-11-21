@@ -1,4 +1,31 @@
+
 %div.test hello mercari
 = link_to "新規登録ページはこちらです", signup_path
 = link_to "ログインページはこちらです", new_user_session_path
 = link_to "マイページはこちらです", mypage_path
+
+.items-index
+  =render partial: 'shared/header'
+  =render partial: 'shared/sell_icon'
+  =render partial: 'carousel'
+  =render partial: 'popular'
+
+  -4.times do 
+    .item-text
+      .item-text--title
+        レディース新着アイテム
+      .item-text--link
+        =link_to 'もっと見る >', '#', class: 'item-text--link'
+    =render partial: 'pictures'
+
+  =render partial: 'popular'
+
+  -4.times do 
+    .item-text
+      .item-text--title
+        レディース新着アイテム
+      .item-text--link
+        =link_to 'もっと見る >', '#', class: 'item-text--link'
+    =render partial: 'pictures'
+
+  =render partial: 'shared/footer'
