@@ -13,8 +13,7 @@
       %div
         %p.identification-content__info
           お客さまの本人情報をご登録下さい。
-        %br
-          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %br 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
           %p.identification-content__link
             = link_to '本人確認書類のアップロードについて', class: 'identification-upload'
             %i.fa.fa-chevron-right
@@ -42,6 +41,7 @@
       .identification-content__group
         %label.identification-content__prefecture
           都道府県
+          //gem 'active_hash'を使用しています
         %span.identification-content__arbitrary
           任意
         .identification-content__select

@@ -18,12 +18,13 @@
   }
   &__form{
     height: 1053px;
-    padding: 32px;
+    padding: 64px;
     border-top: 1px solid #f5f5f5;
   }
   &__info{
     margin-top: 8px;
     line-height: 1.5;
+    font-size: 14px;
   }
   &__link{
     margin-top: 8px;
@@ -37,8 +38,10 @@
   }
   &__group{
     margin-top: 20px;
+    font-size: 14px;
     label{
       font-weight: 600;
+      font-size:14px;
     }
     p{
       margin-top: 8px;
@@ -62,7 +65,7 @@
       border: 1px solid #ccc;
       background: #fff;
       line-height: 1.5;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
   &__select{
@@ -73,7 +76,7 @@
     border: 1px solid #ccc;
     background: #fff;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 14px;
     position: relative;
     i{
       position: absolute;
@@ -81,7 +84,7 @@
       top: 50%;
       z-index: 2;
       color: #888;
-      font-size: 16px;
+      font-size: 14px;
       transform: translate(0, -50%);
     }
     select{
@@ -92,7 +95,7 @@
       border-radius: 4px;
       border: 1px solid #ccc;
       background: 0;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 1.5;
       width: 100%;
       cursor: pointer;
@@ -114,6 +117,6 @@
     text-align: center;
     }
     #textinfo{
-    margin-top: 10px;
+    margin-top: 40px;
     }
   }
