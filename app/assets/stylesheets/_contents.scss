@@ -1,0 +1,288 @@
+.mypage-main_right-content {
+  width: 700px;
+  section {
+    display: block;
+  }
+  .user_info {
+    box-sizing: border-box;
+    height:200px;
+    padding: 20px;
+    margin: 0;
+    background: image-url("user-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    .user-info-link {
+      text-decoration: none;
+      color: #333;
+      .user_info__png {
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+        .avator-image {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        }
+      }
+    }
+    &__link {
+      text-decoration: none;
+      color: #333;
+      &__nickname {
+        margin-top: 8px 0 0;
+        font-size: 14px;
+        color: #333;
+      }
+      &__number {
+        margin: 8px 0 0;
+        color: #333;
+        div {
+          display: inline-block;
+        }
+        &__right {
+          margin: 0 0 0 16px;
+          }
+        }
+      }
+    }
+  .user_notification_todo {
+    box-sizing: border-box;
+    background: #fff;
+    margin: 0;
+    &__tabs {
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #eee;
+      cursor: pointer;
+      height: 74px;
+      width: 700px;
+      .top-active {
+        background: #fff;
+        border-top: 2px solid #ea352d;
+      }
+      li {
+        list-style: none;
+        width: 49.62%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        height: 74px;
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        a{
+          display: block;
+          height: 100%;
+          width: 100%;
+          h3 {
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+          }
+        }
+        
+        }
+      }
+    }
+    .tab-content {
+      margin: 0;
+      padding: 0;
+      display: block;
+      .mypage-item-list {
+        list-style: none;
+        li {
+          border-bottom: 2px solid #eee;
+          .mypage-item-link{
+            display: block;
+            box-sizing: border-box;
+            min-height: 80px;
+            padding: 16px;
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            &__svg{
+              height: 48px;
+              width: 48px;        
+              overflow: hidden;
+              margin: 0;
+              float: left;
+              .market-svg {
+                width: 48px;
+                height: 48px;
+                border: 0;
+              }
+            }
+            &__box{
+              margin: 0 40px 0 68px;
+              display: block;
+
+              &__text {
+                overflow: hidden;
+                display: block;
+                display: -webkit-box;
+                max-height: 4.4em;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+                font-size: 14px;
+              }
+              &__time{
+                display: inline-block;
+                color: #888;
+                margin: 0 8px 0 0;
+                height: 14px;
+                .icon-clock-o {
+                  margin: 0 8px 0 0;
+                  display: inline-block;
+                  font-size: 14px;
+                  text-rendering: auto;
+                  -webkit-font-smoothing: antialiased;
+                }
+                span{
+                  font-size: 14px;
+                }
+              }
+            }
+            .icon-angle-right {
+              position: absolute;
+              top: 33%;
+              right: 16px;
+              display: inline-block;
+            }
+          }
+        }
+        .user_notification_todo__content__list--go {
+          display: block;
+          box-sizing: border-box;
+          border: 0;
+          height: 88px;
+          padding: 16px;
+          &__list {
+            text-decoration: none;
+            display: block;
+            &__text{
+              color: #333;
+              text-align: center;
+              vertical-align: middle;
+              background: #eee;
+              height: 56px;
+              p {
+                line-height: 56px;
+              }
+            }
+          }
+        }
+      }
+
+      #mypage_todo {
+        display: none;
+        position: relative;
+        .market-svg {
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          left: 310px;
+          bottom:90px;
+        }
+        .user-item-not-found {
+          padding: 160px 0 60px;
+          background-repeat: no-repeat;
+          background-position: center 40px;
+          background-size: 78px 85px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+        }
+      }
+    }
+  }
+  .user_tradings {
+    box-sizing: border-box;
+    background: #fff;
+    border-width: 0;
+    margin: 40px 0 0;
+    &__head {
+      padding: 0 16px;
+      background: #fafafa;
+      font-size: 16px;
+      line-height: 72px;
+    }
+    &__tabs {
+      border: 0;
+      background: #eee;
+      cursor: pointer;
+      .bottom-active {
+        background: #fff;
+        border-top: 2px solid #ea352d;
+      }
+      li {
+        list-style: none;
+        width: 49%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        height: 74px;
+        margin: 0;
+        padding: 0;
+        h3 {
+            text-decoration: none;
+            text-align: center;
+            vertical-align: top;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+        }
+      }
+    }
+    &__contents {
+      height: 236px;
+      width: 700px;
+      #mypage_trading-now {
+        position: relative;
+        .market-svg {
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          left: 310px;
+          top: 80px;
+        }
+        .user-item-not-found-now {
+          padding: 160px 0 60px;
+          background-size:cover;
+          background-position: center 40px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+          } 
+        }
+      #mypage_trading-old {
+        display: none;
+        position: relative;
+        .market-svg {
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          left: 310px;
+          top: 80px;
+        }
+        .user-item-not-found-old {
+          padding: 160px 0 60px;
+          background-size: cover;
+          background-position: center 40px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+        }
+      }
+    }
+  }

@@ -34,4 +34,7 @@ Rails.application.routes.draw do
   end
   #ここまで
 
+resources :users, only: :index
+
+
 end

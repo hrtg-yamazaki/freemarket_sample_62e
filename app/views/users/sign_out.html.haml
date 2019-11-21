@@ -1,0 +1,12 @@
+- content_for :current_page do
+  -# ここに今のページ名を記載
+  ログアウト
+- content_for :current_path do
+  -# ここに今のページのリンクを記載
+  \/#
+
+
+.sign-out
+  =link_to '#', class: 'sign-out--link', method: :delete do
+    .sign-out__btn
+      ログアウト
