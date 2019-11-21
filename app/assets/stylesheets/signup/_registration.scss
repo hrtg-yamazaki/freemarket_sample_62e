@@ -45,6 +45,7 @@ a{
 }
 
 .signup-header {
+  box-sizing: content-box;
   position: relative;
   background-color: $maincolor;
   height: 128px;

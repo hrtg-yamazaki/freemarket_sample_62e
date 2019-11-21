@@ -6,13 +6,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def login
-    @user = User.new
-  end
-
-  
-
 end
 
 

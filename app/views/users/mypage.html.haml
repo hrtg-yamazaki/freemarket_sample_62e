@@ -1,3 +1,5 @@
 %h2 マイページ(新規登録判定)
 
+
 = link_to "#{current_user.address.prefecture.name}にお住まいの#{current_user.nickname}さん、\nログアウトしますか？", destroy_user_session_path, method: :delete
+
