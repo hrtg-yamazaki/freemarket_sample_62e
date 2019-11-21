@@ -5,13 +5,10 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items, only: :index
 
-  #ログイン仮置き
-  get "login", to: "users#login", as: "user_login"
-
   
   #ユーザー登録関連
 
-  devise_for :user
+  devise_for :users
   scope "signup" do
     root                         "signup#signup",                 as: "signup"
     get   "registration",    to: "signup#registration",           as: "signup_registration"
