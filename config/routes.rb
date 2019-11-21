@@ -31,10 +31,12 @@ Rails.application.routes.draw do
   #マイページ関連
   scope "mypage" do
     root                         "users#mypage",                  as: "mypage"
+    get "profile",           to: "users#profile",                 as: "profile"
+
   end
   #ここまで
 
-resources :users, only: :index
+  get "logout", to: "users#logout", as: "logout"
 
 
 end

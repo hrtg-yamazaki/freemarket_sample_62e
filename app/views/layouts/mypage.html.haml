@@ -21,7 +21,7 @@
         .mypage-nav
           =render partial: 'shared/nav-bar'
         .mypage-contents
-          =render partial: 'shared/content'
+          = yield
 
 
     =render partial: 'shared/footer'

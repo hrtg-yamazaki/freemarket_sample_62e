@@ -1,5 +1,5 @@
 .nav-bar
-  =link_to '#', class: 'bar-link' do
+  =link_to mypage_path, class: 'bar-link' do
     .bar
       .bar--text
         マイページ
@@ -107,7 +107,7 @@
   .nav-bar__title
     設定
 
-  =link_to '#', class: 'bar-link' do
+  =link_to profile_path, class: 'bar-link' do
     .bar
       .bar--text
         プロフィール
@@ -149,7 +149,7 @@
         電話番号の確認
       .bar--arrow--move
         >
-  =link_to '#', class: 'bar-link' do
+  =link_to logout_path, class: 'bar-link' do
     .bar
       .bar--text
         ログアウト

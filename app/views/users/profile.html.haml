@@ -14,7 +14,7 @@
       .profile__top__contents__wrapper
         =image_tag 'member_photo_noimage_thumb.png', class: 'profile__top__contents--image'
         =form_tag('#', method: :get, class: 'profile__top__contents--name') do
-          %input{placeholder: 'user name', class: 'profile__top__contents--name'}
+          %input{value: "#{current_user.nickname}", placeholder: 'ニックネームを入力してください', class: 'profile__top__contents--name'}
   .profile__bottom
     =form_tag('#', method: :get) do
       %textarea{class: 'profile__bottom--form', type: 'text', placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'}

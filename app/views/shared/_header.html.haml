@@ -24,98 +24,99 @@
             .brand_list
               =render partial: 'shared/brand_list'
 
+       
+      - if user_signed_in?
+        .header-bottom__right
+          .header-bottom__right__content
+            .header-bottom__right__content--like
+              =link_to "#", class: "header-link" do
+                =fa_icon 'heart-o', class: "menu-icon--right"
+                いいね！一覧
+              .info-list
+                .info-list--like
 
-      -# ログイン中
-      .header-bottom__right
-
-        .header-bottom__right__content
-          .header-bottom__right__content--like
-            =link_to "#", class: "header-link" do
-              =fa_icon 'heart-o', class: "menu-icon--right"
-              いいね！一覧
-            .info-list
-              .info-list--like
-
-        .header-bottom__right__content     
-          .header-bottom__right__content--notice
-            =link_to "#", class: "header-link" do
-              =fa_icon 'bell-o', class: "menu-icon--right"
-              お知らせ
-            .info-list
-              .info-list--notice
-                -3.times do
-                  =link_to '#', class: 'bar-link' do
-                    .bar
-                      .bar--text
-                        .notice-wrapper
-                          = embedded_svg("logo_red.svg", class: "info-list--logo")
-                          .notice-wrapper__text
-                            %p Fmarketの商品が世界100カ国以上のお客様にも売れるようになりました！
-                            .notice-wrapper__text--time
-                              =fa_icon 'clock-o'
-                              %p １時間前
-                      .bar--arrow
-                        >
-
-
-        .header-bottom__right__content     
-          .header-bottom__right__content--todo
-            =link_to "#", class: "header-link" do
-              =fa_icon 'check', class: "menu-icon--right"
-              やることリスト
-            .info-list
-              .info-list--todo
-                .todo-wrapper
-                  = embedded_svg("logo_white.svg", class: "todo-logo")
-                  %p.todo-wrapper__text 現在やることリストはありません
-
-        .header-bottom__right__content     
-          .header-bottom__right__content--mypage
-            =link_to "#", class: "header-link" do
-              =image_tag 'member_photo_noimage_thumb.png', class: "user-image--small menu-icon--right"
-              マイページ
-            .info-list
-              .info-list--mypage
-                .mypage-wrapper
-                  .mypage-wrapper__top
-                    =image_tag 'member_photo_noimage_thumb.png', class: 'mypage-wrapper__top--image'
-                  .mypage-wrapper__middle
-                    .mypage-wrapper__middle--name
-                      %p username
-                    .mypage-wrapper__middle--info
-                      %p 評価：０&emsp;出品数：０
-                    .mypage-wrapper__middle--nav
-                      .bar.bar--gray
+          .header-bottom__right__content     
+            .header-bottom__right__content--notice
+              =link_to "#", class: "header-link" do
+                =fa_icon 'bell-o', class: "menu-icon--right"
+                お知らせ
+              .info-list
+                .info-list--notice
+                  -3.times do
+                    =link_to '#', class: 'bar-link' do
+                      .bar
                         .bar--text
-                          %p 売上金 &emsp;¥0
-                        .bar--arrow
-                          >
-                      .bar.bar--gray
-                        .bar--text
-                          %p ポイント P0
+                          .notice-wrapper
+                            = embedded_svg("logo_red.svg", class: "info-list--logo")
+                            .notice-wrapper__text
+                              %p Fmarketの商品が世界100カ国以上のお客様にも売れるようになりました！
+                              .notice-wrapper__text--time
+                                =fa_icon 'clock-o'
+                                %p １時間前
                         .bar--arrow
                           >
 
+                          
 
-                  .mypage-wrapper__bottom
-                    -6.times do
-                      =link_to '#', class: 'bar-link' do
-                        .bar
+
+          .header-bottom__right__content     
+            .header-bottom__right__content--todo
+              =link_to "#", class: "header-link" do
+                =fa_icon 'check', class: "menu-icon--right"
+                やることリスト
+              .info-list
+                .info-list--todo
+                  .todo-wrapper
+                    = embedded_svg("logo_white.svg", class: "todo-logo")
+                    %p.todo-wrapper__text 現在やることリストはありません
+
+          .header-bottom__right__content     
+            .header-bottom__right__content--mypage
+              =link_to mypage_path, class: "header-link" do
+                =image_tag 'member_photo_noimage_thumb.png', class: "user-image--small menu-icon--right"
+                マイページ
+              .info-list
+                .info-list--mypage
+                  .mypage-wrapper
+                    .mypage-wrapper__top
+                      =image_tag 'member_photo_noimage_thumb.png', class: 'mypage-wrapper__top--image'
+                    .mypage-wrapper__middle
+                      .mypage-wrapper__middle--name
+                        %p username
+                      .mypage-wrapper__middle--info
+                        %p 評価：０&emsp;出品数：０
+                      .mypage-wrapper__middle--nav
+                        .bar.bar--gray
                           .bar--text
-                            いいね！一覧
-                          .bar--arrow--move
+                            %p 売上金 &emsp;¥0
+                          .bar--arrow
+                            >
+                        .bar.bar--gray
+                          .bar--text
+                            %p ポイント P0
+                          .bar--arrow
                             >
 
-      -# -# ログアウト中
-      -# .header-bottom__right
-      -#   =link_to "#", class: "header-bottom__right__sign-up" do
-      -#     新規会員登録
-      -#   =link_to "#", class: "header-bottom__right__sign-in" do
-      -#     ログイン
 
-        =link_to signup_path, class: "header-bottom__right__sign-up" do
-          新規会員登録
-        =link_to new_user_session_path, class: "header-bottom__right__sign-in" do
-          ログイン
+                    .mypage-wrapper__bottom
+                      -6.times do
+                        =link_to '#', class: 'bar-link' do
+                          .bar
+                            .bar--text
+                              いいね！一覧
+                            .bar--arrow--move
+                              >
+      - else
+        .header-bottom__right         
+          = link_to signup_path, class: "header-bottom__right__sign-up" do
+            新規会員登録
+          = link_to new_user_session_path, class: "header-bottom__right__sign-in" do
+            ログイン
+        
+
+   
+      
+
+        
 
 

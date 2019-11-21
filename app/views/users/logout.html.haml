@@ -7,6 +7,6 @@
 
 
 .sign-out
-  =link_to '#', class: 'sign-out--link', method: :delete do
+  =link_to destroy_user_session_path, class: 'sign-out--link', method: :delete do
     .sign-out__btn
       ログアウト
