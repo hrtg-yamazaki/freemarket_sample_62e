@@ -1,0 +1,11 @@
+.show-picture
+  =link_to '#', class: "show-picture" do
+    .show-picture__top
+      = image_tag "shoes.jpg", class: "show-image"
+    .show-picture__bottom
+      %p.show-picture__bottom--text 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 最後
+      .show-picture__bottom--price 
+        ¥1,000
+      .show-picture__bottom--like
+        =fa_icon 'heart-o', class: 'like-icon'
+        %span 2

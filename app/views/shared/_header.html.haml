@@ -27,6 +27,7 @@
 
       -# ログイン中
       .header-bottom__right
+
         .header-bottom__right__content
           .header-bottom__right__content--like
             =link_to "#", class: "header-link" do
@@ -111,4 +112,10 @@
       -#     新規会員登録
       -#   =link_to "#", class: "header-bottom__right__sign-in" do
       -#     ログイン
+
+        =link_to signup_path, class: "header-bottom__right__sign-up" do
+          新規会員登録
+        =link_to new_user_session_path, class: "header-bottom__right__sign-in" do
+          ログイン
+
 

@@ -1,0 +1,45 @@
+.signup-header
+  .signup-header__box
+    .signup-header__box__logo
+      =link_to '#', class: "signup-header__box__logo" do
+        = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
+  .signup-header__box__progress
+    .signup_phonenumber
+      = render partial: 'progress'
+
+.signup-main
+  .signup-main__contents
+    .signup-main__contents__top
+      電話番号認証
+    .signup-confirmation
+      .signup-confirmation__top-box
+        .signup-main__contents__form__one__group
+          .signup-main__contents__form__one__group__label
+            認証番号
+          .signup-main__contents__form__one__group__input
+            %input.signup-main__contents__form__one__group__input{:placeholder => "認証番号を入力", :type => "text"}/
+          .signup-main__contents__form__one__group__message
+            SMSで届いた認証番号を入力してください
+          .signup-main__contents__form__two__btn
+            = button_to "認証して完了", signup_user_create_path, method: :post, class: 'signup-main__contents__form__two__btn'
+    .signup-confirmation
+      .signup-confirmation__center-box
+        .signup-main__contents__form__one__group
+          .signup-main__contents__form__one__group__label
+            30秒たっても認証番号が届かない方へ
+          .signup-main__contents__form__one__group__message
+            電話で認証番号を聞くこともできます。
+          .signup-main__contents__form__two__btn
+            = link_to '電話で認証番号を聞く（通話無料）',signup_address_path, class: 'signup-main__contents__form__two__btn'
+    .signup-confirmation
+      .signup-confirmation__bottom-box
+        .signup-main__contents__form__one__group
+          .signup-main__contents__form__one__group__label
+            認証番号を再送することもできます。もう一度電話番号を入力してください。
+          =link_to "電話番号を再度入力する", signup_address_path
+          .signup-main__contents__form__one__group__message
+            ※SMSが届かない場合は
+            %spne=link_to "SMS受信設定", signup_address_path
+            を確認して、もう一度電話番号を入力してください。
+            
+= render partial: 'signup-footer'
