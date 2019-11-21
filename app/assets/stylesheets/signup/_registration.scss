@@ -1,0 +1,208 @@
+@import "variables";
+
+.btn {
+  height: 26px;
+  width: 26px;
+}
+
+.note {
+  color: white;
+  background-color: red;
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+.notice {
+  color: white;
+  background-color: gray;
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+.consent {
+  color: gray;
+  font-size: 13px;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.confirmation {
+  color: gray;
+  font-size: 14px;
+}
+
+.year,.month,.day {
+  background-color: white;
+  height: 48px;
+  width: 76px;
+}
+
+a{
+  text-decoration: none;
+  color: #0099e8;
+  font-size: 14px;
+}
+
+.signup-header {
+  position: relative;
+  background-color: $maincolor;
+  height: 128px;
+  width: 100%;
+  &__box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto; 
+    width: 737px;
+    height: 49px;
+    float: left;
+    &__logo {
+      height: 60px;
+      width: 250px;
+    }
+  }
+}
+
+.signup-main {
+  background-color: $maincolor;
+  height: 100%;
+  width: 100%;
+  &__contents {
+    background-color: white;
+    height: 100%;
+    width: 700px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    &__top {
+      height: 79px;
+      width: 700px;
+      color: black;
+      font-size: 22px;
+      font-weight: bolder; 
+      text-align: center;
+      line-height: 79px;
+      border-bottom: solid 2px $maincolor;
+    }
+    &__form {
+      height: 100%;
+      width: 100%;
+      &__one {
+        background-color: white;
+        height: 779px;
+        width: 343px;
+        margin: 0 auto;
+        &__group {
+          margin-top: 32px;
+          // height: 70px;
+          width: 100%;
+          &__label {
+            color: black;
+            font-weight: bold;
+          }
+          &__input {
+            height: 48px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            display: flex;
+            &__left {
+              height: 50px;
+              width: 165px;
+              display: flex;
+              margin: 8px 8px 0px 0px;
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              float: left;
+            }
+            &__right {
+              height: 50px;
+              width: 165px;
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              margin-top: 8px;
+            }
+          }
+          &__text {
+            height: 63px;
+            width: 100%;
+          }
+          &__complete-text {
+            height: 63px;
+            width: 100%;
+            text-align: center;
+          }
+          &__select {
+            height: 56px;
+            width: 100%;
+          }
+          &__message {
+            height: 42px;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 8px;
+          }
+          &__comment {
+            height: 21px;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 8px;
+          }
+        }
+        &__password {
+          height: 70px;
+          width: 100%;
+          margin-top: 32px;
+          &--checkbox {
+            height: 14px;
+            width: 100%;
+            margin-top: 8px;
+          }
+        }        
+      }
+      &__two {
+        height: 287px;
+        width: 343px;
+        margin: 0 auto;
+        &__top {
+          background-color: rgb(246, 246, 252);
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          height: 78px;
+          width: 100%;
+          display: flex;
+          &__left {
+            height: 74px;
+            width: 52px;
+          }
+          &__block {
+            height: 100%;
+            width: 152px;
+            line-height: 37px;
+          }
+        }
+        &__btn {
+          background-color: red;
+          color: white;
+          height: 50px;
+          width:100%;
+          margin-top: 32px;
+          text-align: center;
+          line-height: 50px;
+          display: block;
+        }
+        &__bottom {
+          height: 21px;
+          margin-top: 32px;
+          text-decoration: none;
+          text-align: right;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,83 @@
+
+.signup-header
+  .signup-header__box
+    .signup-header__box__logo
+      =link_to '#', class: "signup-header__box__logo" do
+        = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
+  .signup-header__box__progress
+    = render partial: 'progress'
+
+.signup-main
+  .signup-main__contents
+    .signup-main__contents__top
+      会員情報入力
+    .signup-main__contents__form
+      = form_for @user, url: signup_registration_post_path, method: :post do |f|
+        = render partial:"error_messages", locals: { model: @user }
+        .signup-main__contents__form__one
+          .signup-main__contents__form__one__group
+            .signup-main__contents__form__one__group__label
+              ニックネーム
+              %span{class: "note"}必須
+            .signup-main__contents__form__one__group__input
+              = f.text_field :nickname, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) サンプル太郎"
+          .signup-main__contents__form__one__group
+            .signup-main__contents__form__one__group__label
+              メールアドレス
+              %span{class: "note"}必須
+            .signup-main__contents__form__one__group__input
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'signup-main__contents__form__one__group__input', placeholder: "PC・携帯どちらでも可"
+          .signup-main__contents__form__one__password
+            .signup-main__contents__form__one__group__label
+              パスワード
+              %span{class: "note"}必須
+            .signup-main__contents__form__one__group__input
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} characters minimum)
+              = f.password_field :password, autocomplete: "new-password",class: 'signup-main__contents__form__one__group__input', placeholder: "7文字以上"
+            .signup-main__contents__form__one__password--checkbox
+              -# = f.check_box :password 後ほどrechaptchaパートで実装
+              パスワードを表示する
+            .signup-main__contents__form__one__group 
+              .signup-main__contents__form__one__group__label        
+                本人確認
+              .signup-main__contents__form__one__group__text
+                安心、安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客様に公開されることはありません。
+              .signup-main__contents__form__one__group
+                .signup-main__contents__form__one__group__label
+                  お名前（全角）
+                  %span{class: "note"}必須
+                = f.text_field :last_name, autofocus: true, class: 'signup-main__contents__form__one__group__input__left',  placeholder: "例) 山田"
+                = f.text_field :first_name, autofocus: true, class: 'signup-main__contents__form__one__group__input__right', placeholder: "例) 彩"
+              .signup-main__contents__form__one__group 
+                .signup-main__contents__form__one__group__label
+                  お名前カナ（全角）
+                  %span{class: "note"}必須                  
+                = f.text_field :kana_last_name, autofocus: true, class: 'signup-main__contents__form__one__group__input__left', placeholder: "例) ヤマダ"
+                = f.text_field :kana_first_name, autofocus: true, class: 'signup-main__contents__form__one__group__input__right', placeholder: "例) アヤ"
+              .signup-main__contents__form__one__group
+                .signup-main__contents__form__one__group__label
+                  生年月日 
+                  %span{class: "note"}必須
+                .signup-main__contents__form__one__group__select
+                  != sprintf(f.date_select(:birthday, prefix: "birthday", with_css_classes:'birthday-select', prompt:"--", start_year: Time.now.year, end_year: 1900, use_month_numbers: true, date_separator:"%s"),"年","月") + "日"
+                  %p{class: "confirmation"}※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+                
+
+        .signup-main__contents__form__two
+          .signup-main__contents__form__two__top
+            .signup-main__contents__form__two__top__left
+              -# =check_box_tag :check1
+            .signup-main__contents__form__two__top__block
+              %p 私はロボットではありません
+          %p{class: "consent"}
+            「次へ進む」のボタンを押すことにより、
+            %a(href="")>利用規約
+            に同意したものとみなします
+          .signup-main__contents__form__two__btn
+            = f.submit '次へ進む', class: 'signup-main__contents__form__two__btn'
+          .signup-main__contents__form__two__bottom
+            = link_to "本人情報の登録について＞", "#", class: '.signup-main__contents__form__two__bottom'
+
+= render partial: 'signup-footer'

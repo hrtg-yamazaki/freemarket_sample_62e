@@ -1,3 +1,9 @@
+
+%div.test hello mercari
+= link_to "新規登録ページはこちらです", signup_path
+= link_to "ログインページはこちらです", new_user_session_path
+= link_to "マイページはこちらです", mypage_path
+
 .items-index
   =render partial: 'shared/header'
   =render partial: 'shared/sell_icon'
@@ -23,9 +29,3 @@
     =render partial: 'pictures'
 
   =render partial: 'shared/footer'
-
-
-
-
-
-
