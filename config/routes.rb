@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
 
   root 'items#index'
-  resources :items, only: :index
+  resources :items, only: [:index, :show, :new, :create]
 
   
   #ユーザー登録関連
