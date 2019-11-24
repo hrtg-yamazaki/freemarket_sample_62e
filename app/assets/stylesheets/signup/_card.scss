@@ -1,0 +1,53 @@
+.signup-card {
+  background-color: white;
+  height: 500px;
+  width: 343px;
+  margin: 0 auto;
+  &__input {
+    height: 48px;
+    width: 100%;
+    display: flex;
+  }
+}
+
+#card_number {
+  width: 100%;
+}
+
+#exp_month,#exp_year {
+  background-color: white;
+  width: 130px;
+}
+
+.span-month,.span-year {
+  width: 41px;
+  text-align: center;
+  line-height: 46px;
+}
+
+#cvc {
+  width: 100%;
+}
+
+#token_submit {
+  background-color: red;
+  color: white;
+  height: 50px;
+  width:100%;
+  margin-top: 32px;
+  text-align: center;
+  line-height: 50px;
+  display: block;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.card-message {
+  text-align: right;
+}
+
+.card-list {
+  height: 20px;
+  width: 343px;
+  margin: 8px 0 0;
+}
