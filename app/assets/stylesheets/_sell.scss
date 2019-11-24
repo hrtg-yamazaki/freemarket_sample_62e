@@ -1,0 +1,395 @@
+// *****出品ページのSCSS***** // 
+
+
+// *****ページ全体設定***** //
+* {
+  box-sizing: border-box;
+}
+
+.sell-container{
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "YuGothic", "Hiragino Mincho ProN", "sans-serif";
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+.sell-wrapper{
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+
+// *****見出し***** //
+.sell-title{
+  height: 97px;
+  width: 100%;
+  &__text{
+    font-size: 22px;
+    line-height: 97px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+  }
+}
+
+
+// *****出品フォームの外骨格***** //
+.sell-form{
+  width: 100%;
+  border-top: 1px solid #eee;
+  h3{
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    color: #333;
+    vertical-align: top;
+  }
+  &__image{
+    height: 303px;
+    margin-top: 0;
+    &__box{
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+      &__head{
+        display: inline;
+        h3{
+          font-size: 16px;
+          font-weight: bold;
+          vertical-align: top;
+          color: #333;
+        }
+      }
+      &__message{
+        font-size: 14px;
+        color: #333;
+      }
+    }
+  }
+  &__main{
+    width: 100%;
+    border-top: 1px solid #eee;
+    &__box{
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+      &__name{
+        width: 100%;
+      }
+      &__explain{
+        margin-top: 40px;
+        width: 100%;
+      }
+    }
+  }
+  &__detail{
+    width: 100%;
+    border-top: 1px solid #eee;
+    &__box{
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+      &--left{
+        float: left;
+        h3{
+          color: #888;
+        }
+      }
+      &--right{
+        float: right;
+        width: 400px;
+      }
+    }
+  }
+  &__delivery{
+    width: 100%;
+    border-top: 1px solid #eee;
+    &__box{
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+      &--left{
+        float: left;
+        h3{
+          color: #888;
+        }
+      }
+      &--right{
+        float: right;
+        width: 400px;
+      }
+    }
+  }
+  &__price{
+    width: 100%;
+    border-top: 1px solid #eee;
+    &__box{
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+      &--left{
+        float: left;
+        h3{
+          color: #888;
+        }
+      }
+      &--right{
+        float: right;
+        width: 400px;
+      }
+    }
+  }
+  &__confirm{
+    width: 100%;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    &__box{
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+      &--top{
+        color: #333;
+      }
+      &--botton{
+        width: 100%;
+      }
+      &--return{
+        width: 100%;
+        text-align: center;
+
+      }
+    }
+  }
+}
+
+
+// *****画像アップロードフィールド***** //
+.drop-box{
+  height: 162px;
+  width: 620px;
+  background-color: #f5f5f5;
+  border: 1px dashed #ccc;
+  margin-top: 14px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &__text{
+    margin: 0 auto;
+    p{
+      text-align: center;
+      font-size: 14px;
+      font-family: monospace, sans-serif;
+      color: #333;
+    }
+  }
+}
+
+
+// *****入力フォーム***** //
+.sell-field{
+  width: 620px;
+  &__name{
+    width: 100%;
+    height: 48px;
+    margin-top: 3px;
+    padding: 10px 16px 8px 16px;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  &__explain{
+    width: 100%;
+    height: 142px;
+    font-size: 16px;
+    font-weight: normal;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: none;
+    letter-spacing: -0.1px;
+    margin-top: 3px;
+  }
+}
+
+.sell-field-lead{
+  width: 400px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: top;
+  color: #333;
+}
+
+.sell-field-serve{
+  width: 400px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 40px;
+  vertical-align: top;
+  color: #333;
+}
+
+.sell-select{
+  width: 100%;
+  height: 48px;
+  position: relative;
+  margin-top: 4px;
+  select{
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    box-shadow: none;
+    border-radius: 4px;
+    background: 0;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight:  normal;
+    z-index: 2;
+    -webkit-appearance: none;
+    .option-prompt{
+      // 要js => 余裕があったら後ほど修正
+      color: #333;
+    }
+  }
+  .fa-angle-down{
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #888;
+  }
+}
+
+
+// *****価格入力 => 計算結果***** //
+.sell-field-half{
+  width: 400px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: top;
+  color: #333;
+  margin-bottom: 24px;
+  &__head{
+    height: 48px;
+    width: 50%;
+    float: left;
+    display: flex;
+    align-items: center;
+  }
+  &__content{
+    width: 50%;
+    float: right;
+    span{
+      font-weight: normal;
+    }
+    &__price{
+      height: 48px;
+      width: calc(100% - 14px);
+      padding: 10px 16px 8px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: normal;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+}
+
+.sell-fee{
+  width: 100%;
+  border-top: 1px solid #ccc;
+  padding: 24px 0;
+  font-size: 14px;
+  color: #333;
+  &__head{
+    float: left
+  }
+  &__content{
+    float: right;
+    &__unit{
+      display: none;
+    }
+  }
+}
+
+.sell-profit{
+  width: 100%;
+  border-top: 1px solid #ccc;
+  font-weight: bold;
+  padding: 24px 0;
+  color: #333;
+  &__head{
+    float: left;
+    font-size: 16px;
+  }
+  &__content{
+    float: right;
+    font-size: 34px;
+    &__unit{
+      display: none;
+    }
+  }
+}
+
+
+// *****出品確認 => ボタン***** //
+.sell-form-button{
+  height: 50px;
+  width: 100%;
+  background-color: #ea352d;
+  border: 1px solid #ea352d;
+  margin-top: 40px;
+  color: #fff;
+}
+
+.sell-form-return{
+  height: 50px;
+  width: 45%;
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  display: inline-block;
+  line-height: 50px;
+  color: white;
+  margin-top: 24px;
+}
+
+
+
+// 「必須」タグ //
+.required{
+  background-color: #ea352d;
+  display: inline-block;
+  color: #fff;
+  margin-left: 8px;
+  font-size: 12px;
+  border-radius: 2px;
+  padding: 1px 4px;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+
+// ?マークのリンクボタン //
+.mini-guide{
+  height: 14px;
+  width: 14px;
+  font-size: 12px;
+  color: white;
+  background-color: #0099e8;
+  display: inline-block;
+  line-height: 14px;
+  text-align: center;
+  border-radius: 50%;
+}

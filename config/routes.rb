@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get   "address",         to: "signup#address",                as: "signup_address"
     post  "address",         to: "signup#address_create",         as: "signup_address_create"
     get   "credit_card",     to: "signup#card",                   as: "signup_card"
+    
     get   "complete",        to: "signup#complete",               as: "signup_complete" 
   end
   
@@ -32,11 +33,11 @@ Rails.application.routes.draw do
   scope "mypage" do
     root                         "users#mypage",                  as: "mypage"
     get "profile",           to: "users#profile",                 as: "profile"
-
   end
   #ここまで
 
   get "logout", to: "users#logout", as: "logout"
+  get "sell",   to: "items#sell",   as: "items_sell"
 
 
 end
