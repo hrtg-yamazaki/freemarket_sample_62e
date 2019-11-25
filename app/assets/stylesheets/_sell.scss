@@ -1,6 +1,5 @@
 // *****出品ページのSCSS***** // 
 
-
 // *****ページ全体設定***** //
 * {
   box-sizing: border-box;
@@ -46,8 +45,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 // *****出品フォームの外骨格***** //
 .sell-form{
-  width: 100%;
-  border-top: 1px solid #eee;
+  @include sell-section;
   h3{
     font-weight: bold;
     font-size: 14px;
@@ -58,9 +56,7 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 303px;
     margin-top: 0;
     &__box{
-      height: 100%;
-      width: 100%;
-      padding: 40px;
+      @include box;
       &__head{
         display: inline;
         h3{
@@ -76,12 +72,9 @@ input[type="number"]::-webkit-inner-spin-button {
     }
   }
   &__main{
-    width: 100%;
-    border-top: 1px solid #eee;
+    @include sell-section;
     &__box{
-      height: 100%;
-      width: 100%;
-      padding: 40px;
+      @include box;
       &__name{
         width: 100%;
       }
@@ -92,12 +85,9 @@ input[type="number"]::-webkit-inner-spin-button {
     }
   }
   &__detail{
-    width: 100%;
-    border-top: 1px solid #eee;
+    @include sell-section;
     &__box{
-      height: 100%;
-      width: 100%;
-      padding: 40px;
+      @include box;
       &--left{
         float: left;
         h3{
@@ -111,12 +101,9 @@ input[type="number"]::-webkit-inner-spin-button {
     }
   }
   &__delivery{
-    width: 100%;
-    border-top: 1px solid #eee;
+    @include sell-section;
     &__box{
-      height: 100%;
-      width: 100%;
-      padding: 40px;
+      @include box;
       &--left{
         float: left;
         h3{
@@ -130,12 +117,9 @@ input[type="number"]::-webkit-inner-spin-button {
     }
   }
   &__price{
-    width: 100%;
-    border-top: 1px solid #eee;
+    @include sell-section;
     &__box{
-      height: 100%;
-      width: 100%;
-      padding: 40px;
+      @include box;
       &--left{
         float: left;
         h3{
@@ -149,13 +133,10 @@ input[type="number"]::-webkit-inner-spin-button {
     }
   }
   &__confirm{
-    width: 100%;
-    border-top: 1px solid #eee;
+    @include sell-section;
     font-size: 14px;
     &__box{
-      height: 100%;
-      width: 100%;
-      padding: 40px;
+      @include box;
       &--top{
         color: #333;
       }
@@ -223,20 +204,12 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .sell-field-lead{
-  width: 400px;
-  font-size: 14px;
-  font-weight: bold;
-  display: inline-block;
-  color: #333;
+  @include half-field;
 }
 
 .sell-field-serve{
-  width: 400px;
-  font-size: 14px;
-  font-weight: bold;
-  display: inline-block;
+  @include half-field;
   margin-top: 40px;
-  color: #333;
 }
 
 .sell-select{
@@ -257,7 +230,6 @@ input[type="number"]::-webkit-inner-spin-button {
     z-index: 2;
     -webkit-appearance: none;
     .option-prompt{
-      // 要js => 余裕があったら後ほど修正
       color: #333;
     }
   }
@@ -308,11 +280,8 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .sell-fee{
-  width: 100%;
-  border-top: 1px solid #ccc;
-  padding: 24px 0;
+  @include calc-area;
   font-size: 14px;
-  color: #333;
   &__head{
     float: left
   }
@@ -325,11 +294,8 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .sell-profit{
-  width: 100%;
-  border-top: 1px solid #ccc;
+  @include calc-area;
   font-weight: bold;
-  padding: 24px 0;
-  color: #333;
   &__head{
     float: left;
     font-size: 16px;
@@ -370,14 +336,7 @@ input[type="number"]::-webkit-inner-spin-button {
 // *****「必須」タグ***** //
 .required{
   background-color: #ea352d;
-  display: inline-block;
-  color: #fff;
-  margin-left: 8px;
-  font-size: 12px;
-  border-radius: 2px;
-  padding: 1px 4px;
-  vertical-align: top;
-  font-weight: bold;
+  @include tag-chip;
 }
 
 
@@ -393,7 +352,6 @@ input[type="number"]::-webkit-inner-spin-button {
   text-align: center;
   border-radius: 50%;
 }
-
 
 
 // *****以下、jsによる追加素材***** //
@@ -418,13 +376,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 // 「任意」タグ //
 .optional-tag{
-  display: inline-block;
-  color: #fff;
-  margin-left: 8px;
-  font-size: 12px;
-  border-radius: 2px;
-  padding: 1px 4px;
-  vertical-align: top;
-  font-weight: bold;
+  @include tag-chip;
   background-color: #888;
 }
