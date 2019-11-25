@@ -53,7 +53,6 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 14px;
     display: inline-block;
     color: #333;
-    vertical-align: top;
   }
   &__image{
     height: 303px;
@@ -67,7 +66,6 @@ input[type="number"]::-webkit-inner-spin-button {
         h3{
           font-size: 16px;
           font-weight: bold;
-          vertical-align: top;
           color: #333;
         }
       }
@@ -229,7 +227,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 14px;
   font-weight: bold;
   display: inline-block;
-  vertical-align: top;
   color: #333;
 }
 
@@ -239,7 +236,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-weight: bold;
   display: inline-block;
   margin-top: 40px;
-  vertical-align: top;
   color: #333;
 }
 
@@ -247,7 +243,7 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 100%;
   height: 48px;
   position: relative;
-  margin-top: 4px;
+  margin-top: 8px;
   select{
     width: 100%;
     height: 100%;
@@ -281,7 +277,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 14px;
   font-weight: bold;
   display: inline-block;
-  vertical-align: top;
   color: #333;
   margin-bottom: 24px;
   &__head{
@@ -372,7 +367,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 
 
-// 「必須」タグ //
+// *****「必須」タグ***** //
 .required{
   background-color: #ea352d;
   display: inline-block;
@@ -386,7 +381,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 
-// ?マークのリンクボタン //
+// *****?マークのリンクボタン***** //
 .mini-guide{
   height: 14px;
   width: 14px;
@@ -397,4 +392,39 @@ input[type="number"]::-webkit-inner-spin-button {
   line-height: 14px;
   text-align: center;
   border-radius: 50%;
+}
+
+
+
+// *****以下、jsによる追加素材***** //
+
+.sell-form-half{
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  &__input{
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    box-shadow: none;
+    border-radius: 4px;
+    background: 0;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight:  normal;
+    z-index: 2;
+  }
+}
+
+// 「任意」タグ //
+.optional-tag{
+  display: inline-block;
+  color: #fff;
+  margin-left: 8px;
+  font-size: 12px;
+  border-radius: 2px;
+  padding: 1px 4px;
+  vertical-align: top;
+  font-weight: bold;
+  background-color: #888;
 }

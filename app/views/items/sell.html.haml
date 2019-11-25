@@ -43,15 +43,18 @@
           .sell-form__detail__box--left
             %h3 商品の詳細
           .sell-form__detail__box--right
-            .sell-field-lead<
-              %h3 カテゴリー
-              %span.required
-                必須
-              .sell-select
-                %select.sell-select__category
-                  %option.option-prompt ---
-                  %option{value: 1} メンズ
-                = fa_icon "angle-down"
+            .js-sell-form__detail__box--right
+              .sell-field-lead.js-sell-category<
+                %h3 カテゴリー
+                %span.required
+                  必須
+                .sell-select
+                  %select.sell-select__category
+                    %option.option-prompt ---
+                    %option{value: 1} レディース
+                    %option{value: 5} 本・音楽・ゲーム
+                  = fa_icon "angle-down"
+              
             .sell-field-serve<
               %h3 商品の状態
               %span.required
