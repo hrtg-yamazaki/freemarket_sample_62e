@@ -1,6 +1,8 @@
 // *****出品ページのSCSS***** // 
 
 // *****ページ全体設定***** //
+@import "variables";
+
 * {
   box-sizing: border-box;
 }
@@ -163,6 +165,9 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
   cursor: pointer;
+  &__field{
+    display: none;
+  }
   &__text{
     margin: 0 auto;
     p{

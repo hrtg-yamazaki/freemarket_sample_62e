@@ -25,11 +25,11 @@ class Item < ApplicationRecord
     enum status:    [ :onSell, :inNegotiation, :stopSell, :sold ]
   
   # method
-    def errors_about_images
-      if @item_image.nil?
-      elsif
-      else
-      end
-    end
+    # def errors_about_images
+    #   if @item_image.nil?
+    #   elsif
+    #   else
+    #   end
+    # end
 
 end

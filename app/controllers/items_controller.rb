@@ -9,6 +9,11 @@ class ItemsController < ApplicationController
     
   end
 
+  def sell
+    @item = Item.new
+    @item_image = @item.images.build
+  end
+
   def new
     @item = Item.new
     @item_image = @item.images.build
