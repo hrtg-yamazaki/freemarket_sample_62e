@@ -18,8 +18,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     session[:provider] = @user.provider
     session[:uid] = @user.uid
     if @user.persisted?
-      redirect_to signup_registration_path(@user)
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
+      sign_in_and_redirect @user, event: :authentication
     else
       redirect_to signup_registration_path
       session[:nickname] = @user.nickname
