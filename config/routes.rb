@@ -7,12 +7,14 @@ Rails.application.routes.draw do
 
   
   #ユーザー登録関連
+
   #SNS関連
   devise_for :users,controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
     }
+
   scope "signup" do
     root                         "signup#signup",                 as: "signup"
     get   "registration",    to: "signup#registration",           as: "signup_registration"
@@ -26,16 +28,16 @@ Rails.application.routes.draw do
     get   "address",         to: "signup#address",                as: "signup_address"
     post  "address",         to: "signup#address_create",         as: "signup_address_create"
     get   "credit_card",     to: "signup#card",                   as: "signup_card"
+    post  "credit_card",     to: "signup#card_create",            as: "signup_card_create"
     get   "complete",        to: "signup#complete",               as: "signup_complete" 
   end
-  
   #ここまで
 
   #マイページ関連
   scope "mypage" do
     root                         "users#mypage",                  as: "mypage"
     get "profile",           to: "users#profile",                 as: "profile"
-
+    get "identification",    to: "users#identification",          as: "identification"
   end
   #ここまで
 
