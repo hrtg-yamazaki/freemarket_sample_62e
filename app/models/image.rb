@@ -4,5 +4,4 @@ class Image < ApplicationRecord
     # assositation
       belongs_to :item, optional: true
 
-
 end

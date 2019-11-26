@@ -14,23 +14,30 @@ class ItemsController < ApplicationController
     @item_image = @item.images.build
   end
 
-  def new
-    @item = Item.new
-    @item_image = @item.images.build
-  end
-
   def create
     @item = Item.new(item_params)
-  binding.pry
-    if @item.valid? && @item_image.present? && @item_image.length <= 10
-      @item.save
+
+    if params[:images].present?
       params[:images]['image_url'].each do |a|
-        @item_image = @item.images.create!(image_url: a)
-      end
+        @item_image = @item.images.new(image_url: a)
+      end  
+    else
+      flash[:image_error] = '画像がありません' 
+      @item.valid?
+      flash[:error] = @item.errors.full_messages
+      redirect_to items_sell_path
+      return false
+    end
+
+
+    if @item.valid? && @item.images.length <= 10
+      @item.save
+      @item_image.save
       redirect_to root_path
     else
-      errors_about_images
-      redirect_to new_item_path, flash: { error: @item.errors.full_messages }
+      flash[:image_error] = 'アップロードできる画像は10枚までです' if @item.images.length > 10
+      flash[:error] = @item.errors.full_messages
+      redirect_to items_sell_path
     end
 
   end

@@ -24,12 +24,4 @@ class Item < ApplicationRecord
     enum span:      [ :maxTwo, :maxThree, :maxSeven ]
     enum status:    [ :onSell, :inNegotiation, :stopSell, :sold ]
   
-  # method
-    # def errors_about_images
-    #   if @item_image.nil?
-    #   elsif
-    #   else
-    #   end
-    # end
-
 end
