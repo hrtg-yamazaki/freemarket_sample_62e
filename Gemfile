@@ -86,6 +86,10 @@ gem "recaptcha", require: "recaptcha/rails"
 gem "active_hash"
 
 gem 'jquery-rails'
+
 gem 'enum_help' 
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'payjp'
+

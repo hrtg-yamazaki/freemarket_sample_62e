@@ -1,0 +1,120 @@
+- content_for :current_page do
+  -# ここに今のページ名を記載
+  本人情報
+- content_for :current_path do
+  -# ここに今のページのリンクを記載
+  \/#
+
+.identification-content
+  %section.identification-content__mypage
+    %h2.identification-content__head 
+      本人情報の登録
+    %form.identification-content__form
+      %div
+        %p.identification-content__info
+          お客さまの本人情報をご登録下さい。
+          %br 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.identification-content__link
+            = link_to '本人確認書類のアップロードについて', class: 'identification-upload'
+            %i.fa.fa-chevron-right
+      .identification-content__group
+        %label
+          お名前
+        %p
+          test user
+      .identification-content__group
+        %label
+          お名前カナ
+        %p
+          テスト ユーザー
+      .identification-content__group
+        %label.identification-content__birthday
+          生年月日
+        %p
+          2000/01/01
+      .identification-content__group
+        %label.identification-content__zipcode
+          郵便番号
+        %span.identification-content__arbitrary
+          任意
+        %input{ type: 'text', name: 'zip_code', class: 'identification-content__default', placeholder: '例）1234567' }
+      .identification-content__group
+        %label.identification-content__prefecture
+          都道府県
+        %span.identification-content__arbitrary
+          任意
+          // 後ほどサーバサイドにてactive_hashを使用します
+        .identification-content__select
+          %i.fa.fa-chevron-down
+          %select.select-default{ name: 'prefecture'}
+            %option --
+            %option 北海道
+            %option 青森県
+            %option 岩手県
+            %option 宮城県
+            %option 秋田県
+            %option 山形県
+            %option 福島県
+            %option 東京都
+            %option 神奈川県
+            %option 埼玉県
+            %option 千葉県
+            %option 茨城県
+            %option 栃木県
+            %option 群馬県
+            %option 山梨県
+            %option 新潟県
+            %option 長野県
+            %option 富山県
+            %option 石川県
+            %option 福井県
+            %option 愛知県
+            %option 岐阜県
+            %option 静岡県
+            %option 三重県
+            %option 大阪府
+            %option 兵庫県
+            %option 京都府
+            %option 滋賀県
+            %option 奈良県
+            %option 和歌山県
+            %option 鳥取県
+            %option 島根県
+            %option 岡山県
+            %option 広島県
+            %option 山口県
+            %option 徳島県
+            %option 香川県
+            %option 愛媛県
+            %option 高知県
+            %option 福岡県
+            %option 佐賀県
+            %option 長崎県
+            %option 熊本県
+            %option 大分県
+            %option 宮崎県
+            %option 鹿児島県
+            %option 沖縄県
+      .identification-content__group
+        %label.identification-content__zipcode
+          市区町村
+        %span.identification-content__arbitrary
+          任意
+        %input{ type: 'text', name: 'zip_code', class: 'identification-content__default', placeholder: '例）横浜市緑区' }
+      .identification-content__group
+        %label.identification-content__zipcode
+          番地
+        %span.identification-content__arbitrary
+          任意
+        %input{ type: 'text', name: 'zip_code', class: 'identification-content__default', placeholder: '例）青山1-1-1' }          
+      .identification-content__group
+        %label.identification-content__zipcode
+          建物名
+        %span.identification-content__arbitrary
+          任意
+        %input{ type: 'text', name: 'zip_code', class: 'identification-content__default', placeholder: '例）柳ビル103' }
+        %button{ type: 'submit', class: 'identification-content__button', }
+          登録する
+      %p.identification-content__link{ id: 'textinfo' }
+        = link_to '本人情報の登録について',class: 'identification-registration'
+        %i.fa.fa-chevron-right
