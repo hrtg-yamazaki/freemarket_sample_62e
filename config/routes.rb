@@ -3,11 +3,18 @@ Rails.application.routes.draw do
   
 
   root 'items#index'
-  resources :items, only: :index
+  resources :items, only: [:index, :show, :create]
 
   
   #ユーザー登録関連
-  devise_for :users
+
+  #SNS関連
+  devise_for :users,controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+    }
+
   scope "signup" do
     root                         "signup#signup",                 as: "signup"
     get   "registration",    to: "signup#registration",           as: "signup_registration"
@@ -25,17 +32,19 @@ Rails.application.routes.draw do
     get   "complete",        to: "signup#complete",               as: "signup_complete" 
   end
   #ここまで
-  
+
   #マイページ関連
   scope "mypage" do
     root                         "users#mypage",                  as: "mypage"
     get "profile",           to: "users#profile",                 as: "profile"
     patch "profile",         to: "users#profile_update",          as: "profile_update"
     get "identification",    to: "users#identification",          as: "identification"
+
   end
   #ここまで
 
   get "logout", to: "users#logout", as: "logout"
+  get "sell",   to: "items#sell",   as: "items_sell"
 
 
 end

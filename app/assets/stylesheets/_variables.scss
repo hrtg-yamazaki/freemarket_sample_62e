@@ -1,1 +1,40 @@
 $maincolor: #f5f5f5;
+
+
+// *****商品出品ページで作成したミックスイン***** //
+@mixin box{
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+}
+
+@mixin half-field{
+  width: 400px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  color: #333;
+}
+
+@mixin tag-chip{
+  display: inline-block;
+  color: #fff;
+  margin-left: 8px;
+  font-size: 12px;
+  border-radius: 2px;
+  padding: 1px 4px;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+@mixin calc-area{
+  width: 100%;
+  border-top: 1px solid #ccc;
+  padding: 24px 0;
+  color: #333;
+}
+
+@mixin sell-section{
+  width: 100%;
+  border-top: 1px solid #eee;
+}
