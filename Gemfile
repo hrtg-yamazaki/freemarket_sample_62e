@@ -87,6 +87,11 @@ gem "active_hash"
 
 gem 'jquery-rails'
 
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+
 gem 'enum_help' 
 gem 'carrierwave'
 gem 'mini_magick'
