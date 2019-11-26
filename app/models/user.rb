@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   has_one :address, dependent: :destroy
+  has_many :buyed_items, class_name: "Item"
+  has_many :selled_items, class_name: "Item"
 
 
   VALID_KATAKANA_REGIX = /\A([ァ-ン]|ー)+\z/
