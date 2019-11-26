@@ -8,7 +8,9 @@ class SignupController < ApplicationController
 
   ## 本人情報入力 ##
   def registration
-    @user = User.new
+    unless @user
+      @user = User.new
+    end
   end
 
   def registration_post

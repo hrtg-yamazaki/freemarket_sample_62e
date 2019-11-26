@@ -7,8 +7,12 @@ Rails.application.routes.draw do
 
   
   #ユーザー登録関連
-
-  devise_for :users
+  #SNS関連
+  devise_for :users,controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+    }
   scope "signup" do
     root                         "signup#signup",                 as: "signup"
     get   "registration",    to: "signup#registration",           as: "signup_registration"
@@ -26,7 +30,6 @@ Rails.application.routes.draw do
   end
   
   #ここまで
-  
 
   #マイページ関連
   scope "mypage" do

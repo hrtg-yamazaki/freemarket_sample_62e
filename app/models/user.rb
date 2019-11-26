@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :validatable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable 
+         :recoverable, :rememberable,
+         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   has_one :address, dependent: :destroy
 
@@ -22,4 +23,33 @@ class User < ApplicationRecord
   validates :birthday,       presence: { message: "生年月日 を入力してください" },      on: :registration_post
   validates :tel_auth,       presence: { message: "会員登録できません" },              on: :confirmation_post,                                                               format: { with: VALID_SMS_REGIX,     message: "携帯電話番号 を入力してください" }
   
+
+#SNS関連
+
+   def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.new(
+        uid:      auth.uid,
+        provider: auth.provider,
+        nickname: auth.info.name,
+        email:    User.dummy_email(auth),
+        password: Devise.friendly_token[0, 20],
+        last_name: "",
+        first_name: "",
+        kana_last_name: "",
+        kana_first_name: "",
+        birthday: Date.new(2000,11,11),
+        tel_auth: ""
+      )
+    end
+    user
+  end
+
+  private
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
 end
