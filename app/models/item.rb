@@ -1,9 +1,13 @@
 class Item < ApplicationRecord
+
   # assositation
     belongs_to :seller, class_name: "User"
     belongs_to :buyer, class_name: "User", optional: true
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
+    
+    has_many :images, dependent: :destroy
+    accepts_nested_attributes_for :images, allow_destroy: true
 
   # validation
     validates :name           , presence: { message: "商品名 を入力してください" }        , length: { maximum: 40, message: "商品名 は40文字以内で入力してください" }
@@ -20,5 +24,12 @@ class Item < ApplicationRecord
     enum span:      [ :maxTwo, :maxThree, :maxSeven ]
     enum status:    [ :onSell, :inNegotiation, :stopSell, :sold ]
   
+  # method
+    def errors_about_images
+      if @item_image.nil?
+      elsif
+      else
+      end
+    end
 
 end

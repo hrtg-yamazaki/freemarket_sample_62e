@@ -11,14 +11,20 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item_image = @item.images.build
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.valid?
+  binding.pry
+    if @item.valid? && @item_image.present? && @item_image.length <= 10
       @item.save
+      params[:images]['image_url'].each do |a|
+        @item_image = @item.images.create!(image_url: a)
+      end
       redirect_to root_path
     else
+      errors_about_images
       redirect_to new_item_path, flash: { error: @item.errors.full_messages }
     end
 
@@ -29,7 +35,8 @@ private
   def item_params
     params.require(:item).permit(
       :name, :text, :condition, :price, :size,
-      :defrayer, :span, :status, :fav, :prefecture_id
+      :defrayer, :span, :status, :fav, :prefecture_id, 
+      images_attributes: [:image_url]
     ).merge(seller_id: current_user.id)
   end
 
