@@ -1,6 +1,6 @@
 .single-header
   .single-header__main
-    = link_to '#', class: "single-header__logo" do
+    = link_to root_path, class: "single-header__logo" do
       = embedded_svg("fmarket_logo_red.svg", class: "single-header__logo")
 
 
@@ -13,12 +13,21 @@
       = f.fields_for :images, {class: "sell-form__image"} do |i|
         .sell-form__image__box
           .sell-form__image__box__head<
+            - if flash[:image_error].present?
+              .error-messages
+                %p.error-message=flash[:image_error]
+
+            - if flash[:error].present?
+              .error-messages
+                - flash[:error].each do |e|
+                  %p.error-message=e
+
             %h3 出品画像
           %span.required
             必須
           %p.sell-form__image__box__message
             最大10枚までアップロードできます
-          .drop-box
+          = i.label :image_url, class: "drop-box" do
             = i.file_field :image_url, multiple: true, type: 'file', name: "images[image_url][]", class: "drop-box__field"
             .drop-box__text
               %p
