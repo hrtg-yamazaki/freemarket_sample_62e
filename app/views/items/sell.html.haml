@@ -1,0 +1,148 @@
+.single-header
+  .single-header__main
+    = link_to root_path, class: "single-header__logo" do
+      = embedded_svg("fmarket_logo_red.svg", class: "single-header__logo")
+
+
+.sell-container
+  .sell-wrapper
+    .sell-title
+      %h2.sell-title__text
+        商品の情報を入力
+    = form_for @item, html: {class: "sell-form"} do |f|
+      = f.fields_for :images, {class: "sell-form__image"} do |i|
+        .sell-form__image__box
+          .sell-form__image__box__head<
+            - if flash[:image_error].present?
+              .error-messages
+                %p.error-message=flash[:image_error]
+
+            - if flash[:error].present?
+              .error-messages
+                - flash[:error].each do |e|
+                  %p.error-message=e
+
+            %h3 出品画像
+          %span.required
+            必須
+          %p.sell-form__image__box__message
+            最大10枚までアップロードできます
+          = i.label :image_url, class: "drop-box" do
+            = i.file_field :image_url, multiple: true, type: 'file', name: "images[image_url][]", class: "drop-box__field"
+            .drop-box__text
+              %p
+                ドラッグアンドドロップ
+                %br/
+                もしくはクリックしてファイルをアップロード
+      .sell-form__main
+        .sell-form__main__box
+          .sell-form__main__box__name<
+            %h3 商品名
+            %span.required
+              必須
+            .sell-field
+              = f.text_field :name, placeholder: "商品名（必須40文字まで）", class: "sell-field__name"
+          .sell-form__main__box__explain<
+            %h3 商品の説明
+            %span.required
+              必須
+            .sell-field
+              = f.text_area :text, rows: "5", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "sell-field__explain"
+      .sell-form__detail
+        .sell-form__detail__box.clearfix
+          .sell-form__detail__box--left
+            %h3 商品の詳細
+          .sell-form__detail__box--right
+            .js-sell-form__detail__box--right
+              .sell-field-lead.js-sell-category<
+                %h3 カテゴリー
+                %span.required
+                  必須
+                .sell-select
+                  %select.sell-select__category
+                    %option.option-prompt ---
+                    %option{ value: 1 } レディース
+                    %option{ value: 5 } 本・音楽・ゲーム
+                  = fa_icon "angle-down"
+
+            .sell-field-serve<
+              %h3 商品の状態
+              %span.required
+                必須
+              .sell-select
+                = f.select :condition, Item.conditions_i18n.invert, prompt:"---", class: "sell-select__condition"
+                = fa_icon "angle-down"
+      .sell-form__delivery
+        .sell-form__delivery__box.clearfix
+          .sell-form__delivery__box--left<
+            %h3 配送について
+            = link_to "?", "#", class: "mini-guide"
+          .sell-form__delivery__box--right
+            .sell-field-lead
+              %h3 配送者の負担
+              %span.required
+                必須
+              .sell-select
+                = f.select :defrayer, Item.defrayers_i18n.invert, prompt:"---", class: "sell-select__defrayer"
+                = fa_icon "angle-down"
+            .sell-field-serve
+              %h3 発送元の地域
+              %span.required
+                必須
+              .sell-select
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt:"---", class:"sell-select__area"
+                = fa_icon "angle-down"
+            .sell-field-serve
+              %h3 発送までの日数
+              %span.required
+                必須
+              .sell-select
+                = f.select :span, Item.spans_i18n.invert, prompt:"---", class: "sell-select__span"
+                = fa_icon "angle-down"
+      .sell-form__price
+        .sell-form__price__box.clearfix
+          .sell-form__price__box--left<
+            %h3 販売価格(300〜9,999,999)
+            = link_to "?", "#", class: "mini-guide"
+          .sell-form__price__box--right
+            .sell-field-half.clearfix
+              .sell-field-half__head
+                %h3 価格
+                %span.required
+                  必須
+              .sell-field-half__content
+                %span ¥
+                = f.number_field :price, class: "sell-field-half__content__price"
+            .sell-fee.clearfix
+              %p.sell-fee__head 販売手数料(10%)
+              %p.sell-fee__content<
+                %span.sell-fee__content__unit< ¥
+                %span.sell-fee__content__value -
+            .sell-profit.clearfix
+              %p.sell-profit__head 販売利益
+              %p.sell-profit__content<
+                %span.sell-profit__content__unit< ¥
+                %span.sell-profit__content__value -
+      .sell-form__confirm
+        .sell-form__confirm__box
+          .sell-form__confirm__box--top
+            %p<
+              = link_to "禁止されている出品", "#"
+              、
+              = link_to "行為", "#"
+              を必ずご確認ください。
+            %p<
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "偽ブランドの販売", "#"
+              は犯罪であり処罰される可能性があります。
+            %p<
+              また、出品をもちまして
+              = link_to "加盟店規約", "#"
+              に同意したことになります。
+          .sell-form__confirm__box--botton
+            = f.submit '出品する', class: "sell-form-button"
+          .sell-form__confirm__box--return
+            = link_to "もどる", :back, class: "sell-form-return"
+
+
+= render partial: 'signup/signup-footer'
