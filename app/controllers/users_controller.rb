@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to profile_path
     else
-      profile_path
+      render :profile
     end
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile)
+    params.require(:user).permit(:profile, :nickname)
   end
 
 end
