@@ -1,27 +1,5 @@
 ---
 ja:
-  enums:
-      item:
-        condition:
-          brandNew: "新品、未使用"
-          almostNew: "未使用に近い"
-          noDamage:  "目立った傷や汚れなし"
-          slightlyDamaged: "やや傷や汚れあり"
-          damaged: "傷や汚れあり"
-          bad: "全体的に状態が悪い"
-        defrayer:
-          included: "送料込み（出品者負担）"
-          excluded: "着払い（購入者負担）"
-        span:
-          maxTwo: "1〜2日で発送"
-          maxThree: "2〜3日で発送"
-          maxSeven: "4〜7日で発送"
-        status:
-          onSell: "出品中"
-          inNegotiation: "交渉中"
-          stopSell: "出品停止"
-          sold: "販売済み"
-
   activerecord:
     errors:
       messages:

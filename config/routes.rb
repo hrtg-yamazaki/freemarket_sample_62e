@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
 
   root 'items#index'
-  resources :items, only: [:index, :show, :create]
+  resources :items, only: :index
 
   
   #ユーザー登録関連
@@ -31,12 +31,10 @@ Rails.application.routes.draw do
     root                         "users#mypage",                  as: "mypage"
     get "profile",           to: "users#profile",                 as: "profile"
     get "identification",    to: "users#identification",          as: "identification"
-
   end
   #ここまで
 
   get "logout", to: "users#logout", as: "logout"
-  get "sell",   to: "items#sell",   as: "items_sell"
 
 
 end
