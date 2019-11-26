@@ -9,8 +9,17 @@ class UsersController < ApplicationController
   end
 
   def profile
-    
-  end  
+    @user = current_user
+  end
+
+  def profile_update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to profile_path
+    else
+      profile_path
+    end
+  end
 
   def logout
 
@@ -18,6 +27,12 @@ class UsersController < ApplicationController
 
   def identification
 
+  end
+  
+  private
+
+  def user_params
+    params.require(:user).permit(:profile)
   end
 
 end

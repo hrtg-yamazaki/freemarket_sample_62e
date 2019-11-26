@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   scope "mypage" do
     root                         "users#mypage",                  as: "mypage"
     get "profile",           to: "users#profile",                 as: "profile"
+    patch "profile",         to: "users#profile_update",          as: "profile_update"
     get "identification",    to: "users#identification",          as: "identification"
   end
   #ここまで
