@@ -110,16 +110,29 @@ class SignupController < ApplicationController
     
   end
 
-  ## 支払い方法(後ほど別ブランチにてpayjpで実装) ##
+  ## cardテーブルの生成 ##
+  require "payjp"
+
   def card
-    @card = Card.new
+
   end
 
-  def card_post
-    @card = Card.new
-    redirect_to signup_complete_path
+  def card_create
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    if params['payjp-token'].blank?
+      redirect_to action: "card"
+    else
+      customer = Payjp::Customer.create(
+        card: params['payjp-token'],
+        )
+        @card = Card.new(user_id: current_user.id, pay_id: customer.id, card_id: customer.default_card)
+        if @card.save
+          redirect_to action: "complete"
+        else
+          redirect_to action: "card_create"
+        end
+      end
   end
-
 
   def complete
     

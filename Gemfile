@@ -85,7 +85,10 @@ gem "active_hash"
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 
+
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+
+gem 'payjp'
