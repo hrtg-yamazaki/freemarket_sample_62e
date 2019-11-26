@@ -85,7 +85,5 @@ gem 'font-awesome-rails'
 gem "recaptcha", require: "recaptcha/rails"
 gem "active_hash"
 
-
-gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'enum_help' 
