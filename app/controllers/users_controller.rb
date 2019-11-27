@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def card_update
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     if params['payjp-token'].blank?
-      redirect_to action: "card"
+      render :card_update
     else
       customer = Payjp::Customer.create(
         card: params['payjp-token'],
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         if @card.save
           redirect_to action: "card"
         else
-          redirect_to action: "card_update"
+          render :card_update
         end
       end
   end
