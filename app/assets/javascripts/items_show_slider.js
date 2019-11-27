@@ -10,6 +10,12 @@ $(function(){
       var targetImage = slick.$slides.eq(index).find('img').attr('src');
       return '<img class="pic-size", src=" ' + targetImage + ' "/>';
     },
-
   });
+
+  $( '.picture--sub li' ).hover(function() {
+    $( this ).click();
+  },
+  function(){
+  });
+
 });
