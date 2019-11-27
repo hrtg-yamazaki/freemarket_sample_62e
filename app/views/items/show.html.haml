@@ -1,15 +1,30 @@
 =render partial: 'shared/header'
 
+
 .items-show
   .show-main
     .show-main__title
-      %p= @item.name
+      %p NIKE COURT FORCE LOW ナイキ コートフォースロー
+      %p 24.5cm
     .show-main__pictures
       .main-slider
-        - @images.each do |i|
-          %div
-            = image_tag i.image_url.to_s, class: "picture--main"
-            
+        %div
+          = image_tag "shoes.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes2.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes3.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes4.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes2.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes3.jpg", class: "picture--main"
+        %div
+          = image_tag "shoes4.jpg", class: "picture--main"
+
     .show-main__info
       %table.info-table
         %tbody
@@ -17,7 +32,7 @@
             %th 
               出品者
             %td 
-              =link_to @item.seller.nickname, '#', class: 'item-show-link'
+              =link_to 'user name', '#', class: 'item-show-link'
               %br
               .user-rate
                 =fa_icon 'smile-o', class: 'user-rate--good'
@@ -53,49 +68,68 @@
             %th 
               商品の状態
             %td 
-              = @item.condition_i18n
+              目立った傷や汚れなし
           %tr
             %th 
               配送料の負担
             %td 
-              = @item.defrayer_i18n
+              送料込み(出品者負担)
           %tr
             %th 
               配送の方法
             %td 
-              らくらくFmarket便
+              らくらくメルカリ便
           %tr
             %th 
               配送元地域
             %td 
-              =link_to @item.prefecture.name, '#', class: 'item-show-link'
+              =link_to '埼玉県', '#', class: 'item-show-link'
           %tr
             %th 
               発送日の目安
             %td 
-              = @item.span_i18n
+              1~2日で発送
     .show-main__price
       %span.show-main__price--bold
-        ¥
-        = @item.price
+        ¥5,360 
       %span.show-main__price--tax
         (税込) 
-      - if @item.defrayer == 'included'
-        %span.show-main__price--shipping 送料込み
-      - if @item.defrayer == 'excluded'
-        %span.show-main__price--shipping 着払い
+      %span.show-main__price--shipping
+        送料込み
 
     =link_to '#', class: 'show-main__purchase-btn' do
       %span 購入画面に進む
     
     .show-main__text
-      %p= @item.text
+      %p NIKE COURT FORCE LOW ナイキ コートフォース ロー 24.5cm
+      人気のナイキ コートフォース ローです。usedですが目立ったダメージは無く、比較的美品です。
+      %br
+      ◇定価：¥13,800
+      ◇状態：半年使用 箱無し
+      ◇カラー：WHITEホワイト白/GREENグリーン緑/シルバー
+      ◇サイズ：24.5cm
+      %br
+      \#NIKE
+      \ナイキ
+      \#コートフォース
+      \#レディーススニーカー
+      \#ダンク
+      \#BLAZER
+      \#ナイキブレザー
+      \#ターミネーター
+      \#エアフォース
+      \#VANS
+      \#バンズ
+      \#スケハイ
+      %br
+      ご質問などお気軽にコメント下さいませ。
+      お待ちしております★
     .show-main__footer
       .show-main-footer__left
         %button.show-main-footer__left--like
           =fa_icon 'heart-o', class: 'like-icon'
           %span いいね！
-          %span= @item.fav
+          %span 11
         =link_to '#', class: 'show-main-footer__left--report' do
           =fa_icon 'flag-o'
           %span 不適切な商品の報告
@@ -115,16 +149,14 @@
 
   .show-link
     %ul.show-link__inside
-      -if @item.previous_item
-        %li
-          =link_to item_path(@item.previous_item), class: 'item-show-link item-show-link--hover' do
-            =fa_icon 'chevron-left'
-            %span= @item.previous_item.name
-      -if @item.next_item
-        %li 
-          =link_to item_path(@item.next_item), class: 'item-show-link  item-show-link--hover' do
-            %span= @item.next_item.name 
-            =fa_icon 'chevron-right'
+      %li
+        =link_to '#', class: 'item-show-link item-show-link--hover' do
+          =fa_icon 'chevron-left'
+          %span ニューバランス GM300JBK 28cm
+      %li 
+        =link_to '#', class: 'item-show-link  item-show-link--hover' do
+          %span【JUNON】2017.11月号
+          =fa_icon 'chevron-right'
 
 
   .show-sns
@@ -137,26 +169,22 @@
 
   .show-title
     =link_to '#', class: 'item-show-link item-show-link--hover' do
-      ="#{@item.seller.nickname}さんのその他の出品"
+      user nameさんのその他の出品
 
-  .show-pictures
-    = render partial: 'show_picture', locals: { items: @seller_items }
-
+  =render partial: 'show_pictures'
 
   .show-title
     =link_to '#', class: 'item-show-link item-show-link--hover' do
       ナイキのスニーカー その他の出品
 
-  .show-pictures
-    = render partial: 'show_picture', locals: { items: @seller_items }
-
+  =render partial: 'show_pictures'
 
 
 
 .showpage-guide
   =link_to 'Fmarket', root_path, class: 'showpage-guide__text'
   =fa_icon 'chevron-right', class: 'showpage-guide__arrow'
-  %span.showpage-guide__text.showpage-guide__text--now= @item.name
+  %span.showpage-guide__text.showpage-guide__text--now NIKE COURT FORCE LOW ナイキ コートフォースロー 24.5cm
 
 =render partial: 'shared/footer'
 

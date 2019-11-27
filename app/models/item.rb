@@ -26,14 +26,5 @@ class Item < ApplicationRecord
     enum defrayer:  [ :included, :excluded ]
     enum span:      [ :maxTwo, :maxThree, :maxSeven ]
     enum status:    [ :onSell, :inNegotiation, :stopSell, :sold ]
-
-  #method
-    def previous_item
-      Item.where("id < ?", self.id).order("id DESC").first
-    end
-
-    def next_item
-      Item.where("id > ?", self.id).order("id ASC").first
-    end
   
 end
