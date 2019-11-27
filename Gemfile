@@ -45,6 +45,10 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
@@ -81,7 +85,16 @@ gem 'font-awesome-rails'
 gem "recaptcha", require: "recaptcha/rails"
 gem "active_hash"
 
-
-gem 'font-awesome-rails'
 gem 'jquery-rails'
+
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+
+gem 'enum_help' 
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem 'payjp'
+
