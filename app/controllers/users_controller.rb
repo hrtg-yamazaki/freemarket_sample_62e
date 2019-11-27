@@ -25,14 +25,6 @@ class UsersController < ApplicationController
 
   def card
     card = Card.where(user_id: current_user.id).first
-    # if card.blank?
-    #   redirect_to action: "card"
-    # else
-    #   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-    #   customer = Payjp::Customer.retrieve(card.pay_id)
-    #   @default_card_information = customer.cards.retrieve(card.card_id)
-    # end
-
     unless card.blank?
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       customer = Payjp::Customer.retrieve(card.pay_id)
