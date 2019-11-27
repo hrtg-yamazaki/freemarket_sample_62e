@@ -13,7 +13,7 @@
       発送元・お届け先住所入力
     .address-form
       = form_for @address, url: signup_address_create_path, method: :post do |f|
-        = render partial:"shared/error_messages", locals: { model: @address }
+        = render partial:"error_messages", locals: { model: @address }
         .signup-main__contents__form__one__group
           .signup-main__contents__form__one__group__label
             お名前

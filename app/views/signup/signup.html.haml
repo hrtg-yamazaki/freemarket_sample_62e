@@ -12,10 +12,10 @@
         = link_to signup_registration_path, class: 'single-main__contents__form__box__mail' do
           =fa_icon "envelope" , class: 'btn'
           %p.single-main__contents__form__box__mail__text メールアドレスで登録する
-        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'single-main__contents__form__box__facebook' do
+        = link_to '#', class: 'single-main__contents__form__box__facebook' do
           =fa_icon "facebook-square" , class: 'btn'
           %p.single-main__contents__form__box__facebook__text Facebookで登録する
-        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'single-main__contents__form__box__google' do
+        = link_to '#', class: 'single-main__contents__form__box__google' do
           =fa_icon "google" , class: 'btn'
           %p.single-main__contents__form__box__google__text Googleで登録する
 

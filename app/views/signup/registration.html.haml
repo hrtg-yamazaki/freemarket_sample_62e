@@ -13,23 +13,20 @@
       会員情報入力
     .signup-main__contents__form
       = form_for @user, url: signup_registration_post_path, method: :post do |f|
-        = render partial:"shared/error_messages", locals: { model: @user }
+        = render partial:"error_messages", locals: { model: @user }
         .signup-main__contents__form__one
           .signup-main__contents__form__one__group
             .signup-main__contents__form__one__group__label
               ニックネーム
               %span{class: "note"}必須
             .signup-main__contents__form__one__group__input
-              - if session[:nickname]
-                = f.text_field :nickname, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) サンプル太郎", value: session[:nickname]
-              - else
-                = f.text_field :nickname, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) サンプル太郎"
+              = f.text_field :nickname, autofocus: true, class: 'signup-main__contents__form__one__group__input', placeholder: "例) サンプル太郎"
           .signup-main__contents__form__one__group
             .signup-main__contents__form__one__group__label
               メールアドレス
               %span{class: "note"}必須
             .signup-main__contents__form__one__group__input
-              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'signup-main__contents__form__one__group__input', placeholder: "PC・携帯どちらでも可", value: session[:email]
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'signup-main__contents__form__one__group__input', placeholder: "PC・携帯どちらでも可"
           .signup-main__contents__form__one__password
             .signup-main__contents__form__one__group__label
               パスワード

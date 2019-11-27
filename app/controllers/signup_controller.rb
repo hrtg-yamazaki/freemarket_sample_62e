@@ -8,7 +8,7 @@ class SignupController < ApplicationController
 
   ## 本人情報入力 ##
   def registration
-    @user = User.new unless @user
+    @user = User.new
   end
 
   def registration_post
@@ -71,9 +71,7 @@ class SignupController < ApplicationController
       kana_last_name:        session[:kana_last_name],
       kana_first_name:       session[:kana_first_name],
       birthday:              session[:birthday],
-      tel_auth:              session[:tel_auth],
-      uid:                   session[:uid],
-      provider:              session[:provider]
+      tel_auth:              session[:tel_auth]
 
     )
     
