@@ -39,7 +39,10 @@ Rails.application.routes.draw do
     get "profile",           to: "users#profile",                 as: "profile"
     patch "profile",         to: "users#profile_update",          as: "profile_update"
     get "identification",    to: "users#identification",          as: "identification"
-
+    get "card",              to: "users#card",                    as: "card"
+    get "card/create",       to: "users#card_create",             as: "card_create"
+    post "card",             to: "users#card_update",             as: "card_update"
+    delete "card",           to: "users#card_delete",             as: "card_delete"
   end
   #ここまで
 
