@@ -39,12 +39,11 @@ Rails.application.routes.draw do
     get "profile",           to: "users#profile",                 as: "profile"
     patch "profile",         to: "users#profile_update",          as: "profile_update"
     get "identification",    to: "users#identification",          as: "identification"
-
+    get "credit_card",       to: "users#card_tp",                 as: "card_tp"
   end
+  get "logout",              to: "users#logout",                  as: "logout"
+  get "sell",                to: "items#sell",                    as: "items_sell"
+
   #ここまで
-
-  get "logout", to: "users#logout", as: "logout"
-  get "sell",   to: "items#sell",   as: "items_sell"
-
 
 end
