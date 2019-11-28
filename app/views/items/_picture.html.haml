@@ -1,8 +1,12 @@
-.picture
-  =link_to '#', class: "picture" do
-    .picture__top
-      = image_tag "shoes.jpg", class: "picture__top--item"
-      .picture__top--price
-        ¥1,000
-    .picture__bottom
-      %p.picture__bottom--text 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 説明文 最後
+- @items.each do |item|
+  .picture
+    = link_to item_path(item), class: "picture" do
+      .picture__top
+        - item.images.each do |image|
+          = image_tag image.image_url.to_s, class: "picture__top--item"
+        .picture__top--price
+          ¥
+          = item.price
+      .picture__bottom
+        %p.picture__bottom--text
+          = item.name

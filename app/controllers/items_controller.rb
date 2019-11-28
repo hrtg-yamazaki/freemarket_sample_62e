@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :redirect_to_signin, only: [ :new, :create ]
 
   def index
-    
+    @items = Item.limit(10).order('id ASC')
   end
 
   def show
