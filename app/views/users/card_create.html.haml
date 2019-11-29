@@ -1,8 +1,8 @@
 .signup-main
-  .signup-main__contents
+  .card-contents
     .signup-main__contents__top
-      支払い方法
-    .signup-main__contents__form
+      クレジットカード情報入力
+    .card__body
       = form_tag(mypage_card_update_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .signup-card
           .signup-main__contents__form__one__group

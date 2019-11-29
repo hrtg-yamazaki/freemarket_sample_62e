@@ -53,6 +53,11 @@
       }
     }
   }
+  &__body {
+    height: 500px;
+    width: 100%;
+    background-color: white;
+  }
 }
 
 .card-nav {
@@ -73,4 +78,11 @@
   margin: 0 auto;
   text-align: center;
   line-height: 50px;
+}
+
+.card-contents {
+  height: 500px;
+  width: 700px;
+  background-color: white;
+  margin: 0 auto;
 }

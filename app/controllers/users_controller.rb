@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   layout 'mypage'
-  # before_action :set_card, only:[:card, :card_delete]
+  before_action :set_card, only:[:card, :card_delete]
 
   def mypage
     unless user_signed_in?
@@ -24,12 +24,12 @@ class UsersController < ApplicationController
   ## 登録カード情報表示・編集 ##
   require "payjp"
 
+
   def card
-    set_card
-    unless card.blank?
+    unless @credit_card.blank?
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-      customer = Payjp::Customer.retrieve(card.pay_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@credit_card.pay_id)
+      @default_card_information = customer.cards.retrieve(@credit_card.card_id)
     end
   end
 
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def card_update
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     if params['payjp-token'].blank?
-      render :card_update
+      render :card
     else
       customer = Payjp::Customer.create(
         card: params['payjp-token'],
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
         if @card.save
           redirect_to action: "card"
         else
-          render :card_update
+          render :card
         end
       end
   end
@@ -59,13 +59,11 @@ class UsersController < ApplicationController
   end
 
   def card_delete
-    set_card
-    if card.blank?
-    else 
+    if @credit_card.present?
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-      customer = Payjp::Customer.retrieve(card.pay_id)
+      customer = Payjp::Customer.retrieve(@credit_card.pay_id)
       customer.delete
-      card.delete
+      @credit_card.delete
     end
     redirect_to action: "card"
   end
@@ -73,9 +71,7 @@ class UsersController < ApplicationController
   private
 
   def set_card
-    card = Card.where(user_id: current_user.id).first
-    
+    @credit_card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 
 end
-
