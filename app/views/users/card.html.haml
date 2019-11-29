@@ -18,11 +18,11 @@
             = form_tag(mypage_card_delete_path, method: :delete, id: 'charge-form', name: "inputForm") do
               %input{ type: "hidden", id: 'card-charge-form', name: "card_id", value: "" }
               %button{id: 'card-charge-form'} 削除する
-      %a{ href: "#", class: "card-nav"}支払い方法について＞
+      = link_to "支払い方法について＞", "#", class: 'card-nav'
     - else 
       .card__main__contents
         .card__main__contents--nav
           クレジットカード一覧
         .card__main__contents__box
           = link_to "クレジットカードを追加する", mypage_card_create_path, class: 'add-card-btn'
-      %a{ herf: "#", class: "card-nav"}支払い方法について＞
+      = link_to "支払い方法について＞", "#", class: 'card-nav'
