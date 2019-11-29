@@ -35,11 +35,14 @@ Rails.application.routes.draw do
 
   #マイページ関連
   scope "mypage" do
-    root                         "users#mypage",                  as: "mypage"
-    get "profile",           to: "users#profile",                 as: "profile"
-    patch "profile",         to: "users#profile_update",          as: "profile_update"
-    get "identification",    to: "users#identification",          as: "identification"
-    get "credit_card",       to: "users#card_tp",                 as: "card_tp"
+    root                         "users#mypage",                     as: "mypage"
+    get     "profile",           to: "users#profile",                as: "profile"
+    patch   "profile",           to: "users#profile_update",         as: "profile_update"
+    get     "identification",    to: "users#identification",         as: "identification"
+    get     "card",              to: "users#card",                   as: "mypage_card"
+    get     "card/create",       to: "users#card_create",            as: "mypage_card_create"
+    post    "card",              to: "users#card_update",            as: "mypage_card_update"
+    delete  "card",              to: "users#card_delete",            as: "mypage_card_delete"
   end
   get "logout",              to: "users#logout",                  as: "logout"
   get "sell",                to: "items#sell",                    as: "items_sell"
