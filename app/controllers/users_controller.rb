@@ -26,6 +26,15 @@ class UsersController < ApplicationController
   def identification
 
   end
+
+  def card_tp
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+      customer = Payjp::Customer.retrieve(card.pay_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
   
   private
 
