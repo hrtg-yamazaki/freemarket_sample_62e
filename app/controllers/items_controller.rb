@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :redirect_to_signin, only: [ :new, :create ]
+  before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update ]
 
   def index
     
@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+
 
     if params[:images].present?
       params[:images]['image_url'].each do |a|
@@ -41,6 +42,45 @@ class ItemsController < ApplicationController
       flash[:error] = @item.errors.full_messages
       redirect_to items_sell_path
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @images = @item.images
+
+    if params[:images].nil? && @images.nil?
+      flash[:image_error] = '画像がありません' 
+      @item.valid?
+      flash[:error] = @item.errors.full_messages
+      redirect_to edit_item_path
+      return false
+    end
+
+    binding.pry
+
+    if @item.valid? && ( params[:images]&.length.to_i + params[:images]['image_url']&.length.to_i + @images&.length.to_i) <= 10  && @item.seller_id == current_user.id
+
+      @item.update(update_item_params)
+
+      if params[:images].present?
+        @item_image = @item.images.build
+        params[:images]['image_url'].each do |a|
+          @item_image = @item.images.create( image_url: a)
+        end  
+      end
+
+
+
+      redirect_to "/mypage/items/#{@item.id}"
+    else
+      flash[:image_error] = 'アップロードできる画像は10枚までです' if  (params[:images]['image_url']&.length.to_i + @images&.length.to_i) > 10
+      flash[:error] = @item.errors.full_messages
+      redirect_to edit_item_path
+    end
 
   end
 
@@ -51,6 +91,15 @@ private
       :name, :text, :condition, :price, :size,
       :defrayer, :span, :status, :fav, :prefecture_id, 
       images_attributes: [:image_url]
+    ).merge(seller_id: current_user.id)
+  end
+
+  def update_item_params
+    params.require(:item).permit(
+      :name, :text, :condition, :price, :size,
+      :defrayer, :span, :status, :fav, :prefecture_id, 
+      :image_chache,
+      images_attributes: [:image_url, :_destroy, :id]
     ).merge(seller_id: current_user.id)
   end
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  layout 'mypage'
+  layout 'mypage', except: [:sell_item]
 
   def mypage
     unless user_signed_in?
@@ -27,6 +27,15 @@ class UsersController < ApplicationController
 
   def identification
 
+  end
+
+  def listings
+    @items = Item.where(seller_id: current_user.id).order('id DESC').includes(:images).page(params[:page]).per(10)
+  end
+
+  def sell_item
+    @item = Item.find(params[:id])
+    @images = @item.images
   end
   
   private

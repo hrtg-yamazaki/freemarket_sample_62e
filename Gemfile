@@ -98,3 +98,5 @@ gem 'mini_magick'
 
 gem 'payjp'
 
+gem 'kaminari'
+

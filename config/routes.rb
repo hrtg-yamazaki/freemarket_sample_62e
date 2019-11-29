@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
 
   root 'items#index'
-  resources :items, only: [:index, :show, :create]
+  resources :items, only: [:index, :show, :create, :edit , :update]
 
   
   #ユーザー登録関連
@@ -39,7 +39,8 @@ Rails.application.routes.draw do
     get "profile",           to: "users#profile",                 as: "profile"
     patch "profile",         to: "users#profile_update",          as: "profile_update"
     get "identification",    to: "users#identification",          as: "identification"
-
+    get  "listings",         to: "users#listings",                as: "listings"
+    get  "items/:id",        to: "users#sell_item"
   end
   #ここまで
 

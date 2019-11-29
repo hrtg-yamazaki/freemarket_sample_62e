@@ -24,7 +24,7 @@
 @import "./nav-bar";
 @import "./contents";
 
-// items#index
+// items
 @import "./items";
 @import "./carousel";
 @import "./slick-theme";
@@ -32,6 +32,7 @@
 @import "./carousel";
 @import "./pictures";
 @import "./popular";
+@import "./items_show";
 
 // mypage
 @import "./mypage-layout";
@@ -39,12 +40,13 @@
 @import "./profile";
 @import "./identification";
 @import "./items";
+@import "./mypage_items";
 
 @import "./slick-theme"; 
 @import "./slick";
 @import "./carousel";
 @import "./footer";
 
-@import "./items_show";
 
 @import "sell";
+
