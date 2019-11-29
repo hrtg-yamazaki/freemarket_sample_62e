@@ -154,8 +154,8 @@
 
 
 .showpage-guide
-  =link_to 'Fmarket', root_path, class: 'showpage-guide__text'
-  =fa_icon 'chevron-right', class: 'showpage-guide__arrow'
+  - breadcrumb :show
+  = render partial: 'shared/bread-crumbs'
   %span.showpage-guide__text.showpage-guide__text--now= @item.name
 
 =render partial: 'shared/footer'

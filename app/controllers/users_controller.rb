@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  layout 'mypage'
-
   def mypage
     unless user_signed_in?
       redirect_to signup_path

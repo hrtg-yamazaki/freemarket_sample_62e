@@ -1,104 +1,116 @@
-.mypage-main_right-content
-  %section.user_info
-    = link_to "#", class: 'user-info-link' do
-      %figure.user_info__png
-        = image_tag "member_photo_noimage_thumb.png", class: 'avator-image',size: '60x60'
-      %h2.user_info__link__nickname.bold 
-        = current_user.nickname
-      .user_info__link__number
-        %div
-          評価
-          %span.bold
-            0
-        %div.user_info__link__number__right
-          出品数
-          %span.bold
-            0
+=render partial: 'shared/header'
+=render partial: 'shared/sell_icon'
 
-  %section.user_notification_todo
-    %ul.user_notification_todo__tabs
-      %li.top-active
-        %a.mypage-news-btn
-          %h3.news-color お知らせ
-      %li
-        %a.mypage-todo-btn
-          %h3.todo-color やることリスト
+.nav-breadcrumb
+  - breadcrumb :mypage
+  = render partial: 'shared/bread-crumbs'
+.mypage-index
+  .mypage-index__box
+    .mypage-nav
+      =render partial: 'shared/nav-bar'
+    .mypage-main_right-content
+      %section.user_info
+        = link_to "#", class: 'user-info-link' do
+          %figure.user_info__png
+            = image_tag "member_photo_noimage_thumb.png", class: 'avator-image',size: '60x60'
+          %h2.user_info__link__nickname.bold 
+            = current_user.nickname
+          .user_info__link__number
+            %div
+              評価
+              %span.bold
+                0
+            %div.user_info__link__number__right
+              出品数
+              %span.bold
+                0
 
-    .tab-content
-      %ul#mypage-notification.mypage-item-list.tab-pane.active
-        %li
-          = link_to "", class: "mypage-item-link" do
-            %figure.mypage-item-link__svg
-              = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
-            .mypage-item-link__box
-              .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
-              %time.mypage-item-link__box__time
-                = fa_icon 'clock-o', class: 'icon-clock-o'
-                %span 47 分前
-            = fa_icon 'angle-right 2x', class: 'icon-angle-right'
-        %li
-          = link_to "", class: "mypage-item-link" do
-            %figure.mypage-item-link__svg
-              = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
-            .mypage-item-link__box
-              .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
-              %time.mypage-item-link__box__time
-                = fa_icon 'clock-o', class: 'icon-clock-o'
-                %span 47 分前
-            = fa_icon 'angle-right 2x', class: 'icon-angle-right'
-        %li
-          = link_to "", class: "mypage-item-link" do
-            %figure.mypage-item-link__svg
-              = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
-            .mypage-item-link__box
-              .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
-              %time.mypage-item-link__box__time
-                = fa_icon 'clock-o', class: 'icon-clock-o'
-                %span 47 分前
-            = fa_icon 'angle-right 2x', class: 'icon-angle-right'
-        %li
-          = link_to "", class: "mypage-item-link" do
-            %figure.mypage-item-link__svg
-              = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
-            .mypage-item-link__box
-              .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
-              %time.mypage-item-link__box__time
-                = fa_icon 'clock-o', class: 'icon-clock-o'
-                %span 47 分前
-            = fa_icon 'angle-right 2x', class: 'icon-angle-right'
-        %li
-          = link_to "", class: "mypage-item-link" do
-            %figure.mypage-item-link__svg
-              = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
-            .mypage-item-link__box
-              .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
-              %time.mypage-item-link__box__time
-                = fa_icon 'clock-o', class: 'icon-clock-o'
-                %span 47 分前
-            = fa_icon 'angle-right 2x', class: 'icon-angle-right'
-        %li.user_notification_todo__content__list--go
-          = link_to '#', class: "user_notification_todo__content__list--go__list" do
-            .user_notification_todo__content__list--go__list__text
-              %p 一覧を見る
-      %ul#mypage_todo.user_notification_todo__content__list.tab-pane
-        = embedded_svg("logo_white.svg",class: "market-svg")
-        %li.user-item-not-found.bold 現在、やることリストはありません
+      %section.user_notification_todo
+        %ul.user_notification_todo__tabs
+          %li.top-active
+            %a.mypage-news-btn
+              %h3.news-color お知らせ
+          %li
+            %a.mypage-todo-btn
+              %h3.todo-color やることリスト
 
-  %section.user_tradings
-    %h2.user_tradings__head 購入した商品
-    %ul.user_tradings__tabs
-      %a.mypage-trading-now-btn
-        %li.bottom-active
-          %h3.now-color
-            取引中
-      %a.mypage-trading-old-btn
-        %li
-          %h3.past-color
-            過去の取引
-    .user_tradings__contents
-      %ul#mypage_trading-now.user_tradings__contents__list-now.tab-pane.active
-        = embedded_svg("logo_white.svg",class: "market-svg")
-        %li.user-item-not-found-now 取引中の商品がありません
-      %ul#mypage_trading-old.user_tradings__contents__list-old.tab-pane
-        = embedded_svg("logo_white.svg",class: "market-svg")
-        %li.user-item-not-found-old 過去に取引した商品がありません
+        .tab-content
+          %ul#mypage-notification.mypage-item-list.tab-pane.active
+            %li
+              = link_to "", class: "mypage-item-link" do
+                %figure.mypage-item-link__svg
+                  = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
+                .mypage-item-link__box
+                  .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
+                  %time.mypage-item-link__box__time
+                    = fa_icon 'clock-o', class: 'icon-clock-o'
+                    %span 47 分前
+                = fa_icon 'angle-right 2x', class: 'icon-angle-right'
+            %li
+              = link_to "", class: "mypage-item-link" do
+                %figure.mypage-item-link__svg
+                  = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
+                .mypage-item-link__box
+                  .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
+                  %time.mypage-item-link__box__time
+                    = fa_icon 'clock-o', class: 'icon-clock-o'
+                    %span 47 分前
+                = fa_icon 'angle-right 2x', class: 'icon-angle-right'
+            %li
+              = link_to "", class: "mypage-item-link" do
+                %figure.mypage-item-link__svg
+                  = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
+                .mypage-item-link__box
+                  .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
+                  %time.mypage-item-link__box__time
+                    = fa_icon 'clock-o', class: 'icon-clock-o'
+                    %span 47 分前
+                = fa_icon 'angle-right 2x', class: 'icon-angle-right'
+            %li
+              = link_to "", class: "mypage-item-link" do
+                %figure.mypage-item-link__svg
+                  = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
+                .mypage-item-link__box
+                  .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
+                  %time.mypage-item-link__box__time
+                    = fa_icon 'clock-o', class: 'icon-clock-o'
+                    %span 47 分前
+                = fa_icon 'angle-right 2x', class: 'icon-angle-right'
+            %li
+              = link_to "", class: "mypage-item-link" do
+                %figure.mypage-item-link__svg
+                  = embedded_svg("logo_white.svg",class: "market-svg", height: "48px", width:"48px")
+                .mypage-item-link__box
+                  .mypage-item-link__box__text 《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪《もう参加した？》今なら最大”P1500”もらえる！詳しくはこちらから♪
+                  %time.mypage-item-link__box__time
+                    = fa_icon 'clock-o', class: 'icon-clock-o'
+                    %span 47 分前
+                = fa_icon 'angle-right 2x', class: 'icon-angle-right'
+            %li.user_notification_todo__content__list--go
+              = link_to '#', class: "user_notification_todo__content__list--go__list" do
+                .user_notification_todo__content__list--go__list__text
+                  %p 一覧を見る
+          %ul#mypage_todo.user_notification_todo__content__list.tab-pane
+            = embedded_svg("logo_white.svg",class: "market-svg")
+            %li.user-item-not-found.bold 現在、やることリストはありません
+
+      %section.user_tradings
+        %h2.user_tradings__head 購入した商品
+        %ul.user_tradings__tabs
+          %a.mypage-trading-now-btn
+            %li.bottom-active
+              %h3.now-color
+                取引中
+          %a.mypage-trading-old-btn
+            %li
+              %h3.past-color
+                過去の取引
+        .user_tradings__contents
+          %ul#mypage_trading-now.user_tradings__contents__list-now.tab-pane.active
+            = embedded_svg("logo_white.svg",class: "market-svg")
+            %li.user-item-not-found-now 取引中の商品がありません
+          %ul#mypage_trading-old.user_tradings__contents__list-old.tab-pane
+            = embedded_svg("logo_white.svg",class: "market-svg")
+            %li.user-item-not-found-old 過去に取引した商品がありません
+
+=render partial: 'shared/footer'

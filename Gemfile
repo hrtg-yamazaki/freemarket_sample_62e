@@ -99,3 +99,4 @@ gem 'mini_magick'
 gem 'payjp'
 gem "fog-aws"
 
+gem 'gretel'

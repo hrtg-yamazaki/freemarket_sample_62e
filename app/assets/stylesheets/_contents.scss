@@ -1,11 +1,12 @@
 .mypage-main_right-content {
   width: 700px;
+  margin-left: 40px;
   section {
     display: block;
   }
   .user_info {
     box-sizing: border-box;
-    height:200px;
+    height: 200px;
     padding: 40px 20px;
     margin: 0;
     background: image-url("user-bg.jpg");
@@ -20,7 +21,6 @@
         width: 60px;
         height: 60px;
         margin: 0 auto;
-        border-radius: 50%;
         .avator-image {
         height: 60px;
         width: 60px;
