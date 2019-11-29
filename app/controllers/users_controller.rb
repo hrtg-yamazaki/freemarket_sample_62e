@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+
   layout 'mypage'
   before_action :set_card, only:[:card, :card_delete]
+
 
   def mypage
     unless user_signed_in?
