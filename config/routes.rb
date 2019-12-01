@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     patch "profile",         to: "users#profile_update",          as: "profile_update"
     get "identification",    to: "users#identification",          as: "identification"
     get  "listings",         to: "users#listings",                as: "listings"
-    get  "items/:id",        to: "users#sell_item"
+    get  "items/:id",        to: "users#sell_item",               as: "onsale_item"
   end
   #ここまで
 
