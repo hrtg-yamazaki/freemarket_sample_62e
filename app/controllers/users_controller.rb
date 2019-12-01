@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
-
-  # layout 'mypage'
   before_action :set_card, only:[:card, :card_delete]
-
 
   def mypage
     unless user_signed_in?
@@ -59,6 +56,18 @@ class UsersController < ApplicationController
   def complete
 
   end
+
+
+  def listings
+    @items = Item.where(seller_id: current_user.id).order('id DESC').includes(:images).page(params[:page]).per(10)
+  end
+
+  def sell_item
+    @item = Item.find(params[:id])
+    @images = @item.images
+  end
+  
+  private
 
   def card_delete
     if @credit_card.present?

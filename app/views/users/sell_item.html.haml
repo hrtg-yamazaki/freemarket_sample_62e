@@ -1,0 +1,113 @@
+=render partial: 'shared/header'
+
+.mypage-guide
+  =link_to 'Fmarket', root_path, class: 'guide-link'
+  >
+
+.mypage-index
+  .mypage-index__box
+    .mypage-nav
+    .mypage-contents
+      .show-main
+        .show-main__title
+          %p= @item.name
+        .show-main__pictures
+          .main-slider
+            - @images.each do |i|
+              %div
+                = image_tag i.image_url.to_s, class: "picture--main"
+                
+        .show-main__info
+          %table.info-table
+            %tbody
+              %tr
+                %th 
+                  出品者
+                %td 
+                  =link_to @item.seller.nickname, '#', class: 'item-show-link'
+              %tr
+                %th 
+                  カテゴリー
+                %td 
+                  =link_to 'レディース', '#', class: 'item-show-link'
+                  %br
+                  =link_to '#', class: 'item-show-link' do
+                    =fa_icon 'chevron-right'
+                    靴
+                  %br
+                  =link_to '#', class: 'item-show-link' do
+                    =fa_icon 'chevron-right'
+                    スニーカー
+              %tr
+                %th 
+                  ブランド
+                %td 
+                  =link_to 'ナイキ', '#', class: 'item-show-link'
+              %tr
+                %th 
+                  商品のサイズ
+                %td 
+                  24.5cm
+              %tr
+                %th 
+                  商品の状態
+                %td 
+                  = @item.condition_i18n
+              %tr
+                %th 
+                  配送料の負担
+                %td 
+                  = @item.defrayer_i18n
+              %tr
+                %th 
+                  配送の方法
+                %td 
+                  らくらくFmarket便
+              %tr
+                %th 
+                  配送元地域
+                %td 
+                  =link_to @item.prefecture.name, '#', class: 'item-show-link'
+              %tr
+                %th 
+                  発送日の目安
+                %td 
+                  = @item.span_i18n
+        .show-main__price
+          %span.show-main__price--bold
+            ¥
+            = @item.price
+          %span.show-main__price--tax
+            (税込) 
+          - if @item.defrayer == 'included'
+            %span.show-main__price--shipping 送料込み
+          - if @item.defrayer == 'excluded'
+            %span.show-main__price--shipping 着払い
+        
+        .show-main__text
+          %p= @item.text
+
+      .show-comment
+        =link_to '商品の編集', edit_item_path(@item.id), class: 'sell-item__btn sell-item__btn--red' 
+        %p.sell-item__text or
+        =link_to '出品を一旦停止する', '#', class: 'sell-item__btn' 
+        =link_to 'この商品を削除する', '#', class: 'sell-item__btn' 
+
+      .show-comment
+        .show-comment__message
+          %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .show-comment__form
+          =form_tag('#', method: :get) do
+            %textarea{class: 'show-comment__form--textarea', type: 'text'}
+            %button{type: 'submit', class: 'show-comment__form--btn'}
+              %span コメントする
+
+
+
+=render partial: 'shared/footer'
+
+
+
+
+
+
