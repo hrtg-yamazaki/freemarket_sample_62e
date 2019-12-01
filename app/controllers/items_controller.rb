@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
     end
 
 
-    if @item.update(update_item_params) && @item.seller_id == current_user.id 
+    if @item.seller_id == current_user.id  && item.update(update_item_params) 
       @no_images = Image.where(image_url: "no image" )
       if @no_images.present?
         @no_images.each do |n|
