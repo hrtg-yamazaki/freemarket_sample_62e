@@ -97,6 +97,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'payjp'
+gem "fog-aws"
+
 
 gem 'kaminari'
+gem 'gretel'
 

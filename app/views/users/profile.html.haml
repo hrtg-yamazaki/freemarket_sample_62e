@@ -1,21 +1,25 @@
-- content_for :current_page do
-  -# ここに今のページ名を記載
-  プロフィール
-- content_for :current_path do
-  -# ここに今のページのリンクを記載
-  \/#
+=render partial: 'shared/header'
+=render partial: 'shared/sell_icon'
 
+.nav-breadcrumb
+  - breadcrumb :profile
+  = render partial: 'shared/bread-crumbs'
+.mypage-index
+  .mypage-index__box
+    .mypage-nav
+      =render partial: 'shared/nav-bar'
+    .profile-form
+      = form_for @user, url: profile_update_path, class: "profile", method: :patch do |f|
+        .profile__title
+          プロフィール
+        .profile__top
+          .profile__top__contents
+            .profile__top__contents__wrapper
+              =image_tag 'member_photo_noimage_thumb.png', class: 'profile__top__contents--image'
+              .profile__top__contents--name
+                = f.text_field :nickname, value: "#{current_user.nickname}", placeholder: 'ニックネームを入力してください', class: 'profile__top__contents--name'
+        .profile__bottom
+          = f.text_area :profile, class: 'profile__bottom--form', placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+          = f.submit '変更する', class: 'profile__bottom--btn'
 
-
-= form_for @user, url: profile_update_path, class: "profile", method: :patch do |f|
-  .profile__title
-    プロフィール
-  .profile__top
-    .profile__top__contents
-      .profile__top__contents__wrapper
-        =image_tag 'member_photo_noimage_thumb.png', class: 'profile__top__contents--image'
-        .profile__top__contents--name
-          = f.text_field :nickname, value: "#{current_user.nickname}", placeholder: 'ニックネームを入力してください', class: 'profile__top__contents--name'
-  .profile__bottom
-    = f.text_area :profile, class: 'profile__bottom--form', placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
-    = f.submit '変更する', class: 'profile__bottom--btn'
+=render partial: 'shared/footer'

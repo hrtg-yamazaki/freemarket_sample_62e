@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [ :show, :edit, :update ]
 
   def index
-    
+    @items = Item.limit(10).order('id ASC')
   end
 
   def show
