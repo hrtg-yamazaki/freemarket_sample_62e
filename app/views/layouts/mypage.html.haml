@@ -3,6 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FreemarketSample62e
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -11,11 +12,9 @@
     =render partial: 'shared/header'
     =render partial: 'shared/sell_icon'
 
-    .mypage-guide
-      =link_to 'Fmarket', root_path, class: 'guide-link'
-      >
-      =link_to "#{ yield :current_page }", yield(:current_path), class: 'guide-link guide-link--now'
-
+    .nav-breadcrumb
+      - breadcrumb :mypage
+      = render partial: 'shared/bread-crumbs'
     .mypage-index
       .mypage-index__box
         .mypage-nav
