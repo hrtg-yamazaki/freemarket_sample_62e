@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
   before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update ]
+  before_action :set_item, only: [ :show, :edit, :update ]
 
   def index
     
   end
 
   def show
-    @item = Item.find(params[:id])
-    @images = @item.images
     @seller_items = Item.where(seller_id: @item.seller.id).where.not(id: params[:id]).order('id DESC').limit(6).includes(:images)
   end
 
@@ -45,19 +44,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @images = @item.images
     (10- @images.length).times do
       @add_image = @item.images.build
     end
   end
 
   def update
-
-    @item = Item.find(params[:id])
-    @images = @item.images
-
-
 
     if params[:images].nil? && @images.nil?
       flash[:image_error] = '画像がありません' 
@@ -68,21 +60,16 @@ class ItemsController < ApplicationController
     end
 
 
-    if @item.valid? && @item.seller_id == current_user.id
-
-      @item.update(update_item_params)
-
+    if @item.update(update_item_params) && @item.seller_id == current_user.id 
       @no_images = Image.where(image_url: "no image" )
       if @no_images.present?
         @no_images.each do |n|
           n.destroy
         end
       end
-      
-      redirect_to "/mypage/items/#{@item.id}"
+      redirect_to onsale_item_path
 
     else
-      flash[:image_error] = 'アップロードできる画像は10枚までです' if  (params[:images]['image_url']&.length.to_i + @images&.length.to_i) > 10
       flash[:error] = @item.errors.full_messages
       redirect_to edit_item_path
     end
@@ -110,6 +97,11 @@ private
 
   def redirect_to_signin
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+    @images = @item.images
   end
 
   
