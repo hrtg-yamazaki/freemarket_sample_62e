@@ -30,35 +30,12 @@
         = f.fields_for :images do |i|
           %ul
             %li
-              = image_tag i.object.image_url.to_s, size: '114x116'
+              = image_tag i.object.image_url.to_s, size: '114x116' if i.object.image_url.present?
               = i.file_field :image_url
-              %span 削除ボタン仮置き
-              = i.hidden_field :id, value: i.object.id
-
-        = f.fields_for :images, @item do |i|
-          = i.file_field :image_url, multiple: true, type: 'file', name: "images[image_url][]"
-          -# , class: "drop-box__field"
+              %span= '削除ボタン仮置き'  if i.object.image_url.present?
+              = i.hidden_field :id, value: i.object.id 
 
 
-
-        -# = f.fields_for :images, {class: "sell-form__image"} do |i|
-        -#   = i.label :image_url, class: "drop-box" do
-        -#     .drop-box__text
-        -#       %p
-        -#         ドラッグアンドドロップ
-        -#         %br/
-        -#         もしくはクリックしてファイルをアップロード
-
-
-        -#   -# 画像キャッシュの保持
-        -#   - @item.images.each do |image|
-        -#     -# = hidden_field :item, :images, multiple: true, value: image.image_url
-        -#     = i.hidden_field :image_url, multiple: true, value: image.image_url
-
-        -#   = i.file_field :image_url, multiple: true, type: 'file', name: "images[image_url][]", class: "drop-box__field"
-
-
-            
       .sell-form__main
         .sell-form__main__box
           .sell-form__main__box__name<

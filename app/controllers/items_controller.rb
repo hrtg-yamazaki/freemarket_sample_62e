@@ -46,11 +46,18 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @images = @item.images
+    (10- @images.length).times do
+      @add_image = @item.images.build
+    end
   end
 
   def update
+
     @item = Item.find(params[:id])
     @images = @item.images
+
+
 
     if params[:images].nil? && @images.nil?
       flash[:image_error] = '画像がありません' 
@@ -60,22 +67,20 @@ class ItemsController < ApplicationController
       return false
     end
 
-    binding.pry
 
-    if @item.valid? && ( params[:images]&.length.to_i + params[:images]['image_url']&.length.to_i + @images&.length.to_i) <= 10  && @item.seller_id == current_user.id
+    if @item.valid? && @item.seller_id == current_user.id
 
       @item.update(update_item_params)
 
-      if params[:images].present?
-        @item_image = @item.images.build
-        params[:images]['image_url'].each do |a|
-          @item_image = @item.images.create( image_url: a)
-        end  
+      @no_images = Image.where(image_url: "no image" )
+      if @no_images.present?
+        @no_images.each do |n|
+          n.destroy
+        end
       end
-
-
-
+      
       redirect_to "/mypage/items/#{@item.id}"
+
     else
       flash[:image_error] = 'アップロードできる画像は10枚までです' if  (params[:images]['image_url']&.length.to_i + @images&.length.to_i) > 10
       flash[:error] = @item.errors.full_messages
