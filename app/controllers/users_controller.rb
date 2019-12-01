@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 
-  layout 'mypage'
+  # layout 'mypage'
   before_action :set_card, only:[:card, :card_delete]
 
 
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    
+    @user = current_user
   end  
 
   def logout
