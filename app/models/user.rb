@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_one :card,    dependent: :destroy
   has_many :buyed_items, class_name: "Item"
-  has_many :selled_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
+  has_many :selled_items, class_name: "Item"
 
 
   VALID_KATAKANA_REGIX = /\A([ァ-ン]|ー)+\z/

@@ -49,39 +49,6 @@ class ItemsController < ApplicationController
   end
 
   ## 商品購入機能 ##
-  require "payjp"
-  def buy_post
-    @credit_card = Card.where(user_id: current_user.id).first 
-    if @credit_card.blank?
-      redirect_to action: "card_update"
-    else 
-      @item = Item.find(params[:id])
-      card = @credit_card
-      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-      Payjp::Charge.create(
-        amount: @item.price,
-        customer: card.pay_id,
-        currency:'jpy',
-      )
-      input = @item.price
-      fee = (input / 10).floor
-      benefit = input - fee
-      @user = User.find_by(id: @item.seller_id)
-      if @user.profit.nil?
-        @user.update(profit: benefit)
-      else
-        total_profit = @user.profit += benefit
-        @user.update(profit: total_profit)
-      end
-    end
-      if @item.update(status: 1, buyer_id: current_user.id)
-        redirect_to action: 'complete'
-      else 
-        flash[:alert] = '購入に失敗しました'
-      end
-  end
-
-
   def buy
     @item = Item.find(params[:id])
     @image = @item.images.first
@@ -94,6 +61,28 @@ class ItemsController < ApplicationController
       @exp_month = @default_card_information.exp_month.to_s
       @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
     end
+  end
+
+  require "payjp"
+  def buy_post
+    @credit_card = Card.where(user_id: current_user.id).first 
+    if @credit_card.blank?
+      redirect_to action: "card_update"
+    else 
+      @item = Item.find(params[:id])
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+      Payjp::Charge.create(
+        amount: @item.price,
+        customer: @credit_card.pay_id,
+        currency:'jpy',
+      )
+      calculate_profit
+    end
+      if @item.update(status: 1, buyer_id: current_user.id)
+        redirect_to action: 'complete'
+      else 
+        flash[:alert] = '購入に失敗しました'
+      end
   end
 
 
@@ -110,5 +99,16 @@ private
     redirect_to new_user_session_path unless user_signed_in?
   end
 
+  def calculate_profit
+    input = @item.price
+    fee = (input / 10).floor
+    benefit = input - fee
+    if @item.seller.profit.nil?
+      @item.seller.update(profit: benefit)
+    else
+      total_profit = @item.seller.profit += benefit
+      @item.seller.update(profit: total_profit)
+    end
+  end
   
 end
