@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update ]
-  before_action :set_item, only: [ :show, :edit, :update ]
+  before_action :set_item, only: [ :show, :edit, :update, :buy_post ]
 
 
   def index
@@ -102,7 +102,6 @@ class ItemsController < ApplicationController
     if current_user.card.blank?
       redirect_to action: "card_update"
     else 
-      @item = Item.find(params[:id])
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       Payjp::Charge.create(
         amount: @item.price,
