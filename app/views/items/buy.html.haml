@@ -37,7 +37,7 @@
 
         - if current_user.card.present? && current_user.address.present?
           .buy-form__purchase
-            = button_to "購入する", "#", class: "buy-form__purchase__button"
+            = button_to "購入する", items_buy_post_path(@item), class: "buy-form__purchase__button"
         - else
           .buy-form__error
             %p.buy-form__error__message 配送先と支払い方法の入力を完了してください

@@ -66,14 +66,13 @@ class ItemsController < ApplicationController
       input = @item.price
       fee = (input / 10).floor
       benefit = input - fee
-      @user = User.where(user_id: @item.seller_id)
-      binding.pry
-        if @user.profit.nil?
-          @user.update(profit: benefit)
-        else
-          total_profit = @user.profit += benefit
-          @user.update(profit: total_profit)
-        end
+      @user = User.find_by(id: @item.seller_id)
+      if @user.profit.nil?
+        @user.update(profit: benefit)
+      else
+        total_profit = @user.profit += benefit
+        @user.update(profit: total_profit)
+      end
     end
       if @item.update(status: 1, buyer_id: current_user.id)
         redirect_to action: 'complete'
