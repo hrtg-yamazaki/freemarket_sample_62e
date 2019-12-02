@@ -44,8 +44,11 @@ Rails.application.routes.draw do
     post    "card",              to: "users#card_update",            as: "mypage_card_update"
     delete  "card",              to: "users#card_delete",            as: "mypage_card_delete"
   end
+
   get "logout",              to: "users#logout",                  as: "logout"
   get "sell",                to: "items#sell",                    as: "items_sell"
+
+  get "transaction/buy/m:id/", to: "items#buy",                   as: "items_buy"
 
   #ここまで
 
