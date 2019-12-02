@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :redirect_to_signin, only: [ :new, :create ]
+  before_action :redirect_to_signin, only: [ :new, :create, :buy]
 
   def index
-    @items = Item.limit(10).order('id ASC')
+    @items = Item.limit(10).order('id DESC')
   end
 
   def show
@@ -42,6 +42,44 @@ class ItemsController < ApplicationController
       redirect_to items_sell_path
     end
 
+  end
+
+  def complete
+
+  end
+
+  ## 商品購入機能 ##
+  require "payjp"
+  def buy_post
+    @credit_card = Card.where(user_id: current_user.id).first 
+    if @credit_card.blank?
+      redirect_to action: "card_update"
+    else 
+      @item = Item.find(params[:id])
+      card = @credit_card
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+      Payjp::Charge.create(
+        amount: @item.price,
+        customer: card.pay_id,
+        currency:'jpy',
+      )
+      input = @item.price
+      fee = (input / 10).floor
+      benefit = input - fee
+      @user = User.where(user_id: @item.seller_id)
+      binding.pry
+        if @user.profit.nil?
+          @user.update(profit: benefit)
+        else
+          total_profit = @user.profit += benefit
+          @user.update(profit: total_profit)
+        end
+    end
+      if @item.update(status: 1, buyer_id: current_user.id)
+        redirect_to action: 'complete'
+      else 
+        flash[:alert] = '購入に失敗しました'
+      end
   end
 
 
