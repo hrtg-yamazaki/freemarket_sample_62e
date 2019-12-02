@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update ]
-  before_action :set_item, only: [ :show, :edit, :update, :buy_post ]
+  before_action :set_item, only: [ :show, :edit, :update, :buy, :buy_post ]
 
 
   def index
@@ -84,7 +84,6 @@ class ItemsController < ApplicationController
 
   ## 商品購入機能 ##
   def buy
-    @item = Item.find(params[:id])
     @image = @item.images.first
     @address = current_user.address if current_user.address.present?
 
