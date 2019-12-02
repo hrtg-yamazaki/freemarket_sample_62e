@@ -1,0 +1,27 @@
+*{
+  box-sizing: border-box;
+}
+
+.sell-item {
+  &__text {
+    text-align: center;
+    font-size: 14px;  
+    line-height: 40px;
+  }
+  &__btn {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 8px;
+    background-color: #aaa;
+    border: none;
+    color: white;
+    font-size: 14px;    
+    text-align: center;
+    line-height: 50px;
+    &--red{
+      background-color: rgb(234, 53, 45);
+    }
+  }
+}
+
