@@ -86,13 +86,12 @@
         %span.show-main__price--shipping 着払い
 
     - if @item.status == "onSell"
-      =link_to items_buy_post_path(@item), method: :post, class: 'show-main__purchase-btn' do
+      =link_to items_buy_path(@item), class: 'show-main__purchase-btn' do
         %span 購入画面に進む
     - else
       .show-main__sold
         %span 売り切れました
 
-    
     .show-main__text
       %p= @item.text
     .show-main__footer

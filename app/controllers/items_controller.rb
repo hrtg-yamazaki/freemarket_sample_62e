@@ -83,6 +83,21 @@ class ItemsController < ApplicationController
   end
 
 
+  def buy
+    @item = Item.find(params[:id])
+    @image = @item.images.first
+    @address = current_user.address if current_user.address.present?
+
+    if current_user.card.present?
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+      customer = Payjp::Customer.retrieve(current_user.card.pay_id)
+      @default_card_information = customer.cards.retrieve(current_user.card.card_id)
+      @exp_month = @default_card_information.exp_month.to_s
+      @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+    end
+  end
+
+
 private
   def item_params
     params.require(:item).permit(
