@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
 
   root 'items#index'
-  resources :items, only: [:index, :show, :create]
+  resources :items, only: [:index, :show, :create, :edit , :update]
 
   
   #ユーザー登録関連
@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     get     "card/create",       to: "users#card_create",            as: "mypage_card_create"
     post    "card",              to: "users#card_update",            as: "mypage_card_update"
     delete  "card",              to: "users#card_delete",            as: "mypage_card_delete"
+    get     "listings",          to: "users#listings",               as: "listings"
+    get     "items/:id",         to: "users#sell_item",              as: "onsale_item"
   end
 
   get "logout",               to: "users#logout",                  as: "logout"
