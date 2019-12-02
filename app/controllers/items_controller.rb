@@ -65,15 +65,14 @@ class ItemsController < ApplicationController
 
   require "payjp"
   def buy_post
-    @credit_card = Card.where(user_id: current_user.id).first 
-    if @credit_card.blank?
+    if current_user.card.blank?
       redirect_to action: "card_update"
     else 
       @item = Item.find(params[:id])
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       Payjp::Charge.create(
         amount: @item.price,
-        customer: @credit_card.pay_id,
+        customer: current_user.card.pay_id,
         currency:'jpy',
       )
       calculate_profit
