@@ -38,3 +38,22 @@ $maincolor: #f5f5f5;
   width: 100%;
   border-top: 1px solid #eee;
 }
+
+// ***** 商品購入確認ページで作成したミックスイン ***** //
+
+@mixin buy-inner{
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+@mixin buy-method{
+  font-size: 14px;
+  margin-top: 8px;
+  line-height: 20px;
+}
+
+@mixin buy-button{
+  color: white;
+  padding: 14px;
+  width: 100%;
+}

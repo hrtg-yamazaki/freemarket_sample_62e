@@ -38,7 +38,8 @@
   }
 }
 
-// *****コンテンツ***** //
+
+// *****商品情報***** //
 .buy-main{
   width: 100%;
   border-top: 1px solid #eee;
@@ -48,8 +49,8 @@
   width: 100%;
   &__box{
     max-width: 320px;
-    padding-top: 24px;
     margin: 0 auto;
+    padding-top: 24px;
     &__image{
       float: left;
     }
@@ -68,10 +69,8 @@
 
 .buy-form{
   width: 100%;
-
   &__price{
-    max-width: 320px;
-    margin: 0 auto;
+    @include buy-inner;
     padding-top: 8px;
     text-align: center;
     font-size: 22px;
@@ -82,10 +81,8 @@
       font-size: 14px;
     }
   }
-
   &__point{
-    max-width: 320px;
-    margin: 0 auto;
+    @include buy-inner;
     padding-top: 16px;
     &__info{
       text-align: center;
@@ -98,8 +95,7 @@
   }
 
   &__payment {
-    max-width: 320px;
-    margin: 0 auto;
+    @include buy-inner;
     padding-top: 16px;
     &__box{
       padding-bottom: 16px;
@@ -123,8 +119,7 @@
   }
   
   &__error{
-    max-width: 320px;
-    margin: 0 auto;
+    @include buy-inner;
     padding-top: 8px;
     &__message{
       font-size: 14px;
@@ -134,42 +129,37 @@
   }
 
   &__purchase{
-    max-width: 320px;
-    margin: 0 auto;
+    @include buy-inner;
     padding-top: 8px;
     padding-bottom: 40px;
     &__button{
-      width: 100%;
+      @include buy-button;
       border: 1px solid #ea352d;
       background-color: #ea352d;
-      color: white;
-      padding: 14px;
     }
     &__disabled{
-      width: 100%;
+      @include buy-button;
       border: 1px solid #888;
       background-color: #888;
-      color: white;
-      padding: 14px;
     }
   }
 }
 
+
+// *****配送先***** //
 .buy-address{
   width: 100%;
   border-top: 1px solid #eee;
   color: #333;
   &__box{
-    max-width: 320px;
+    @include buy-inner;
     padding: 24px 0;
-    margin: 0 auto;
     &__head{
       font-size: 14px;
       font-weight: bold;
     }
     &__content{
-      font-size: 14px;
-      margin-top: 8px;
+      @include buy-method;
       &--edit{
         float: right;
       }
@@ -177,21 +167,21 @@
   }
 }
 
+
+// *****支払い方法***** //
 .buy-card{
   width: 100%;
   border-top: 1px solid #eee;
   color: #333;
   &__box{
-    max-width: 320px;
+    @include buy-inner;
     padding: 24px 0;
-    margin: 0 auto;
     &__head{
       font-size: 14px;
       font-weight: bold;
     }
     &__content{
-      font-size: 14px;
-      margin-top: 8px;
+      @include buy-method;
       &--image{
         display: block;
       }
@@ -203,7 +193,7 @@
 }
 
 
-
+// ***** 素材 ***** //
 .fa-angle-right{
   margin-left: 4px;
   font-weight: bold;

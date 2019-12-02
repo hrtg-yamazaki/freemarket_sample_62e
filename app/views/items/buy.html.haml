@@ -16,16 +16,16 @@
       .buy-item
         .buy-item__box.clearfix
           = image_tag @image.image_url.to_s, size: "60x60" ,class: "buy-item__box__image"
-          %p.buy-item__box__name=@item.name
-        
+          %p.buy-item__box__name= @item.name
+
       .buy-form
+
         %p.buy-form__price
           = "¥" + @item.price.to_s
           - if @item.defrayer == "included"
             %span.buy-form__price--shipping 送料込み
           - else
             %span.buy-form__price--shipping 着払い
-        
         .buy-form__point
           %p.buy-form__point__info ポイントはありません
 
@@ -35,16 +35,12 @@
             %p.buy-form__payment__box--content
               = "¥" + @item.price.to_s
 
-        
         - if current_user.card.present? && current_user.address.present?
-
           .buy-form__purchase
             = button_to "購入する", "#", class: "buy-form__purchase__button"
-
         - else
           .buy-form__error
             %p.buy-form__error__message 配送先と支払い方法の入力を完了してください
-
           .buy-form__purchase
             = button_to "購入する", "#", class: "buy-form__purchase__disabled"
 
@@ -88,7 +84,8 @@
               %p.buy-card__box__content--date /
               %br/
               = link_to "#", class: "buy-card__box__content--edit" do
-                %span 変更する
+                %span 登録する
                 = fa_icon "angle-right"
+
 
 = render partial: 'signup/signup-footer'
