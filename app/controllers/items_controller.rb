@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
 
+  before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update, :destroy ]
+  before_action :set_item, only: [ :show, :edit, :update, :destroy ]
+
+
   before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update ]
   before_action :set_item, only: [ :show, :edit, :update, :buy, :buy_post ]
+
 
 
   def index
@@ -62,7 +67,7 @@ class ItemsController < ApplicationController
     end
 
 
-    if @item.seller_id == current_user.id  && item.update(update_item_params) 
+    if @item.seller_id == current_user.id  && @item.update(update_item_params) 
       @no_images = Image.where(image_url: "no image" )
       if @no_images.present?
         @no_images.each do |n|
@@ -75,8 +80,20 @@ class ItemsController < ApplicationController
       flash[:error] = @item.errors.full_messages
       redirect_to edit_item_path
     end
-
   end
+
+
+  def destroy
+
+    if @item.seller_id == current_user.id && @item.destroy
+      redirect_to listings_path
+    else
+      redirect_to root_path
+    end
+  end
+
+private
+
 
   def complete
 
@@ -118,6 +135,7 @@ class ItemsController < ApplicationController
 
 
   private
+
   def item_params
     params.require(:item).permit(
       :name, :text, :condition, :price, :size,

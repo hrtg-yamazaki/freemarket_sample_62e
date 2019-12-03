@@ -2,7 +2,7 @@
 =render partial: 'shared/sell_icon'
 
 .nav-breadcrumb
-  - breadcrumb :mypage
+  - breadcrumb :card
   = render partial: 'shared/bread-crumbs'
 .mypage-index
   .mypage-index__box
@@ -37,3 +37,5 @@
               .card__main__contents__box
                 = link_to "クレジットカードを追加する", mypage_card_create_path, class: 'add-card-btn'
             = link_to "支払い方法について＞", "#", class: 'card-nav'
+
+=render partial: 'shared/footer'
