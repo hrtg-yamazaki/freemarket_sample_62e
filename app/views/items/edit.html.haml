@@ -32,6 +32,7 @@
             %li
               = image_tag i.object.image_url.to_s, size: '114x116' if i.object.image_url.present?
               = i.file_field :image_url
+              = i.hidden_field :id, value: i.object.id
               - if i.object.image_url.present?
                 = i.check_box :_destroy
                 = i.label :_destroy, "削除"
