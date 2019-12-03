@@ -1,0 +1,9 @@
+.single-header
+  .single-header__main
+    =link_to '#', class: "single-header__logo" do
+      = embedded_svg("fmarket_logo_red.svg", class: "single-header__logo")
+
+%h2 購入が完了しました！
+= link_to "トップページに戻る", root_path, class: 'add-card-btn'
+
+= render partial: 'signup/signup-footer'
