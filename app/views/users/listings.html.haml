@@ -1,38 +1,44 @@
-%span{ style: "font-size:16px; line-height:72px;" } 出品した商品
-.mypage-main_right-content
-  %section.user_notification_todo
-    %ul.user_notification_todo__tabs
-      %li.top-active
-        %a.mypage-news-btn
-          %h3.news-color 出品中
-      %li
-        %a.mypage-todo-btn
-          %h3.todo-color 取引中
-      -# %li
-      -#   %a
-      -#     %h3 売却済み
+=render partial: 'shared/header'
+=render partial: 'shared/sell_icon'
 
-    .tab-content
-      %ul#mypage-notification.mypage-item-list.tab-pane.active
-        - @items.each do |item|
+.nav-breadcrumb
+  - breadcrumb :listings
+  = render partial: 'shared/bread-crumbs'
+.mypage-index
+  .mypage-index__box
+    .mypage-nav
+      =render partial: 'shared/nav-bar'
+    .mypage-main_right-content
+      %section.user_notification_todo
+        %ul.user_notification_todo__tabs
+          %li.top-active
+            %a.mypage-news-btn
+              %h3.news-color 出品中
           %li
-            = link_to onsale_item_path(item), class: "mypage-item-link" do
-              - item.images.first(1).each do |image|
-                %figure.mypage-item-link__svg
-                  = image_tag image.image_url.to_s, size: '48x48'
-              .mypage-item-link__box
-                .mypage-item-link__box__text= item.name 
-                %time.mypage-item-link__box__time
-                  = fa_icon 'heart-o', class: 'icon-clock-o'
-                  %span= item.fav
-                  = fa_icon 'comment-o', class: 'icon-clock-o'
-                  %span 0
-                  %span= item.status_i18n
-              = fa_icon 'angle-right 2x', class: 'icon-angle-right'
+            %a.mypage-todo-btn
+              %h3.todo-color 取引中
 
-      = paginate(@items)
+        .tab-content
+          %ul#mypage-notification.mypage-item-list.tab-pane.active
+            - @items.each do |item|
+              %li
+                = link_to onsale_item_path(item), class: "mypage-item-link" do
+                  - item.images.first(1).each do |image|
+                    %figure.mypage-item-link__svg
+                      = image_tag image.image_url.to_s, size: '48x48'
+                  .mypage-item-link__box
+                    .mypage-item-link__box__text= item.name 
+                    %time.mypage-item-link__box__time
+                      = fa_icon 'heart-o', class: 'icon-clock-o'
+                      %span= item.fav
+                      = fa_icon 'comment-o', class: 'icon-clock-o'
+                      %span 0
+                      %span= item.status_i18n
+                  = fa_icon 'angle-right 2x', class: 'icon-angle-right'
 
-      %ul#mypage_todo.user_notification_todo__content__list.tab-pane
-        = embedded_svg("logo_white.svg",class: "market-svg")
-        %li.user-item-not-found.bold 取引中の商品がありません
+          = paginate(@items)
 
+          %ul#mypage_todo.user_notification_todo__content__list.tab-pane
+            = embedded_svg("logo_white.svg",class: "market-svg")
+            %li.user-item-not-found.bold 取引中の商品がありません
+= render partial: 'shared/footer'

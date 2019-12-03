@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
 
   root 'items#index'
-  resources :items, only: [:index, :show, :create, :edit , :update]
+  resources :items, only: [:index, :show, :create, :edit , :update, :destroy]
 
   
   #ユーザー登録関連
@@ -45,10 +45,12 @@ Rails.application.routes.draw do
     delete  "card",              to: "users#card_delete",            as: "mypage_card_delete"
     get     "listings",          to: "users#listings",               as: "listings"
     get     "items/:id",         to: "users#sell_item",              as: "onsale_item"
+    #ルーティングの書き換えは後に実装予定
+    delete  "items/:id",         to: "items#destroy",                as: "items_destroy"
   end
   get "logout",              to: "users#logout",                  as: "logout"
   get "sell",                to: "items#sell",                    as: "items_sell"
-
+  
   #ここまで
 
 end
