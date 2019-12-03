@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [ :show, :edit, :update ]
 
   def index
-    @items = Item.limit(10).order('id ASC')
+    @items = Item.limit(10).order('id DESC')
   end
 
   def show
@@ -19,22 +19,22 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
 
-    if params[:images].present?
-      params[:images]['image_url'].each do |a|
-        @item_image = @item.images.new(image_url: a)
-      end  
-    else
-      flash[:image_error] = '画像がありません' 
-      @item.valid?
-      flash[:error] = @item.errors.full_messages
-      redirect_to items_sell_path
-      return false
-    end
+    # if params[:images].present?
+    #   params[:images]['image_url'].each do |a|
+    #     @item_image = @item.images.new(image_url: a)
+    #   end  
+    # else
+    #   flash[:image_error] = '画像がありません' 
+    #   @item.valid?
+    #   flash[:error] = @item.errors.full_messages
+    #   redirect_to items_sell_path
+    #   return false
+    # end
 
 
     if @item.valid? && @item.images.length <= 10
       @item.save
-      @item_image.save
+      # @item_image.save
       redirect_to root_path
     else
       flash[:image_error] = 'アップロードできる画像は10枚までです' if @item.images.length > 10
