@@ -48,9 +48,21 @@ Rails.application.routes.draw do
     #ルーティングの書き換えは後に実装予定
     delete  "items/:id",         to: "items#destroy",                as: "items_destroy"
   end
+
   get "logout",              to: "users#logout",                  as: "logout"
   get "sell",                to: "items#sell",                    as: "items_sell"
   
+
+
+  get "logout",               to: "users#logout",                  as: "logout"
+  get "sell",                 to: "items#sell",                    as: "items_sell"
+  get "transaction/buy/m:id/", to: "items#buy",                   as: "items_buy"
+  post "buy/:id",             to: "items#buy_post",                as: "items_buy_post"
+  get "complete",             to: "items#complete",                as: "items_complete"
+
+  
+
+
   #ここまで
 
 end

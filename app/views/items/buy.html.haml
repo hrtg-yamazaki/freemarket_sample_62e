@@ -1,0 +1,91 @@
+.single-header
+  .single-header__main
+    = link_to root_path, class: "single-header__logo" do
+      = embedded_svg("fmarket_logo_red.svg", class: "single-header__logo")
+
+
+.buy-container
+  .buy-wrapper
+
+    .buy-title
+      %h2.buy-title__text
+        購入内容の確認
+
+    .buy-main
+
+      .buy-item
+        .buy-item__box.clearfix
+          = image_tag @image.image_url.to_s, size: "60x60" ,class: "buy-item__box__image"
+          %p.buy-item__box__name= @item.name
+
+      .buy-form
+
+        %p.buy-form__price
+          = "¥" + @item.price.to_s
+          - if @item.defrayer == "included"
+            %span.buy-form__price--shipping 送料込み
+          - else
+            %span.buy-form__price--shipping 着払い
+        .buy-form__point
+          %p.buy-form__point__info ポイントはありません
+
+        .buy-form__payment
+          .buy-form__payment__box.clearfix
+            %p.buy-form__payment__box--head 支払い金額
+            %p.buy-form__payment__box--content
+              = "¥" + @item.price.to_s
+
+        - if current_user.card.present? && current_user.address.present?
+          .buy-form__purchase
+            = button_to "購入する", items_buy_post_path(@item), class: "buy-form__purchase__button"
+        - else
+          .buy-form__error
+            %p.buy-form__error__message 配送先と支払い方法の入力を完了してください
+          .buy-form__purchase
+            = button_to "購入する", "#", class: "buy-form__purchase__disabled"
+
+      .buy-address
+        .buy-address__box
+          %h3.buy-address__box__head 配送先
+          .buy-address__box__content.clearfix
+            - if current_user.address.present?
+              %p.buy-address__box__content--code
+                = "〒" + current_user.address.postal_code.to_s
+              %p.buy-address__box__content--detail<
+                = @address.prefecture.name + " " + @address.city + " " + @address.block + " "
+                - if @address.building.present?
+                  %span
+                    = @address.building
+              %p.buy-address__box__content--fullname
+                = current_user.last_name + current_user.first_name
+              = link_to "#", class: "buy-address__box__content--edit" do
+                %span 変更する
+                = fa_icon "angle-right"
+            - else
+              = link_to "#", class: "buy-address__box__content--edit" do
+                %span 登録する
+                = fa_icon "angle-right"
+      
+      .buy-card
+        .buy-card__box
+          %h3.buy-card__box__head 支払い方法
+          .buy-card__box__content.clearfix
+            - if current_user.card.present?
+              %p.buy-card__box__content--number
+                = "************" + @default_card_information.last4
+              %p.buy-card__box__content--date
+                = @exp_month + " / " + @exp_year
+              = image_tag "visa.png", size: "49x15", class: "buy-card__box__content--image"
+              = link_to "#", class: "buy-card__box__content--edit" do
+                %span 変更する
+                = fa_icon "angle-right"
+            - else
+              %br/
+              %p.buy-card__box__content--date /
+              %br/
+              = link_to "#", class: "buy-card__box__content--edit" do
+                %span 登録する
+                = fa_icon "angle-right"
+
+
+= render partial: 'signup/signup-footer'
