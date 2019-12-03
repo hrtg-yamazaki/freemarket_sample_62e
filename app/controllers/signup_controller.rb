@@ -3,7 +3,7 @@ class SignupController < ApplicationController
 
   ## 新規会員登録 ##
   def signup
-    reset_session
+    
   end
 
   ## 本人情報入力 ##
@@ -12,24 +12,26 @@ class SignupController < ApplicationController
   end
 
   def registration_post
-    
-    session[:nickname]                 = user_params[:nickname]
-    session[:email]                    = user_params[:email]
-    session[:password]                 = user_params[:password]
-    session[:last_name]                = user_params[:last_name]
-    session[:first_name]               = user_params[:first_name]
-    session[:kana_last_name]           = user_params[:kana_last_name]
-    session[:kana_first_name]          = user_params[:kana_first_name]
-    session[:birthday]                 = convert_params_into_date
-    
+
+    reset_session
     @user = User.new(
-      nickname: session[:nickname], email: session[:email], password: session[:password],
-      last_name: session[:last_name], first_name: session[:first_name],
-      kana_last_name: session[:kana_last_name], kana_first_name: session[:kana_first_name],
-      birthday: session[:birthday]
+      nickname: user_params[:nickname], email: user_params[:email], password: user_params[:password],
+      last_name: user_params[:last_name], first_name: user_params[:first_name],
+      kana_last_name: user_params[:kana_last_name], kana_first_name: user_params[:kana_first_name],
+      birthday: convert_params_into_date
     )
     
     if @user.valid?(:registration_post)
+
+      session[:nickname]                 = user_params[:nickname]
+      session[:email]                    = user_params[:email]
+      session[:password]                 = user_params[:password]
+      session[:last_name]                = user_params[:last_name]
+      session[:first_name]               = user_params[:first_name]
+      session[:kana_last_name]           = user_params[:kana_last_name]
+      session[:kana_first_name]          = user_params[:kana_first_name]
+      session[:birthday]                 = convert_params_into_date
+      
       redirect_to signup_confirm_path
     else
       render "signup/registration"
@@ -43,9 +45,10 @@ class SignupController < ApplicationController
   end
 
   def confirmation_post
-    session[:tel_auth]                 = user_params[:tel_auth]
-    @user = User.new(email: session[:email], password: session[:password], tel_auth: session[:tel_auth])
+    @user = User.new(email: session[:email], password: session[:password], tel_auth: user_params[:tel_auth])
     if @user.valid?(:confirmation_post)
+      binding.pry
+      session[:tel_auth]                 = user_params[:tel_auth]
       redirect_to signup_confirm_sms_path
     else
       render :confirmation
@@ -163,7 +166,7 @@ class SignupController < ApplicationController
     month = params[:birthday]["birthday(2i)"].to_i
     day   = params[:birthday]["birthday(3i)"].to_i
     
-    if year != 0 || month != 0 || day != 0
+    if year != 0 && month != 0 && day != 0
       return Date.new(year, month, day)
     end
   end

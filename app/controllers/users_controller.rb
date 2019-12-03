@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def mypage
     unless user_signed_in?
-      redirect_to signup_path
+      redirect_to login_path
     end
   end
 
