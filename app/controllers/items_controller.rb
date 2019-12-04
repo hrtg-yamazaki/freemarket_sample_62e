@@ -39,9 +39,11 @@ class ItemsController < ApplicationController
     end
 
 
+
+
     if @item.valid? && @item.images.length <= 10
-      @item.save
       @item_image.save
+      @item.save
       redirect_to root_path
     else
       flash[:image_error] = 'アップロードできる画像は10枚までです' if @item.images.length > 10
