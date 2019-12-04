@@ -1,8 +1,8 @@
 =render partial: 'shared/header'
 
-.mypage-guide
-  =link_to 'Fmarket', root_path, class: 'guide-link'
-  >
+.nav-breadcrumb
+  - breadcrumb :sell_item
+  = render partial: 'shared/bread-crumbs'
 
 .mypage-index
   .mypage-index__box
@@ -90,8 +90,8 @@
       .show-comment
         =link_to '商品の編集', edit_item_path(@item.id), class: 'sell-item__btn sell-item__btn--red' 
         %p.sell-item__text or
-        =link_to '出品を一旦停止する', '#', class: 'sell-item__btn' 
-        =link_to 'この商品を削除する', '#', class: 'sell-item__btn' 
+        =link_to '出品を一旦停止する', '#', class: 'sell-item__btn'
+        =link_to 'この商品を削除する', item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'sell-item__btn' 
 
       .show-comment
         .show-comment__message

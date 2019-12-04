@@ -111,4 +111,12 @@ describe ItemsController, type: :controller do
       end
     end
 
+      # describe 'GET #buy' do
+  #   it '@imege が正しく定義せれている' do
+  #     itme = create(:item)
+  #     image = item.images.first
+  #     get :buy, params: { id: item }
+  #     expect(assigns(:image)).to eq image
+  #   end
+  # end
   end
