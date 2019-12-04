@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   end
 
-  ## 登録カード情報表示・編集 ##
+  ## カード情報表示・削除・再登録・ ##
   require "payjp"
 
 
@@ -79,6 +79,7 @@ class UsersController < ApplicationController
     redirect_to action: "card"
   end
 
+  
   private
 
   def set_card

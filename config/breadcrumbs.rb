@@ -21,6 +21,21 @@ crumb :logout do
   parent :mypage
 end
 
+crumb :listings do
+  link "出品した商品-出品中", listings_path
+  parent :mypage
+end
+
+crumb :card do
+  link "支払い方法", mypage_card_path
+  parent :mypage
+end
+
+crumb :sell_item do
+  link "出品商品画面", onsale_item_path
+  parent :listings
+end 
+
 crumb :show do
   link "商品詳細", item_path
 end
