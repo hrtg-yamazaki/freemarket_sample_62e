@@ -51,6 +51,37 @@ class UsersController < ApplicationController
       end
   end
 
+  # def address
+  #   if current_user.address.present?
+  #     @address = current_user.address
+  #   else
+  #     @address = Address.new()
+  #   end
+  # end
+
+  # def address_update
+  #   binding.pry
+  #   if current_user.address.update(address_params)
+  #     binding.pry
+  #     redirect_to mypage_address_path
+  #   else
+  #     render :address
+  #   end
+  # end
+
+  # def address_create
+  #   @address = Address.new(address_params)
+  #   if @address.valid?(:address_create)
+  #     if @address.save
+  #       redirect_to mypage_address_path
+  #     else
+  #       render :address
+  #     end
+  #   else
+  #     render :address
+  #   end
+  # end
+
   def complete
 
   end
@@ -75,6 +106,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  # def address_params
+  #   params.require(:address).permit(
+  #     :last_name,   :first_name,    :kana_last_name, :kana_first_name,
+  #     :postal_code, :prefecture_id, :city,           :block,
+  #     :building,    :tel
+  #   ).merge(user_id: current_user.id)
+  # end
 
   def set_card
     @credit_card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
