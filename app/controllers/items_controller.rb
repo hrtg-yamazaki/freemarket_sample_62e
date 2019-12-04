@@ -1,12 +1,7 @@
 class ItemsController < ApplicationController
 
-  before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update, :destroy ]
-  before_action :set_item, only: [ :show, :edit, :update, :destroy ]
-
-
-  before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update ]
-  before_action :set_item, only: [ :show, :edit, :update, :buy, :buy_post ]
-
+  before_action :redirect_to_signin, only: [ :sell, :create, :edit, :update, :destroy, :buy, :buy_post ]
+  before_action :set_item, only: [ :show, :edit, :update, :destroy, :buy, :buy_post ]
 
 
   def index
@@ -39,8 +34,7 @@ class ItemsController < ApplicationController
     end
 
 
-
-
+    
     if @item.valid? && @item.images.length <= 10
       @item_image.save
       @item.save
@@ -93,9 +87,6 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-
-private
-
 
   def complete
 
@@ -156,7 +147,7 @@ private
   end
 
   def redirect_to_signin
-    redirect_to new_user_session_path unless user_signed_in?
+    redirect_to login_path unless user_signed_in?
   end
 
   def calculate_profit

@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
 
+  before_action :redirect_to_login
   before_action :set_card, only:[:card, :card_delete]
 
   def mypage
-    unless user_signed_in?
-      redirect_to login_path
-    end
+    
   end
 
   def profile
@@ -17,12 +16,11 @@ class UsersController < ApplicationController
   end
 
   def identification
-
+    
   end
 
   ## カード情報表示・削除・再登録・ ##
   require "payjp"
-
 
   def card
     unless @credit_card.blank?
@@ -57,7 +55,6 @@ class UsersController < ApplicationController
 
   end
 
-
   def listings
     @items = Item.where(seller_id: current_user.id).order('id DESC').includes(:images).page(params[:page]).per(10)
   end
@@ -66,8 +63,6 @@ class UsersController < ApplicationController
     @item = Item.find(params[:id])
     @images = @item.images
   end
-  
-  private
 
   def card_delete
     if @credit_card.present?
@@ -79,11 +74,14 @@ class UsersController < ApplicationController
     redirect_to action: "card"
   end
 
-  
   private
 
   def set_card
     @credit_card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
+  def redirect_to_login
+    redirect_to login_path unless user_signed_in?
   end
 
 end
