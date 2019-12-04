@@ -2,39 +2,57 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
+|email|string|null: false, unique: true, index: true|
+|encrypted_password|string|null: false|
+|reset_password_token|string|unique: true, index: true|
+|reset_password_sent_at|datetime||
+|remember_created_at|datetime||
 |nickname|string|null: false|
-|email|string|null: false|
-|password|string|null: false|
-|tel_auth|integer|unique: true|
 |profile|text||
-|last_name|string||
-|first_name|string||
-|kana_last_name|string||
-|kana_first_name|string||
-|tel|integer|null: false, index: true|
-|birthday|integer||
-|facebook|string||
-|google|string||
-|card_num|integer||
-|exp_date|integer||
+|last_name|string|null: false|
+|first_name|string|null: false|
+|kana_last_name|string|null: false|
+|kana_first_name|string|null: false|
+|birthday|integer|null: false|
 |profit|integer||
 |point|integer||
+|tel_auth|string|null: false|
+|provider|string||
+|uid|string||
 ### Association
 - has_many :buyed_items, class_name: "Item"
 - has_many :selled_items, class_name: "Item"
 - has_one :address
+- has_one :card
 
 
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|prefecture|string||
+|last_name|string|null: false|
+|first_name|string|null: false|
+|kana_last_name|string|null: false|
+|kane_first_name|string|null: false|
+|postal_code|string|null: false|
 |city|string|null: false|
 |block|string|null: false|
 |building|string||
-|user_id|references|foreign_key: true|
+|user_id|references|foreign_key: true, index: true|
+|tel|string||
+|prefecture_id|integer||
 ### Association
-belongs_to :user
+- belongs_to :user
+
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|pay_id|string|null: false|
+|card_id|string|null: false|
+|user_id|references|foreign_key: true, index: true|
+### Association
+- belongs_to :user
+
 
 ## newsテーブル
 |Column|Type|Options|
@@ -67,16 +85,16 @@ belongs_to :user
 |------|----|-------|
 |name|string|null: false|
 |text|text|null: false|
-|condition|integer||
+|condition|integer|null: false|
 |price|integer|null: false|
 |size|string||
 |defrayer|integer|null: false|
-|area|integer|null: false|
 |span|integer|null: false|
-|selled_now|boolean|default: null|
+|status|integer|null: false|
 |fav|integer||
-|buyer_id|reference|foreign_key: true|
-|seller_id|reference|foreign_key: true|
+|buyer_id|reference|foreign_key: true, index: true|
+|seller_id|reference|foreign_key: true, index: true|
+|prefecture_id|integer||
 ### Association
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
@@ -89,7 +107,7 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|
-|item_id|references|foreign_key:true|
+|item_id|references|foreign_key: true, index: true|
 ### Association
 belongs_to :item
 
