@@ -192,6 +192,12 @@ RSpec.describe User, type: :model do
         expect(user.errors[:kana_last_name]).to include("35文字以下で入力してください")
       end
 
+      it "kana_last_nameがカナ文字以外を含むと保存できない" do
+        user = build(:user, kana_last_name: "あカサタナハマヤラワ")
+        user.valid?(:registration_post)
+        expect(user.errors[:kana_last_name]).to include("姓カナは カナ文字を入力してください")
+      end
+
       it "kana_first_nameが空では保存できない" do
         user = build(:user, kana_first_name: "")
         user.valid?(:registration_post)
@@ -202,6 +208,12 @@ RSpec.describe User, type: :model do
         user = build(:user, kana_first_name: "アカサタナハマヤラワアカサタナハマヤラワアカサタナハマヤラワアカサタナハ")
         user.valid?(:registration_post)
         expect(user.errors[:kana_first_name]).to include("35文字以下で入力してください")
+      end
+
+      it "kana_first_nameがカナ文字以外を含むと保存できない" do
+        user = build(:user, kana_first_name: "あカサタナハマヤラワ")
+        user.valid?(:registration_post)
+        expect(user.errors[:kana_first_name]).to include("名カナは カナ文字を入力してください")
       end
 
       it "birthdayが空では保存できない" do
@@ -294,8 +306,6 @@ RSpec.describe User, type: :model do
       end
 
     end
-
-    
 
   end
 

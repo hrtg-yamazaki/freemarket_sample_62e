@@ -47,7 +47,6 @@ class SignupController < ApplicationController
   def confirmation_post
     @user = User.new(email: session[:email], password: session[:password], tel_auth: user_params[:tel_auth])
     if @user.valid?(:confirmation_post)
-      binding.pry
       session[:tel_auth]                 = user_params[:tel_auth]
       redirect_to signup_confirm_sms_path
     else
