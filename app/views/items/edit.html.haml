@@ -27,15 +27,27 @@
         %p.sell-form__image__box__message
           最大10枚までアップロードできます
 
-        = f.fields_for :images do |i|
-          %ul
-            %li
-              = image_tag i.object.image_url.to_s, size: '114x116' if i.object.image_url.present?
-              = i.file_field :image_url
+        .edit-field
+          = f.fields_for :images, class: "edit-field" do |i|
+            %ul.edit-field__contents
               = i.hidden_field :id, value: i.object.id
               - if i.object.image_url.present?
-                = i.check_box :_destroy
-                = i.label :_destroy, "削除"
+                %li.edit-field__contents__top
+                  = image_tag i.object.image_url.to_s, size: '116x116'
+                %li.edit-field__contents__bottom
+                  = i.label :image_url, "編集", class: "bottom-btn bottom-btn--edit"
+                  = i.file_field :image_url, class: "hidden"
+                  = i.label :_destroy, "削除", class: "bottom-btn"
+                  = i.check_box :_destroy
+
+
+              -else
+                %li.edit-field__contents
+                  = i.file_field :image_url, class: "hidden"
+                  = i.label :image_url, "画像を追加", class: "add-image"
+
+                
+
 
 
       .sell-form__main

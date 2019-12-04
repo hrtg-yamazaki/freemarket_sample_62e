@@ -1,7 +1,7 @@
 .signup-header
   .signup-header__box
     .signup-header__box__logo
-      =link_to '#', class: "signup-header__box__logo" do
+      =link_to root_path, class: "signup-header__box__logo" do
         = embedded_svg("fmarket_logo_red.svg", class: "signup-header__box__logo")
   .signup-header__box__progress
     .signup_phonenumber
@@ -17,7 +17,8 @@
           .signup-main__contents__form__one__group__label
             認証番号
           .signup-main__contents__form__one__group__input
-            %input.signup-main__contents__form__one__group__input{:placeholder => "認証番号を入力", :type => "text"}/
+            -# %input.signup-main__contents__form__one__group__input{:placeholder => "認証番号を入力", :type => "text"}/
+            %input.signup-main__contents__form__one__group__input{:placeholder => "入力は不要です(機能未実装)", :type => "text"}/
           .signup-main__contents__form__one__group__message
             SMSで届いた認証番号を入力してください
           .signup-main__contents__form__two__btn

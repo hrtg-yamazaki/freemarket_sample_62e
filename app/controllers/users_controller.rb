@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
 
+  before_action :redirect_to_login
   before_action :set_card, only:[:card, :card_delete]
 
   def mypage
-    unless user_signed_in?
-      redirect_to login_path
-    end
+    
   end
 
   def profile
@@ -17,12 +16,11 @@ class UsersController < ApplicationController
   end
 
   def identification
-
+    
   end
 
   ## カード情報表示・削除・再登録・ ##
   require "payjp"
-
 
   def card
     unless @credit_card.blank?
@@ -53,10 +51,40 @@ class UsersController < ApplicationController
       end
   end
 
+  # def address
+  #   if current_user.address.present?
+  #     @address = current_user.address
+  #   else
+  #     @address = Address.new()
+  #   end
+  # end
+
+  # def address_update
+  #   binding.pry
+  #   if current_user.address.update(address_params)
+  #     binding.pry
+  #     redirect_to mypage_address_path
+  #   else
+  #     render :address
+  #   end
+  # end
+
+  # def address_create
+  #   @address = Address.new(address_params)
+  #   if @address.valid?(:address_create)
+  #     if @address.save
+  #       redirect_to mypage_address_path
+  #     else
+  #       render :address
+  #     end
+  #   else
+  #     render :address
+  #   end
+  # end
+
   def complete
 
   end
-
 
   def listings
     @items = Item.where(seller_id: current_user.id).order('id DESC').includes(:images).page(params[:page]).per(10)
@@ -66,8 +94,6 @@ class UsersController < ApplicationController
     @item = Item.find(params[:id])
     @images = @item.images
   end
-  
-  private
 
   def card_delete
     if @credit_card.present?
@@ -79,11 +105,22 @@ class UsersController < ApplicationController
     redirect_to action: "card"
   end
 
-  
   private
+
+  # def address_params
+  #   params.require(:address).permit(
+  #     :last_name,   :first_name,    :kana_last_name, :kana_first_name,
+  #     :postal_code, :prefecture_id, :city,           :block,
+  #     :building,    :tel
+  #   ).merge(user_id: current_user.id)
+  # end
 
   def set_card
     @credit_card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
+  def redirect_to_login
+    redirect_to login_path unless user_signed_in?
   end
 
 end

@@ -89,7 +89,8 @@
           %a UnitedStates
 
   .footer__bottom
-    = embedded_svg("fmarket_logo_white.svg",class: "good-svg")
+    = link_to root_path do
+      = embedded_svg("fmarket_logo_white.svg",class: "good-svg")
     .footer__bottom__center
       %samll © 2019 fmarket
 
