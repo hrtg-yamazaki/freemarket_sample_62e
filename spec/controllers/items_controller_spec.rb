@@ -131,7 +131,6 @@ describe ItemsController, type: :controller do
         }
 
         it "Item テーブルにレコードが作成される" do 
-          binding.pry
           expect{ subject }.to change(Item, :count).by(1)
         end
 
@@ -190,7 +189,13 @@ describe ItemsController, type: :controller do
 
   end
 
-
-
-
+  describe 'GET #buy' do
+    it '@imege が正しく定義せれている' do
+      itme = create(:item)
+      image = item.images.first
+      get :buy, params: { id: item }
+      expect(assigns(:image)).to eq image
+    end
   end
+
+end

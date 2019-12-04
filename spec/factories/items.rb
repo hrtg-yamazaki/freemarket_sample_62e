@@ -12,8 +12,6 @@ FactoryBot.define do
     created_at     { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
     updated_at     { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
     prefecture_id  { 1 }
-    seller_id      { 1 }
-    buyer_id       { 2 }
     
     association :seller, factory: :user
     association :buyer,  factory: :user
