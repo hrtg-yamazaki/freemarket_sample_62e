@@ -3,7 +3,17 @@
     =link_to '#', class: "single-header__logo" do
       = embedded_svg("fmarket_logo_red.svg", class: "single-header__logo")
 
-%h2 購入が完了しました！
-= link_to "トップページに戻る", root_path, class: 'add-card-btn'
+
+.buy-container
+  .buy-wrapper
+
+    .buy-title
+      %h2.buy-title__text
+        購入が完了しました！
+    
+    .buy-main
+      .buy-form
+        .buy-form__purchase
+          = link_to "トップページに戻る", root_path, class: 'buy-form__purchase__button'
 
 = render partial: 'signup/signup-footer'

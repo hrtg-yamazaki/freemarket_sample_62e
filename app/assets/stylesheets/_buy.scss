@@ -136,6 +136,8 @@
       @include buy-button;
       border: 1px solid #ea352d;
       background-color: #ea352d;
+      display: block;
+      text-align: center;
     }
     &__disabled{
       @include buy-button;
