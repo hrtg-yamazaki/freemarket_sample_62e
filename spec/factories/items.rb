@@ -1,5 +1,7 @@
 FactoryBot.define do
+
   factory :item do
+
     name           { Faker::Commerce.product_name }
     text           { Faker::Lorem.sentence }
     condition      { 'bad' }
@@ -19,5 +21,7 @@ FactoryBot.define do
     after(:create) do |item|
       create_list(:image, 3, item: item)
     end
+
   end
+
 end
