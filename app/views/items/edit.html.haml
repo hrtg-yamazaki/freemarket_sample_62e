@@ -31,7 +31,7 @@
           = f.fields_for :images, class: "edit-field" do |i|
             %ul.edit-field__contents
               = i.hidden_field :id, value: i.object.id
-              - if i.object.image_url.present? || i.object.image_url != "no image"
+              - if i.object.image_url.present? && i.object.image_url != "no image"
                 %li.edit-field__contents__top
                   = image_tag i.object.image_url.to_s, size: '116x116'
                 %li.edit-field__contents__bottom
