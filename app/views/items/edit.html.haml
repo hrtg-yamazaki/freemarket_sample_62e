@@ -31,7 +31,12 @@
           = f.fields_for :images, class: "edit-field" do |i|
             %ul.edit-field__contents
               = i.hidden_field :id, value: i.object.id
-              - if i.object.image_url.present? && i.object.image_url != "no image"
+              -if i.object.image_url.to_s.include?("no%20image")
+                %li.edit-field__contents
+                  = i.file_field :image_url, class: "hidden"
+                  = i.label :image_url, "画像を追加", class: "add-image"
+
+              -else
                 %li.edit-field__contents__top
                   = image_tag i.object.image_url.to_s, size: '116x116'
                 %li.edit-field__contents__bottom
@@ -40,13 +45,6 @@
                   = i.label :_destroy, "削除", class: "bottom-btn"
                   = i.check_box :_destroy
 
-
-              -else
-                %li.edit-field__contents
-                  = i.file_field :image_url, class: "hidden"
-                  = i.label :image_url, "画像を追加", class: "add-image"
-
-                
 
 
 
