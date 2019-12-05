@@ -9,7 +9,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    redirect_to onsale_item_path(@item) if @item.seller_id == current_user.id
+    if user_signed_in?
+      redirect_to onsale_item_path(@item) if @item.seller_id == current_user.id
+    end
     @seller_items = Item.where(seller_id: @item.seller.id).where.not(id: params[:id]).order('id DESC').limit(6).includes(:images)
   end
 
