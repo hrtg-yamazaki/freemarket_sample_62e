@@ -51,6 +51,7 @@ class UsersController < ApplicationController
       end
   end
 
+  # 住所編集ページ(追加機能のため任意実装。バリデーション未設定です)
   # def address
   #   if current_user.address.present?
   #     @address = current_user.address
@@ -107,6 +108,7 @@ class UsersController < ApplicationController
 
   private
 
+  # 追加機能実装用のスタンバイです
   # def address_params
   #   params.require(:address).permit(
   #     :last_name,   :first_name,    :kana_last_name, :kana_first_name,

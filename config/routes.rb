@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     get     "card/create",       to: "users#card_create",             as: "mypage_card_create"
     post    "card",              to: "users#card_update",             as: "mypage_card_update"
     delete  "card",              to: "users#card_delete",             as: "mypage_card_delete"
+    # 住所編集ページ(追加機能。実装したい場合に解放してください)
     # get     "deliver_address",   to: "users#address",                 as: "mypage_address"
     # patch   "deliver_address",   to: "users#address_update",          as: "mypage_address_update"
     # post    "deliver_address",   to: "users#address_create",          as: "mypage_address_create"
