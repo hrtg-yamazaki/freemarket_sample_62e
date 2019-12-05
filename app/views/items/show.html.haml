@@ -119,16 +119,19 @@
 
   .show-link
     %ul.show-link__inside
-      -if @item.previous_item
-        %li
-          =link_to item_path(@item.previous_item), class: 'item-show-link item-show-link--hover' do
-            =fa_icon 'chevron-left'
-            %span= @item.previous_item.name
       -if @item.next_item
         %li 
           =link_to item_path(@item.next_item), class: 'item-show-link  item-show-link--hover' do
+            =fa_icon 'chevron-left'
             %span= @item.next_item.name 
+            
+
+      -if @item.previous_item
+        %li
+          =link_to item_path(@item.previous_item), class: 'item-show-link item-show-link--hover' do
+            %span= @item.previous_item.name
             =fa_icon 'chevron-right'
+
 
 
   .show-sns
