@@ -20,7 +20,7 @@ ja:
           onSell: "出品中"
           inNegotiation: "交渉中"
           stopSell: "出品停止"
-          sold: "販売済み"
+          sold: "売却済み"
 
   activerecord:
     errors:

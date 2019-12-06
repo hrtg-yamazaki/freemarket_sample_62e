@@ -87,11 +87,18 @@
         .show-main__text
           %p= @item.text
 
-      .show-comment
-        =link_to '商品の編集', edit_item_path(@item.id), class: 'sell-item__btn sell-item__btn--red' 
-        %p.sell-item__text or
-        =link_to '出品を一旦停止する', '#', class: 'sell-item__btn'
-        =link_to 'この商品を削除する', item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'sell-item__btn' 
+
+
+      - if @item.status == "onSell"
+        .show-comment
+          =link_to '商品の編集', edit_item_path(@item.id), class: 'sell-item__btn sell-item__btn--red' 
+          %p.sell-item__text or
+          =link_to '出品を一旦停止する', '#', class: 'sell-item__btn'
+          =link_to 'この商品を削除する', item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'sell-item__btn' 
+      - else
+        .show-main__sold
+          %span 売却済み
+
 
       .show-comment
         .show-comment__message

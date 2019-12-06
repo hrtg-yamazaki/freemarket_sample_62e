@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_card, only:[:card, :card_delete]
 
   def mypage
-    
+    @seller_items = Item.where(seller_id: current_user.id, status: "onSell")
   end
 
   def profile
