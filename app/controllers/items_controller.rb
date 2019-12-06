@@ -119,7 +119,7 @@ class ItemsController < ApplicationController
       )
       calculate_profit
     end
-      if @item.update(status: 1, buyer_id: current_user.id)
+      if @item.update(status: 3, buyer_id: current_user.id)
         redirect_to action: 'complete'
       else 
         flash[:alert] = '購入に失敗しました'
