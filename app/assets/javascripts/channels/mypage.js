@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   
   $('.mypage-news-btn').on('click',function(e){
     e.preventDefault();    
